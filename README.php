@@ -8,7 +8,7 @@
 </head>
 
 <body>
-
+<h1></h1>
     <?php
     echo 'Hello';
     if (extension_loaded('pgsql')) {
