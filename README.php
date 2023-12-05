@@ -21,7 +21,7 @@
     $dbname = "osmxbusz";
     $user = "osmxbusz";
     $password = "m5YUAz0vMtIcjX3bmybJc7Kaz2STNoQ-";
-    $schema = "blocal";
+    $schema = "test";
 
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password options='--search_path=$schema'";
 
@@ -31,16 +31,13 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "Connected successfully";
 
-        $query = "INSERT INTO product(product_name, price, stock, store_id) VALUES (?,?,?,?);";
+        $query = "INSERT INTO users (name) VALUES (:value1);";
         $stmt = $pdo->prepare($query);
-        
-        $value1 = 'TestValue1';
-        $price = 12;
-        $stock = 2;
-        $store_id = 1;
-        //$stmt->bindParam(':value1', $value1);
 
-        $stmt->execute([$value1,$price,$stock,$store_id]);
+        $value1 = 'TestValue1';
+        $stmt->bindParam(':value1', $value1);
+
+        $stmt->execute();
         echo "Record inserted successfully";
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
@@ -57,3 +54,4 @@
 </body>
 
 </html>
+>>>>>>> c8c339d0919a997425c546dce3c404ab6f901914
