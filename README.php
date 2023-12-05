@@ -10,45 +10,32 @@
 <body>
 <h1></h1>
     <?php
-    echo 'Hello';
+    echo 'Check! ';
     if (extension_loaded('pgsql')) {
         echo 'PostgreSQL extension is loaded.';
     } else {
         echo 'PostgreSQL extension is not loaded.';
     }
-    $host = "balarama.db.elephantsql.com";
-    $port = "5432";
-    $dbname = "osmxbusz";
-    $user = "osmxbusz";
-    $password = "m5YUAz0vMtIcjX3bmybJc7Kaz2STNoQ-";
-    $schema = "test";
-
-    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;user=$user;password=$password options='--search_path=$schema'";
-
-    try {
-        $pdo = new PDO($dsn);
-        // Set PDO attributes if needed
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
-
-        $query = "INSERT INTO users (name) VALUES (:value1);";
-        $stmt = $pdo->prepare($query);
-
-        $value1 = 'TestValue1';
-        $stmt->bindParam(':value1', $value1);
-
-        $stmt->execute();
-        echo "Record inserted successfully";
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-    }
-
 
     ?>
 
     <form action="includes/formhandler.inc.php" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <button>SingUp</button>
+        <input type="text" name="productName" placeholder="Product Name"><br>
+        <input type="text" name="price" placeholder="Price"><br>
+        <input type="text" name="stock" placeholder="Stock"><br>
+        <input type="text" name="storeId" placeholder="Store Id"><br>
+        <button>Register product</button>
+    </form>
+    <br>
+    <form action="includes/deleteproduct.inc.php" method="post">
+        <input type="text" name="productId" placeholder="Product id"><br>
+        <button>Delete product</button>
+    </form>
+    <br>
+    <form action="search.php" method="post">
+        <label for="search">Search for products in store:</label>
+        <input id="search" type="text" name="productsearch" placeholder="Store Id"><br>
+        <button>Search</button>
     </form>
 
 </body>
