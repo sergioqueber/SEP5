@@ -34,7 +34,9 @@
                     <li><a class="nav-link active" href="">Home </a></li>
                     <li><a class="nav-link" href="My_town.html">Products </a></li>
                     <li><a class="nav-link" href="Education.html">About us</a></li>
-                    <a href="login.php"><img src="Images/profileorange 1.png" alt="Profile pic"></a>
+                    <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="Images/profileorange 1.png" alt="Profile pic">
+                    </button>
                 </ul>
             </div>
         </div>
