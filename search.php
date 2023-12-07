@@ -1,3 +1,5 @@
+
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $productsearch = $_POST["productsearch"];
@@ -31,9 +33,31 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"> </script>
 </head>
 
 <body>
+
+    <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Sergio Berdonce</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"> </span></button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li><a class="nav-link active" href="">Home </a></li>
+                    <li><a class="nav-link" href="My_town.html">Products </a></li>
+                    <li><a class="nav-link" href="Education.html">About us</a></li>
+                    <a href="login.php"><img src="Images/profileorange 1.png" alt="Profile pic"></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+
     <section>
     <h3>Search results</h3>
 
@@ -46,7 +70,8 @@ else{
     else{
         foreach ($results as $row){
             echo "<div>";
-            echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
+            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
             echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
@@ -56,6 +81,9 @@ else{
     }
     ?>
 </section>
+
+
+
 </body>
 
 </html>
