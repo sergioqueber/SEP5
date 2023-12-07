@@ -46,7 +46,8 @@ else{
     else{
         foreach ($results as $row){
             echo "<div>";
-            echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
+            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
             echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
