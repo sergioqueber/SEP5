@@ -53,7 +53,7 @@ else{
             </div>
         </div>
     </nav>
-    
+
     <section>
     <h3>Search results</h3>
 
@@ -77,6 +77,9 @@ else{
     }
     ?>
 </section>
+
+<script src="js/jquery-3.5.1.min.js"></script>
+
 </body>
 
 </html>
