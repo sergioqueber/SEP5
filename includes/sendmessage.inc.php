@@ -1,8 +1,8 @@
 <?php
 session_start();
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['message'])){
     $username = $_SESSION['username'];
-    $message = $_POST["message"];
+    $message = $_POST['message'];
     $direction = TRUE;
    
 
