@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        session_start();
+        echo $_SESSION['username'];
+    ?>
 
     <h1>Register store</h1>
 

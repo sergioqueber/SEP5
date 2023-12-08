@@ -1,4 +1,6 @@
 <?php
+session_start();
+$username = $_SESSION['username'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $storename = $_POST["storename"];
@@ -40,8 +42,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $query3 = "INSERT INTO store_management (store_id, username) VALUES (?, ?);";
         $stmt3 = $pdo->prepare($query3);
-        $stmt3->execute([$storeId, 'as']);
+        $stmt3->execute([$storeId, $username]);
         
+        $query4 = "SELECT store_id FROM store_management WHERE username = ?;";
+        $stmt4 = $pdo->prepare($query4);
+        $stmt4->execute([$username]);
+
+        $storeId1 = $stmt4->fetchColumn();
+        $_SESSION['store_id'] = $storeId1;
 
         die();
 

@@ -5,10 +5,10 @@ try {
             require_once "includes/dbh.inc.php";
             $messagesNewCount = $_POST['messagesNewCount'];
 
-            $query = "SELECT * FROM message WHERE username = ? ORDER BY message_id DESC LIMIT $messagesNewCount;";
+            $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT $messagesNewCount;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$username]);
+            $stmt->execute([$username, 1]);
     
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(empty($results)){

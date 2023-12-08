@@ -8,16 +8,12 @@
     <script>
         $(document).ready(function(){
             var messagesCount = 2;
-            $("#moreMessages").click(function(){
+            $("#show").click(function(){
                 messagesCount = messagesCount + 2;
                 $('#display').load("load-message.php", 
                 {messagesNewCount: messagesCount});
             })
-
-            $('#send').click(function(){
-                $('#display').load("load-message.php", 
-                {messagesNewCount: messagesCount});
-            })
+            
         });
     </script>
 </head>
@@ -27,15 +23,14 @@
         <?php
         session_start();
         $username = $_SESSION['username'];
-        //echo $_SESSION['username'];
+        echo $_SESSION['username'];
         try {
             require_once "includes/dbh.inc.php";
 
-            $query = "SELECT * FROM message WHERE username = ? ORDER BY message_id DESC LIMIT 2;
-            ;";
+            $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT 2;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$username]);
+            $stmt->execute([$username, 1]);
     
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(empty($results)){
@@ -59,13 +54,20 @@
         ?>
     </div>
     <br>
-    <button id="moreMessages">Show more messages</button>
-    <div id="message">
-    <form action="includes/sendmessage.inc.php" method="post">
-        <input id="message" type="text" name="message" placeholder="Write your message here"><br>
-        <button id="send">Send</button>
+    <button id="show">Show more messages</button>
+    <form action="" method="post">
+        <input type="text" name="message" value="" placeholder="Write your message here"/>
+        <input type="button" onclick="submitForm();" name="send_message" value="send"/>
     </form>
-    </div>
+    <script>
+        function submitForm(){
+            var message = $('input[name=message]').val();
+            var formData = {message: message};
+            $.ajax({url: "http://localhost/MyWebsite/includes/sendmessage.inc.php", type: 'POST', data: formData})
+            $('input[name=message]').val('');
+        };
+    </script>
+      
     
 </body>
 </html>
