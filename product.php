@@ -107,6 +107,8 @@ session_start();
             $query = "INSERT INTO cart_item(cart_id, product_id, quantity) VALUES (?,?,?);";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$_SESSION['cart'], $productId,2]);
+            
+            echo 'Added to cart';
 
             $pdo = null;
             $stmt = null;

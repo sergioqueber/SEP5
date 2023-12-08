@@ -100,5 +100,7 @@
     }
     ?>
 
+    <button>Place Order</button>
+
 </body>
 </html>
