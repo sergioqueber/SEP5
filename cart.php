@@ -4,7 +4,7 @@
         try {
             require_once "includes/dbh.inc.php";
     
-            $query = "SELECT product_name, price, image_path
+            $query = "SELECT *
             FROM product
                      JOIN blocal.cart_item ci ON product.product_id = ci.product_id
                      JOIN cart c ON c.cart_id = ci.cart_id
