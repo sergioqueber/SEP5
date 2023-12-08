@@ -9,11 +9,11 @@
         $(document).ready(function(){
             var messagesCount = 2;
             $("#show").click(function(){
+            $("#show").click(function(){
                 messagesCount = messagesCount + 2;
                 $('#display').load("load-message.php", 
                 {messagesNewCount: messagesCount});
             })
-            
         });
     </script>
 </head>
