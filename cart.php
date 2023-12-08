@@ -9,7 +9,7 @@
                      JOIN blocal.cart_item ci ON product.product_id = ci.product_id
                      JOIN cart c ON c.cart_id = ci.cart_id
                      JOIN customer c2 ON c.username = c2.username
-            WHERE c.username = ?;";
+            WHERE c.username = ? ;";
     
             $stmt = $pdo->prepare($query);
             $stmt->execute([$username]);
