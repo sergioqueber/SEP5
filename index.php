@@ -72,6 +72,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <p>Hi 
                             <?php
+                            echo session_status();
                                 if(session_status()==PHP_SESSION_ACTIVE){
                                     echo $_SESSION['username'];
                                    
