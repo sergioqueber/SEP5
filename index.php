@@ -76,7 +76,7 @@
                             ?>
                         </p>
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Log-in personal</a>
+                        <a class="dropdown-item" href="login.php">Log-in personal</a>
                         <a class="dropdown-item" href="#">Log-in business</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
