@@ -1,6 +1,6 @@
 <?php 
         session_start();
-        $_SESSION['username'] = $username;
+        $username = $_SESSION['username'] ;
         try {
             require_once "includes/dbh.inc.php";
     
