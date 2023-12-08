@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +65,7 @@
 
     <?php
     $productId = isset($_GET['id']) ? $_GET['id'] : null;
-    session_start();
+    
     echo $_SESSION['cart'];
     try {
         require_once "includes/dbh.inc.php";
