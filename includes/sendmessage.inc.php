@@ -15,6 +15,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
 
         die();
+        
+        header("Location: ../sendmessage.php");
+
 
     } catch (PDOException $e) {
         die("Query failed" . $e->getMessage());
