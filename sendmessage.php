@@ -8,13 +8,15 @@
     <script>
         $(document).ready(function(){
             var messagesCount = 2;
-            $("button").click(function(){
+            $("#moreMessages").click(function(){
                 messagesCount = messagesCount + 2;
                 $('#display').load("load-message.php", 
                 {messagesNewCount: messagesCount});
             })
 
-            $
+            $('#send').click(function(){
+                $('#display').load("load-message.php");
+            })
         });
     </script>
 </head>
@@ -56,11 +58,11 @@
         ?>
     </div>
     <br>
-    <button>Show more messages</button>
+    <button id="moreMessages">Show more messages</button>
     <div id="message">
     <form action="includes/sendmessage.inc.php" method="post">
         <input id="message" type="text" name="message" placeholder="Write your message here"><br>
-        <button >Send</button>
+        <button id="send">Send</button>
     </form>
     </div>
     
