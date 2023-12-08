@@ -72,8 +72,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <p>Hi 
                             <?php
-                                session_start();
-                                $_SESSION['username'];
+                                echo $_SESSION['username'];
                             ?>
                         </p>
                         <a class="dropdown-item" href="#">Profile</a>
