@@ -65,23 +65,17 @@
                 <li><a class="nav-link" href="">About us</a></li>
 
                 <li class="nav-item dropdown">
-                    <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
-                    </button>
+                        <?php
+                            if(session_status() == PHP_SESSION_ACTIVE){
+                                echo 'Hi ' . $_SESSION['username'];
+                            } else {
+                                echo 'Anonymus user';
+                            }
+                        ?>
+                    </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <p>Hi 
-                            <?php
-                            echo session_status();
-                                if(session_status()==PHP_SESSION_ACTIVE){
-                                    echo $_SESSION['username'];
-                                   
-                                }
-                                else {
-                                    echo "Anonymus user";
-                                }
-                               
-                            ?>
-                        </p>
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="login.php">Log-in personal</a>
                         <a class="dropdown-item" href="#">Log-in business</a>
