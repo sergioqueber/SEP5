@@ -43,6 +43,7 @@
                         <img src="Images/profileorange 1.png" alt="Profile pic">
                         <?php
                             if(session_status() == PHP_SESSION_ACTIVE){
+                                session_start();
                                 echo 'Hi ' . $_SESSION['username'];
                             } else {
                                 echo 'Anonymus user';
