@@ -61,19 +61,29 @@
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li><a class="nav-link active" href="">Home</a></li>
-                <li><a class="nav-link" href="My_town.html">Products</a></li>
-                <li><a class="nav-link" href="Education.html">About us</a></li>
+                <li><a class="nav-link" href="">Products</a></li>
+                <li><a class="nav-link" href="">About us</a></li>
 
-                <!-- Dropdown Button and Menu -->
                 <li class="nav-item dropdown">
                     <button type="button" class="btn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
+                        <p>Hi 
+                            <?php
+                               echo $_SESSION['username'];
+                            ?>
+                        </p>
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Log-in personal</a>
+                        <a class="dropdown-item" href="#">Log-in business</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <button> Log out
+                            <?php
+                                session_destroy();
+                                exit();
+                            ?>
+                        </button>
                     </div>
                 </li>
             </ul>
