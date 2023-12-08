@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         WHERE c.username = ?;";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$username]);
-        $_SESSION['cart'] = $stmt->fetchColumn;
+        $_SESSION['cart'] =  $stmt->fetchColumn();
 
         echo $results;
         echo $psw;
