@@ -71,19 +71,14 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <p>Hi 
                             <?php
-                               echo $_SESSION['username'];
+                                $_SESSION['username'];
                             ?>
                         </p>
                         <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="#">Log-in personal</a>
                         <a class="dropdown-item" href="#">Log-in business</a>
                         <div class="dropdown-divider"></div>
-                        <button> Log out
-                            <?php
-                                session_destroy();
-                                exit();
-                            ?>
-                        </button>
+                        <a class="dropdown-item" href="logout.inc.php">Log-out</a>
                     </div>
                 </li>
             </ul>
