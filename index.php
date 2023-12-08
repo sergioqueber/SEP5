@@ -72,7 +72,13 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <p>Hi 
                             <?php
-                                echo $_SESSION['username'];
+                                if(session_status() == PHP_SESSION_NONE){
+                                    echo 'Anonymus user'
+                                }
+                                else {
+                                    echo $_SESSION['username'];
+                                }
+                               
                             ?>
                         </p>
                         <a class="dropdown-item" href="#">Profile</a>
