@@ -80,6 +80,8 @@
             </div>
         </div>
     </nav>
+    
+    <h1>Your cart</h1>
 
     <?Php
     if(empty($results)){
