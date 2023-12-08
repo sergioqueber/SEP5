@@ -13,10 +13,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt = $pdo->prepare($query);
         $stmt->execute([$message, $direction, $username, 1]);
         
-
+        header("Location: ../sendmessage.php");
         die();
         
-        header("Location: ../sendmessage.php");
+       
 
 
     } catch (PDOException $e) {
