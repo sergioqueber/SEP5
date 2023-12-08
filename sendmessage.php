@@ -27,7 +27,7 @@
         <?php
         session_start();
         $username = $_SESSION['username'];
-        echo $_SESSION['username'];
+        //echo $_SESSION['username'];
         try {
             require_once "includes/dbh.inc.php";
 
