@@ -72,11 +72,12 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <p>Hi 
                             <?php
-                                if(session_status() == PHP_SESSION_NONE){
-                                    echo "Anonymus user";
+                                if(session_status() == PHP_SESSION_ACTIVE){
+                                    echo $_SESSION['username'];
+                                   
                                 }
                                 else {
-                                    echo $_SESSION['username'];
+                                    echo "Anonymus user";
                                 }
                                
                             ?>
