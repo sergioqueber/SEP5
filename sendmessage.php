@@ -15,7 +15,8 @@
             })
 
             $('#send').click(function(){
-                $('#display').load("load-message.php");
+                $('#display').load("load-message.php", 
+                {messagesNewCount: messagesCount});
             })
         });
     </script>
