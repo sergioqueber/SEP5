@@ -22,6 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->execute([$username]);
         $cartId = $stmt->fetchColumn();
         $_SESSION['cart'] = $cartId;
+        header("Location: ../index.php");
         die();
 
     } catch (PDOException $e) {
