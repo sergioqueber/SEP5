@@ -12,8 +12,7 @@
 <body>
 <h1></h1>
     <?php
-    session_start();
-    echo 'Check! ';
+    
     if (extension_loaded('pgsql')) {
         echo 'PostgreSQL extension is loaded.';
     } else {
