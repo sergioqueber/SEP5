@@ -1,3 +1,29 @@
+<?php 
+        session_start();
+        $_SESSION['username'] = $username;
+        try {
+            require_once "includes/dbh.inc.php";
+    
+            $query = "SELECT product_name, price, image_path
+            FROM product
+                     JOIN blocal.cart_item ci ON product.product_id = ci.product_id
+                     JOIN cart c ON c.cart_id = ci.cart_id
+                     JOIN customer c2 ON c.username = c2.username
+            WHERE c.username = '?';";
+    
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+    
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            $pdo = null;
+            $stmt = null;
+        } catch (PDOException $e) {
+            die("Query failed: " . $e->getMessage());
+        }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,9 +80,23 @@
         </div>
     </div>
 </nav>
-<?php
 
-
+<?Php
+ if(empty($results)){
+    echo "<div>";
+    echo "<p>No results:(</p>";
+    echo "</div>";
+}
+else{
+    foreach ($results as $row){
+        echo "<div>";
+        echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
+        echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
+        echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
+        echo "</div>";
+    }
+}
 ?>
+
 </body>
 </html>
