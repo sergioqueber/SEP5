@@ -13,6 +13,8 @@
                 $('#display').load("load-message.php", 
                 {messagesNewCount: messagesCount});
             })
+
+            $
         });
     </script>
 </head>
@@ -26,7 +28,8 @@
         try {
             require_once "includes/dbh.inc.php";
 
-            $query = "SELECT * FROM message WHERE username = ? LIMIT 2;";
+            $query = "SELECT * FROM message WHERE username = ? ORDER BY message_id DESC LIMIT 2;
+            ;";
 
             $stmt = $pdo->prepare($query);
             $stmt->execute([$username]);
@@ -57,7 +60,7 @@
     <div id="message">
     <form action="includes/sendmessage.inc.php" method="post">
         <input id="message" type="text" name="message" placeholder="Write your message here"><br>
-        <button>Send</button>
+        <button >Send</button>
     </form>
     </div>
     
