@@ -25,7 +25,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
-                    <img src="Images/Blocal logo.png" alt="logo">
+                    <img src="Images/Blocal logo.png" alt="logo" class = "img-fluid">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"> </span></button>
             </div>
