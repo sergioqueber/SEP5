@@ -14,7 +14,7 @@
 
     <form action="includes/loginhandler.inc.php" method="post">
         <input type="text" name="username" placeholder="Username"><br><br>
-        <input type="text" name="password" placeholder="Password"><br><br>
+        <input type="password" name="password" placeholder="Password"><br><br>
         <button>Log in</button>
     </form>
 </body>
