@@ -15,7 +15,7 @@
             $stmt->execute([$username]);
     
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+            echo $results;
             $pdo = null;
             $stmt = null;
         } catch (PDOException $e) {
