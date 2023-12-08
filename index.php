@@ -72,6 +72,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                         <p>Hi 
                             <?php
+                                session_start();
                                 $_SESSION['username'];
                             ?>
                         </p>
@@ -79,7 +80,7 @@
                         <a class="dropdown-item" href="#">Log-in personal</a>
                         <a class="dropdown-item" href="#">Log-in business</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="logout.inc.php">Log-out</a>
+                        <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
             </ul>
