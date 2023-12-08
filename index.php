@@ -59,6 +59,11 @@
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
+
+                <li><a class = "nav-link" href="">
+                    <img src="Images/cartbl 1.png" alt="Cart">
+                </a></li>
+                
             </ul>
         </div>
     </div>
