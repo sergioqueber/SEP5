@@ -42,6 +42,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
                         <?php
+                            echo $_SESSION['username'];
                             if(session_status() == PHP_SESSION_ACTIVE){
                                 session_start();
                                 echo 'Hi ' . $_SESSION['username'];
