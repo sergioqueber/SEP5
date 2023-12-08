@@ -12,7 +12,7 @@
 <body>
 <h1></h1>
     <?php
-    
+    session_start();
     if (extension_loaded('pgsql')) {
         echo 'PostgreSQL extension is loaded.';
     } else {
@@ -43,8 +43,8 @@
                         <img src="Images/profileorange 1.png" alt="Profile pic">
                         <?php
                             echo session_status();
-                            if(session_status() == PHP_SESSION_ACTIVE){
-                                session_start();
+                            if(session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['username'])){
+                                
                                 echo 'Hi ' . $_SESSION['username'];
                             } else {
                                 echo 'Anonymus user';
