@@ -73,7 +73,7 @@
                         <p>Hi 
                             <?php
                                 if(session_status() == PHP_SESSION_NONE){
-                                    echo 'Anonymus user'
+                                    echo "Anonymus user";
                                 }
                                 else {
                                     echo $_SESSION['username'];
