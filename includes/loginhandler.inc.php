@@ -16,6 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         $results = $stmt->fetchColumn();
+
+        $query = "SELECT cart_id
+        FROM cart
+                 JOIN customer c ON cart.username = c.username
+        WHERE c.username = ?;";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$username]);
+        $_SESSION['cart'] =  $stmt->fetchColumn();
+
         echo $results;
         echo $psw;
         if ($results == $psw) {

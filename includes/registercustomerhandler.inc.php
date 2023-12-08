@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = $_POST["username"];
     $psw = $_POST["password"];
@@ -17,6 +17,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt = $pdo->prepare($query);
         $stmt->execute([$username,$psw,$fName,$lName,$emai,$phoneNo]);
 
+        $query = "INSERT INTO cart(username) VALUES (?) RETURNING cart_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$username]);
+        $cartId = $stmt->fetchColumn();
+        $_SESSION['cart'] = $cartId;
         die();
 
     } catch (PDOException $e) {
