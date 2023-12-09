@@ -14,8 +14,7 @@
             $stmt->execute([$username]);
     
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $pdo = null;
-            $stmt = null;
+           
         } catch (PDOException $e) {
             die("Query failed: " . $e->getMessage());
         }
@@ -134,6 +133,9 @@
             $query = "DELETE FROM cart_item WHERE cart_id = ? ";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$_SESSION['cart']]);
+
+            $pdo = null;
+            $stmt = null;
             
             echo 'Order placed'
         ?>
