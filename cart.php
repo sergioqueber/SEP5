@@ -1,23 +1,20 @@
 <?php 
         session_start();
-        $username = $_SESSION['username'];
+        $username = $_SESSION['username'] ;
         try {
             require_once "includes/dbh.inc.php";
     
-            $query = "SELECT product_name, price, image_path
+            $query = "SELECT *
             FROM product
                      JOIN blocal.cart_item ci ON product.product_id = ci.product_id
                      JOIN cart c ON c.cart_id = ci.cart_id
                      JOIN customer c2 ON c.username = c2.username
-            WHERE c.username = '?';";
-    
+            WHERE c.username = ? ;";   
             $stmt = $pdo->prepare($query);
             $stmt->execute([$username]);
     
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-            $pdo = null;
-            $stmt = null;
+           
         } catch (PDOException $e) {
             die("Query failed: " . $e->getMessage());
         }
@@ -30,73 +27,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
+    <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"> </script>
 </head>
 <body>
     
-<nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+    <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li><a class="nav-link active" href="">Home</a></li>
-                <li><a class="nav-link" href="">Products</a></li>
-                <li><a class="nav-link" href="">About us</a></li>
-                <li><a class = "nav-link" href="">
-                    <img src="Images/cartbl 1.png" alt="Cart">
-                </a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="Images/profileorange 1.png" alt="Profile pic">
-                        <?php
-                            
-                            if(session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['username'])){
+            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li><a class="nav-link" href="index.php">Home</a></li>
+                    <li><a class="nav-link" href="">Products</a></li>
+                    <li><a class="nav-link" href="">About us</a></li>
+                    <li><a class = "nav-link" href="">
+                        <img src="Images/cartbl 1.png" alt="Cart">
+                    </a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="Images/profileorange 1.png" alt="Profile pic">
+                            <?php
                                 
-                                echo 'Hi ' . $_SESSION['username'];
-                            } else {
-                                echo 'Anonymus user';
-                            }
-                        ?>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="login.php">Log-in personal</a>
-                        <a class="dropdown-item" href="#">Log-in business</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
-                    </div>
-                </li>
+                                if(session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['username'])){
+                                    
+                                    echo 'Hi ' . $_SESSION['username'];
+                                } else {
+                                    echo 'Anonymus user';
+                                }
+                            ?>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="login.php">Log-in personal</a>
+                            <a class="dropdown-item" href="#">Log-in business</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
+                        </div>
+                    </li>
 
-               
                 
-            </ul>
+                    
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+    
+    <h1>Your cart</h1>
 
-<?Php
- if(empty($results)){
-    echo "<div>";
-    echo "<p>No results:(</p>";
-    echo "</div>";
-}
-else{
-    foreach ($results as $row){
+    <?Php
+    if(empty($results)){
         echo "<div>";
-        echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-        echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-        echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
+        echo "<p>No results:(</p>";
         echo "</div>";
     }
-}
-?>
+    else{
+        foreach ($results as $row){
+            echo "<div>";
+            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
+            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
+            echo "</div>";
+        }
+    }
 
+   
+    ?>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $('#order').load();
+            })
+        })
+    </script>
+    <button>Place Order</button>
+    <div id = 'order'>
+        <?php
+            $query = 'INSERT INTO "order"(username) VALUES (?) RETURNING order_id;';
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+            $orderId = $stmt->fetchColumn();
+            
+            $query = "SELECT product_id, quantity
+                FROM cart_item
+                        JOIN blocal.cart c ON cart_item.cart_id = c.cart_id
+                WHERE username = ?;";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+            $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $query = "INSERT INTO order_item(product_id, order_id, quantity) VALUES (?,?,?);";
+            $stmt = $pdo->prepare($query);
+            
+            foreach ($cartItems as $cartItem) {
+                $stmt->execute([$cartItem['product_id'], $orderId,$cartItem['quantity']]);
+            };
+
+            $query = "DELETE FROM cart_item WHERE cart_id = ? ";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$_SESSION['cart']]);
+
+            $pdo = null;
+            $stmt = null;
+            
+            echo 'Order placed'
+        ?>
+    </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ session_start();
     <title>Document</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 
 <body>
@@ -65,6 +67,7 @@ session_start();
 
     <?php
     $productId = isset($_GET['id']) ? $_GET['id'] : null;
+    $_SESSION['product_id'] = $productId;
     
     echo $_SESSION['cart'];
     try {
@@ -92,32 +95,39 @@ session_start();
         echo "</div>";
     }
     ?>
+    <form action="" method="post">
+        <input type="text" name="quantity" value="" placeholder="Quantity"/>
+        <input type="button" onclick="addToCart();" name="add" value="Add to cart"/>
+    </form>
     <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $('#add').load();
-            })
-        })
+        function addToCart(){
+            var quantity = $('input[name=quantity]').val();
+            var formData = {quantity: quantity};
+            $.ajax({url: "http://localhost/MyWebsite/addproducttocart.inc.php", type: 'POST', data: formData});
+            $('input[name=quantity]').val('');
+        };
     </script>
-    <button>Add to cart</button>
-    <div id="add">
-        <?php
-        try {
-            require_once "includes/dbh.inc.php";
-            $query = "INSERT INTO cart_item(cart_id, product_id, quantity) VALUES (?,?,?);";
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$_SESSION['cart'], $productId,2]);
+    <br>
+    <f<form action="reviewhandler.inc.php" method="post">
+        <label for="review">Leave your review below:</label>
+        <input id="review" type="text" name="review" placeholder="Review"><br>
+        <label for="rate">Leave your rate below (1-5):</label>
+        <input id="rate" type="text" name="rate" placeholder="Rate"><br>
+        <input type="button" onclick="addReview();" name="add" value="Add review"/>
+    </form>
+    <script>
+        function addReview(){
+            var review = $('input[name=review]').val();
+            var rate = $('input[name=rate]').val();
+            var formData = {review: review,
+                            rate: rate};
+            $.ajax({url: "http://localhost/MyWebsite/includes/reviewhandler.inc.php", type: 'POST', data: formData});
+            $('input[name=review]').val('');
+            $('input[name=rate]').val('');
+        };
+    </script>
+    
 
-            $pdo = null;
-            $stmt = null;
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-
-        ?>
-    </div>
-
-    <script src="js/jquery-3.5.1.min.js"></script>
 
 </body>
 
