@@ -110,7 +110,7 @@
     <button>Place Order</button>
     <div id = 'order'>
         <?php
-            $query = "INSERT INTO 'order'(username) VALUES (?) RETURNING order_id;";
+            $query = "INSERT INTO "order"(username) VALUES (?) RETURNING order_id;";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$username]);
             $orderId = $stmt->fetchColumn();
