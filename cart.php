@@ -46,7 +46,7 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <li><a class="nav-link active" href="">Home</a></li>
+                    <li><a class="nav-link" href="index.php">Home</a></li>
                     <li><a class="nav-link" href="">Products</a></li>
                     <li><a class="nav-link" href="">About us</a></li>
                     <li><a class = "nav-link" href="">
@@ -99,28 +99,44 @@
         }
     }
 
-    $query = "INSERT INTO order(username) VALUES (?) RETURNING order_id;";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([$username]);
-    
-    $query = "SELECT product_id, quantity
-    FROM cart_item
-             JOIN blocal.cart c ON cart_item.cart_id = c.cart_id
-    WHERE username = ?;";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([$username]);
-    $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $query = "INSERT INTO order_item(product_id, order_id, quantity) VALUES (?,?,?);";
-    $stmt = $pdo->prepare($query);
-    
-    foreach ($cartItems as $cartItem) {
-        $stmt->execute([$cartItem['product_id', ]]);
-    }
    
     ?>
-
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $('#order').load();
+            })
+        })
+    </script>
     <button>Place Order</button>
+    <div id = 'order'>
+        <?php
+            $query = "INSERT INTO order(username) VALUES (?) RETURNING order_id;";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+            $orderId = $stmt->fetchColumn();
+            
+            $query = "SELECT product_id, quantity
+                FROM cart_item
+                        JOIN blocal.cart c ON cart_item.cart_id = c.cart_id
+                WHERE username = ?;";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+            $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            $query = "INSERT INTO order_item(product_id, order_id, quantity) VALUES (?,?,?);";
+            $stmt = $pdo->prepare($query);
+            
+            foreach ($cartItems as $cartItem) {
+                $stmt->execute([$cartItem['product_id'], $orderId,$cartItem['quantity']]);
+            };
+
+            $query = "DELETE FROM cart_item WHERE cart_id = ? ";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$_SESSION['cart']]);
+            
+            echo 'Order placed'
+        ?>
+    </div>
 </body>
 </html>

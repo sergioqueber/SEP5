@@ -113,7 +113,7 @@ session_start();
             $pdo = null;
             $stmt = null;
         } catch (\Throwable $th) {
-            //throw $th;
+            $query = "INSERT INTO cart_item(cart_id, product_id, quantity) VALUES (?,?,?);";
         }
 
         ?>
