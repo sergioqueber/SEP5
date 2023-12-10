@@ -4,9 +4,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 $username = $_SESSION['username'];
 try {
             require_once "dbh.inc.php";
-            $query = 'INSERT INTO "order"(username, date_ordered) VALUES (?, CURRENT_DATE) RETURNING order_id;';
+            $query = 'INSERT INTO "order"(username, date_ordered, status) VALUES (?, CURRENT_DATE, ?) RETURNING order_id;';
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$username]);
+            $stmt->execute([$username, 'Placed']);
             $orderId = $stmt->fetchColumn();
             
             $query = "SELECT product_id, quantity

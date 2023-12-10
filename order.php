@@ -68,6 +68,7 @@ $username = $_SESSION['username'];
 
     <?php
     $orderId = isset($_GET['id']) ? $_GET['id'] : null;
+    $_SESSION['orderId'] = $orderId;
     
     
     try {
@@ -95,9 +96,22 @@ $username = $_SESSION['username'];
         echo "<p>Quantity : " . htmlspecialchars($row["quantity"]) . "</p>";
         echo "</div>";
         $totalprice = $totalprice + ($row['price']*$row['quantity']);
+        $status = $row['status'];
     }
     echo"Total price: ".$totalprice;
+    echo "<br>";
+    echo"Current status: ".$status;
     ?>
+
+    <form action="includes/orderstatus.inc.php" method="post">
+        <select id="status" name="status">
+            <option value="" disabled selected>Select status</option>
+            <option value="Placed">Placed</option>
+            <option value="Ready">Ready</option>
+            <option value="Picked up">Picked up</option>
+        </select><br><br>
+        <button type="submit" name="submit">Confirm</button>
+    </form>
 
 </body>
 
