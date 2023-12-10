@@ -29,6 +29,7 @@
     <title>Cart</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 <body>
     
@@ -110,7 +111,7 @@
     <button>Place Order</button>
     <div id = 'order'>
         <?php
-            $query = 'INSERT INTO "order"(username) VALUES (?) RETURNING order_id;';
+            $query = 'INSERT INTO "order"(username, date_ordered) VALUES (?, CURRENT_DATE) RETURNING order_id;';
             $stmt = $pdo->prepare($query);
             $stmt->execute([$username]);
             $orderId = $stmt->fetchColumn();

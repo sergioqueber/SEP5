@@ -25,6 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute([$username]);
         $_SESSION['cart'] =  $stmt->fetchColumn();
 
+        $query1 = "SELECT wishlist_id
+        FROM wishlist
+                 JOIN customer c ON wishlist.username = c.username
+        WHERE c.username = ?;";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->execute([$username]);
+        $_SESSION['wishlist'] =  $stmt1->fetchColumn();
+
         echo $results;
         echo $psw;
         if ($results == $psw) {

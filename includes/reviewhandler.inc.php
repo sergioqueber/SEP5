@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_POST['review'])){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $username = $_SESSION['username'];
     $productId = $_SESSION['product_id'];
     $review = $_POST['review'];
@@ -17,11 +17,14 @@ if(isset($_POST['review'])){
         
         $stmt = null;
         if(empty($results)){
-            echo "You didn't buy this product";
+            
+            $error = "You didn't buy this product";
+            var_dump($error);
         }else{
             $query1 = 'INSERT INTO review(comment, stars, product_id, username) VALUES (?, ?, ?, ?);';
             $stmt1 = $pdo->prepare($query1);
             $stmt1->execute([$review, $rate, $productId, $username]);
+            $error = "essa";
         }
         $pdo = null;
     } catch (PDOException $e) {

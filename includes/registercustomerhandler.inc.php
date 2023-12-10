@@ -22,6 +22,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->execute([$username]);
         $cartId = $stmt->fetchColumn();
         $_SESSION['cart'] = $cartId;
+
+        $query1 = "INSERT INTO wishlist(username) VALUES (?) RETURNING wishlist_id";
+        $stmt1 = $pdo->prepare($query1);
+        $stmt1->execute([$username]);
+        $wishlistId = $stmt->fetchColumn();
+        $_SESSION['wishlist'] = $wishlistId;
         die();
 
     } catch (PDOException $e) {

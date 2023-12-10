@@ -33,6 +33,7 @@ $username = $_SESSION['username'];
                 <li><a class="nav-link active" href="">Home</a></li>
                 <li><a class="nav-link" href="">Products</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
+                <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
                 <li><a class = "nav-link" href="cart.php">
                     <img src="Images/cartbl 1.png" alt="Cart">
                 </a></li>
@@ -103,18 +104,21 @@ $username = $_SESSION['username'];
         function addToCart(){
             var quantity = $('input[name=quantity]').val();
             var formData = {quantity: quantity};
-            $.ajax({url: "http://localhost/MyWebsite/addproducttocart.inc.php", type: 'POST', data: formData});
+            $.ajax({url: "http://localhost/MyWebsite/addproducttocart.php", type: 'POST', data: formData});
             $('input[name=quantity]').val('');
         };
     </script>
     <br>
-    <f<form action="reviewhandler.inc.php" method="post">
+    <form action="" method="post">
         <label for="review">Leave your review below:</label>
         <input id="review" type="text" name="review" placeholder="Review"><br>
         <label for="rate">Leave your rate below (1-5):</label>
         <input id="rate" type="text" name="rate" placeholder="Rate"><br>
         <input type="button" onclick="addReview();" name="add" value="Add review"/>
     </form>
+
+
+
     <script>
         function addReview(){
             var review = $('input[name=review]').val();
@@ -126,6 +130,19 @@ $username = $_SESSION['username'];
             $('input[name=rate]').val('');
         };
     </script>
+    <form action="review.php" method="post">
+        <button>See reviews</button>
+    </form>
+    <form action="" method="post">
+        <input type="button" onclick="addToWishlist();" name="add" value="Add to wishlist"/>
+    </form>
+    <script>
+        function addToWishlist(){
+            $.ajax({url: "http://localhost/MyWebsite/addtowishlist.php", type: 'POST'});
+        };
+    </script>
+    
+    <script src="js/jquery-3.7.1.min.js"> </script>
     
 
 
