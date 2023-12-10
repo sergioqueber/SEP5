@@ -98,7 +98,7 @@ session_start();
         <button>Add to cart</button>
     </form>
     <script src="js/jquery-3.5.1.min.js"></script>
-
+    <?php echo $productId; ?>
 </body>
 
 </html>
