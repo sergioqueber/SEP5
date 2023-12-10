@@ -92,33 +92,11 @@ session_start();
         echo "</div>";
     }
     ?>
-    <script>
-        $(document).ready(function(){
-            $("button").click(function(){
-                $('#add').load();
-            })
-        })
-    </script>
-    <button>Add to cart</button>
-    <div id="add">
-        <?php
-        try {
-            require_once "includes/dbh.inc.php";
-            $query = "INSERT INTO cart_item(cart_id, product_id, quantity) VALUES (?,?,?);";
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$_SESSION['cart'], $productId,2]);
-            
-            echo 'Added to cart';
 
-            $pdo = null;
-            $stmt = null;
-        } catch (\Throwable $th) {
-            $query = "INSERT INTO cart_item(cart_id, product_id, quantity) VALUES (?,?,?);";
-        }
-
-        ?>
-    </div>
-
+    <form action="includes/additemhandler.inc.php" method='post'>
+        <input type="hidden" name="productId" value= <?php $productId ?>>
+        <button>Add to cart</button>
+    </form>
     <script src="js/jquery-3.5.1.min.js"></script>
 
 </body>
