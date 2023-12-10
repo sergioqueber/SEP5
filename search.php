@@ -3,9 +3,8 @@
 <?php
 
 session_start();
+$storeId = $_SESSION['storeId'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $productsearch = $_POST["productsearch"];
     
 
     try {
@@ -14,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $query = "SELECT * FROM product WHERE store_id = ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$productsearch]);
+        $stmt->execute([$storeId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -23,10 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-}
-else{
-    header("Location: ../README.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +80,7 @@ else{
     </div>
 </nav>
 
-    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
 
     <section>
     <h3>Search results</h3>
