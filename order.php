@@ -103,15 +103,23 @@ $username = $_SESSION['username'];
     echo"Current status: ".$status;
     ?>
 
-    <form action="includes/orderstatus.inc.php" method="post">
+    <form action="" method="post">
         <select id="status" name="status">
             <option value="" disabled selected>Select status</option>
             <option value="Placed">Placed</option>
             <option value="Ready">Ready</option>
             <option value="Picked up">Picked up</option>
         </select><br><br>
-        <button type="submit" name="submit">Confirm</button>
+        <button type="submit" onclick="changeStatus();" name="submit">Confirm</button>
     </form>
+    <script>
+        function changeStatus(){
+            var status = $('select[name=status]').val();
+            var formData = {status: status};
+            $.ajax({url: "http://localhost/MyWebsite/includes/orderstatus.inc.php", type: 'POST', data: formData});
+            $('select[name=status]').val('');
+        };
+    </script>
 
 </body>
 
