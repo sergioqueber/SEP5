@@ -30,10 +30,11 @@ $username = $_SESSION['username'];
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="">Home</a></li>
-                <li><a class="nav-link" href="">Products</a></li>
-                <li><a class="nav-link" href="">About us</a></li>
+                <li><a class="nav-link active" href="mainpagecustomer.php">Home</a></li>
                 <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
+                <li><a class="nav-link" href="">About us</a></li>
+                <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
+                <li><a class="nav-link" href="customerorders.php">Orders</a></li>
                 <li><a class = "nav-link" href="cart.php">
                     <img src="Images/cartbl 1.png" alt="Cart">
                 </a></li>
@@ -52,9 +53,6 @@ $username = $_SESSION['username'];
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="login.php">Log-in personal</a>
-                        <a class="dropdown-item" href="#">Log-in business</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -65,6 +63,10 @@ $username = $_SESSION['username'];
         </div>
     </div>
 </nav>
+<br>
+<br>
+<br>
+<br>
 
     <?php
     $storeId = isset($_GET['id']) ? $_GET['id'] : null;
