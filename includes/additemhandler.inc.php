@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
         $stmt = null;
     } catch (\Throwable $th) {
-        $query = "UPDATE order_item SET quantity = quantity+1 WHERE product_id = ?;";
+        $query = "UPDATE cart_item SET quantity = quantity+1 WHERE product_id = ?;";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productID]);
 
