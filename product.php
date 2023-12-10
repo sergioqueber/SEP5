@@ -94,7 +94,7 @@ session_start();
     ?>
 
     <form action="includes/additemhandler.inc.php" method='post'>
-        <input type="hidden" name="productId" value= "<?php $productId ?>">
+        <input type="hidden" name="productId" value= "<?php $productId; ?>">
         <button>Add to cart</button>
     </form>
     <script src="js/jquery-3.5.1.min.js"></script>
