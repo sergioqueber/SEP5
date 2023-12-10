@@ -1,17 +1,31 @@
-<?php
-session_start();
+<?php 
+        session_start();
+        $username = $_SESSION['username'] ;
+        try {
+            require_once "includes/dbh.inc.php";
+    
+            $query = 'SELECT distinct "order".order_id from "order" JOIN order_item oi on "order".order_id = oi.order_id JOIN product p on p.product_id = oi.product_id JOIN store s on s.store_id = p.store_id WHERE username = ?;';   
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$username]);
+    
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+           
+        } catch (PDOException $e) {
+            die("Query failed: " . $e->getMessage());
+        }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cart</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
-
 <body>
     
 <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
@@ -64,20 +78,30 @@ session_start();
 <br>
 <br>
 <br>
-    <form action="storescustomer.php" method="get">
-        <button>Stores</button>
-    </form>
+    
+    <h1>Your cart</h1>
 
-    <form action="search.php" method="post">
-        <label for="search">Search for products in store:</label>
-        <input id="search" type="text" name="productsearch" placeholder="Store Id"><br>
-        <button>Search</button>
-    </form>
-    <br>
+    <?Php
+    if(empty($results)){
+        echo "<div>";
+        echo "<p>No results:(</p>";
+        echo "</div>";
+    }
+    else{
+        foreach ($results as $row){
+            $query1 = 'SELECT store_name FROM store JOIN product p on store.store_id = p.store_id JOIN order_item oi on p.product_id = oi.product_id JOIN "order" o on o.order_id = oi.order_id WHERE o.order_id = ?;';
+            $stmt1 = $pdo->prepare($query1);
+            $stmt1->execute([$row['order_id']]);
 
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js"></script>
+            $storename = $stmt1->fetchColumn();
 
+            echo "<div>";
+            echo "<a href = 'customerorder.php?id=" .htmlspecialchars($row["order_id"]) ."' >" . htmlspecialchars($storename) . "</a><br>";
+            echo "</div>";
+        }
+    }
+
+   
+    ?>
 </body>
-
 </html>

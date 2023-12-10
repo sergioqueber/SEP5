@@ -1,6 +1,8 @@
 <?php
 session_start();
+$username = $_SESSION['username'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +12,11 @@ session_start();
     <title>Document</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 
 <body>
-    
+
 <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -64,19 +67,43 @@ session_start();
 <br>
 <br>
 <br>
-    <form action="storescustomer.php" method="get">
-        <button>Stores</button>
-    </form>
 
-    <form action="search.php" method="post">
-        <label for="search">Search for products in store:</label>
-        <input id="search" type="text" name="productsearch" placeholder="Store Id"><br>
-        <button>Search</button>
-    </form>
-    <br>
+    <?php
+    $orderId = isset($_GET['id']) ? $_GET['id'] : null;
+    $_SESSION['orderId'] = $orderId;
+    
+    
+    try {
+        require_once "includes/dbh.inc.php";
 
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js"></script>
+        $query = 'SELECT * FROM "order" JOIN order_item oi on "order".order_id = oi.order_id JOIN product p on p.product_id = oi.product_id WHERE "order".order_id = ?;';
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$orderId]);
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+    $totalprice = 0;
+    foreach ($results as $row) {
+        echo "<div>";
+        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
+        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
+        echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
+        echo "<p>Price: " . htmlspecialchars($row["price"]) . "</p>";
+        echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
+        echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
+        echo "<p>Quantity : " . htmlspecialchars($row["quantity"]) . "</p>";
+        echo "</div>";
+        $totalprice = $totalprice + ($row['price']*$row['quantity']);
+        $status = $row['status'];
+    }
+    echo"Total price: ".$totalprice;
+    echo "<br>";
+    echo"Current status: ".$status;
+    ?>
 
 </body>
 

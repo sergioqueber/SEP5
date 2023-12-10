@@ -1,6 +1,23 @@
 <?php
+
 session_start();
 $username = $_SESSION['username'];
+
+    try {
+        require_once "includes/dbh.inc.php";
+
+        $query = "SELECT store_name FROM store JOIN message m on store.store_id = m.store_id WHERE username = ? group by store_name order by max(message_id) desc;";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$username]);
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $pdo = null;
+        $stmt = null;
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +26,9 @@ $username = $_SESSION['username'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Messages</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
-    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 
 <body>
@@ -31,9 +47,10 @@ $username = $_SESSION['username'];
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li><a class="nav-link active" href="">Home</a></li>
-                <li><a class="nav-link" href="">Products</a></li>
-                <li><a class="nav-link" href="">About us</a></li>
                 <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
+                <li><a class="nav-link" href="">About us</a></li>
+                <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
+                <li><a class="nav-link" href="customerorders.php">Orders</a></li>
                 <li><a class = "nav-link" href="cart.php">
                     <img src="Images/cartbl 1.png" alt="Cart">
                 </a></li>
@@ -52,9 +69,6 @@ $username = $_SESSION['username'];
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="login.php">Log-in personal</a>
-                        <a class="dropdown-item" href="#">Log-in business</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -65,43 +79,34 @@ $username = $_SESSION['username'];
         </div>
     </div>
 </nav>
+<br>
+<br>
+<br>
+<br>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <section>
+    <h3>Messages</h3>
 
     <?php
-    $orderId = isset($_GET['id']) ? $_GET['id'] : null;
-    $_SESSION['orderId'] = $orderId;
-    
-    
-    try {
-        require_once "includes/dbh.inc.php";
-
-        $query = 'SELECT * FROM "order" JOIN order_item oi on "order".order_id = oi.order_id JOIN product p on p.product_id = oi.product_id WHERE "order".order_id = ?;';
-
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$orderId]);
-
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    } catch (PDOException $e) {
-        die("Query failed: " . $e->getMessage());
-    }
-    $totalprice = 0;
-    foreach ($results as $row) {
+    if(empty($results)){
         echo "<div>";
-        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
-        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
-        echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
-        echo "<p>Price: " . htmlspecialchars($row["price"]) . "</p>";
-        echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
-        echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
-        echo "<p>Quantity : " . htmlspecialchars($row["quantity"]) . "</p>";
+        echo "<p>No messages:(</p>";
         echo "</div>";
-        $totalprice = $totalprice + ($row['price']*$row['quantity']);
-        $status = $row['status'];
     }
-    echo"Total price: ".$totalprice;
-    echo "<br>";
-    echo"Current status: ".$status;
+    else{
+        foreach ($results as $row){
+            echo "<div>";
+            echo "<br><br>";
+            echo "<a href = 'sendmessage.php?id=" .htmlspecialchars($row["store_name"]) ."' >" . htmlspecialchars($row["store_name"]) . "</a><br>";
+            echo "</div>";
+        }
+    }
     ?>
+</section>
+
+
 
 </body>
 
