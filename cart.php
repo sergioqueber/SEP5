@@ -117,7 +117,7 @@
                     $totalprice = $totalprice + ($row['price']*$row['quantity']);
                 }
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($totalprice) . "</td>";
+                echo "<td>" . "Total:" . htmlspecialchars($totalprice) . "</td>";
                 echo "</tr>";
             }
             ?>
