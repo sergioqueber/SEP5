@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../README.php");
+        header("Location: ../mainpagemanager.php");
 
         die();
     } catch (PDOException $e) {
