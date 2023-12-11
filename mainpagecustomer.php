@@ -117,7 +117,35 @@ session_start();
 
     <div class="container mt-5">
     <div class="row">
+    <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Filter options (example) -->
+                    <h5 class="card-title">Filters</h5>
+                    <form action="your_search_page.php" method="get">
+                        <!-- Add your filter options here (e.g., category, price range, etc.) -->
+                        <div class="mb-3">
+                            <label for="category">Category</label>
+                            <select class="form-select" id="category" name="category">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
 
+                        <div class="mb-3">
+                            <label for="price">Price Range</label>
+                            <input type="text" class="form-control" id="price" name="price">
+                        </div>
+
+                        <!-- Add more filter options as needed -->
+
+                        <!-- Apply filters button -->
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <?php
         if (empty($results)) {
             echo "<div class='col-12'>";
