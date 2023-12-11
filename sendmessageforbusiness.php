@@ -31,7 +31,7 @@
             $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT 2;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$username, $store_id]);
+            $stmt->execute(['Paco', $store_id]);
 
             $query1 = "SELECT store_name FROM store WHERE store_id = ?;";
 
@@ -75,7 +75,7 @@
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
-            $.ajax({url: "http://localhost/MyWebsite/includes/sendmessageforbusiness.inc.php", type: 'POST', data: formData})
+            $.ajax({url: "http://localhost/SEP5/includes/sendmessageforbusiness.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
         };
     </script>
