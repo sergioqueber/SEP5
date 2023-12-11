@@ -29,26 +29,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute([$_SESSION['cart']]);
 
         echo '
-        <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
-        <script src="js/bootstrap.bundle.min.js"> </script>
-        <div class="modal" id="successModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Success!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Your operation was successful!
-                </div>
-            </div>
-        </div>
-        </div>
+        <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
         <script>
         $(document).ready(function(){
-            $("#successModal").modal("show");
+            $(#myModal").modal("show");
         });
         </script>';
 
