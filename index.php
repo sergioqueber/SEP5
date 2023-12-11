@@ -134,7 +134,6 @@
                 <li><a class="nav-link active" href="">Home</a></li>
                 <li><a class="nav-link" href="">Products</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
-                <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
                 <li><a class = "nav-link" href="cart.php">
                     <img src="Images/cartbl 1.png" alt="Cart">
                 </a></li>
@@ -168,10 +167,34 @@
 
 <div class = 'row mt-5'>
     <div class = 'column-md text-center'>
-        <h1 id = 'slogan'>Small shops, bif dreams</h1>
+        <h1 id = 'slogan'>Small shops, big dreams</h1>
         <h1 id = 'slogan2'>Transforming local economies together</h1>
         <a class="btn btn-primary" href="mainpagecustomer.php">Find your product</a>
     </div>
+</div>
+
+<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+            <img src="Images/rubiostus logo.png" class="d-block w-100" alt="Image 1">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+            <img src="Images/Logo.png" class="d-block w-100" alt="Image 2">
+        </div>
+    </div>
+
+    <!-- Previous and Next buttons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 </body>
 </html>
