@@ -187,7 +187,7 @@
         </div>  
     
     </div>
-    <div class="carousel-item d-flex justify-content-center">
+    <div class="carousel-item">
         <div class = 'd-flex justify-content-center'>
             <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
         </div>
