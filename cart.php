@@ -102,11 +102,10 @@
 
    
     ?>
+    <script src="js/jquery-3.5.1.min.js"></script>
     <form action="includes/placeorderhandler.inc.php" method="post">
         <button>Place Order</button>
     </form>
-
-    <script src="js/jquery-3.5.1.min.js"></script>
 
 </body>
 </html>
