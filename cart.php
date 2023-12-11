@@ -91,17 +91,19 @@
         echo "</div>";
     } else {
         echo "<div class='container'>";
-        echo "<ul class='list-group'>";
-        
+        echo "<div class='row'>"; // Start a new row for responsiveness
+        echo "<ul class='list-group col-md-8 mx-auto'>"; // Center the list within the container
+    
         foreach ($results as $row) {
             echo "<li class='list-group-item'>";
             echo "<a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' width='50' alt='Product Image'>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>"; // Use img-fluid for responsive images
             echo "<p class='mb-0'>" . htmlspecialchars($row["price"]) . "</p>";
             echo "</li>";
         }
     
         echo "</ul>";
+        echo "</div>"; // End the row
         echo "</div>";
     }
     ?>
