@@ -86,17 +86,6 @@ $username = $_SESSION['username'];
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-
-    foreach ($results as $row) {
-        echo "<div>";
-        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
-        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
-        echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
-        echo "</div>";
-    }
     ?>
     <form action="" method="post">
         <input type="text" name="quantity" value="" placeholder="Quantity"/>
@@ -148,6 +137,34 @@ $username = $_SESSION['username'];
     
 
 
-</body>
 
+
+    <div class="container mt-5">
+    <div class="row">
+        <?php
+        foreach ($results as $row) {
+            echo "<div class='col-md-6'>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
+            echo "</div>";
+
+            echo "<div class='col-md-6'>";
+            echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
+            echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
+            echo "<p>Price: $" . htmlspecialchars($row["price"]) . "</p>";
+            echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
+            echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
+
+            // Add to Cart Button (You can customize the button and its functionality)
+            echo "<form action='includes/additemhandler.inc.php' method='post'>";
+            echo "<input type='hidden' name='productId' value='" . htmlspecialchars($row["product_id"]) . "'>";
+            echo "<button type='submit' class='btn btn-primary'>Add to Cart</button>";
+            echo "</form>";
+            echo "</div>";
+        }
+        ?>
+    </div>
+</div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+</body>
 </html>

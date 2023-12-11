@@ -1,8 +1,7 @@
 <?php
-
 session_start();
-$username = $_SESSION['username'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,6 +67,7 @@ $username = $_SESSION['username'];
     <div id="display">
         <br>
         <?php
+        $username = $_SESSION['username'];
         echo $_SESSION['username'];
         try {
             require_once "includes/dbh.inc.php";

@@ -28,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt1->execute([$username]);
         $wishlistId = $stmt->fetchColumn();
         $_SESSION['wishlist'] = $wishlistId;
+        header("Location: ../index.php");
         die();
 
     } catch (PDOException $e) {

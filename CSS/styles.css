@@ -1,0 +1,21 @@
+.carousel-control-prev, .carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #0d0d0d; /* Text color */
+};
+
+.carousel-indicators li {
+    background-color: #000000; /* Indicator color */
+};
+
+.margin{
+    margin-top: 300px;
+    margin-bottom: 300px;
+}
+
+.orange{
+    background-color: #FF6E00;
+}
+
+a{
+    text-decoration: none;
+}

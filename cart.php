@@ -27,22 +27,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
+    <link rel="stylesheet" href="CSS/styles.css" type="text/css">
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
     <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
+
 <body>
     
-<nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+    <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
@@ -73,34 +75,46 @@
                     </div>
                 </li>
 
-               
                 
-            </ul>
+                    
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<br>
-<br>
-<br>
-<br>
+    </nav>
     
-    <h1>Your cart</h1>
+    <div></div>
+   
+    <div class = "container mt-5">
+    <div class = "row">
+        <h1>Your cart</h1>
+    </div>
 
     <?Php
-    if(empty($results)){
-        echo "<div>";
-        echo "<p>No results:(</p>";
+        if (empty($results)) {
+            echo "<p class='alert alert-warning'>No results found</p>";
+            
+        } else {
+        
+        echo "<ul class='list-group'>";
+        
+        foreach ($results as $row) {
+            echo "<li class='list-group-item'>";
+            echo "<a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' width='50' alt='Product Image'>";
+            echo "<p class='mb-0'>" . htmlspecialchars($row["price"]) . "</p>";
+            echo "</li>";
+        }
+    
+        echo "</ul>";
         echo "</div>";
     }
-    else{
-        foreach ($results as $row){
-            echo "<div>";
-            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "</div>";
-        }
-    }
+    ?>
+    </div>                            
+   
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <form action="includes/placeorderhandler.inc.php" method="post">
+        <button>Place Order</button>
+    </form>
 
    
     ?>

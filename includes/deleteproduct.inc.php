@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     try {
         require_once "dbh.inc.php";
 
-        $query = "DELETE FROM product WHERE product_id = ?;";
+        $query = "DELETE FROM product WHERE product_id = ? ;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productid]);

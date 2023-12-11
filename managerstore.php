@@ -97,6 +97,9 @@ $username = $_SESSION['username'];
     <form action="employeesearch.php" method="get">
         <button>Products</button>
     </form>
+    <form action="newProduct.php" method="post">
+        <button>New product</button>
+    </form>
 
 </body>
 
