@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stock = $_POST["stock"];
     $storeId = $_POST["storeId"];
     $description = $_POST["description"];
-    $category = $_POST["categories"];
     $file = $_FILES['image'];
     $fileName = $_FILES['image']['name'];
     $tmpLoc = $_FILES['image']['tmp_name'];
