@@ -85,20 +85,25 @@
     <h1>Your cart</h1>
 
     <?Php
-    if(empty($results)){
-        echo "<div>";
-        echo "<p>No results:(</p>";
+    if (empty($results)) {
+        echo "<div class='container'>";
+        echo "<p class='alert alert-warning'>No results found</p>";
+        echo "</div>";
+    } else {
+        echo "<div class='container'>";
+        echo "<ul class='list-group'>";
+        
+        foreach ($results as $row) {
+            echo "<li class='list-group-item'>";
+            echo "<a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' width='50' alt='Product Image'>";
+            echo "<p class='mb-0'>" . htmlspecialchars($row["price"]) . "</p>";
+            echo "</li>";
+        }
+    
+        echo "</ul>";
         echo "</div>";
     }
-    else{
-        foreach ($results as $row){
-            echo "<div>";
-            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ." width =  50px'>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "</div>";
-        }
-    } 
     ?>
     <script src="js/jquery-3.5.1.min.js"></script>
     <form action="includes/placeorderhandler.inc.php" method="post">
