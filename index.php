@@ -165,7 +165,8 @@
     </div>
 </nav>
 <div class = 'container'>
-    <div class = 'row mt-5 margin'>
+    <div class = 'row margin'></div>
+    <div class = 'row mt-5'>
         <div class = 'column-md text-center'>
             <h1 id = 'slogan'>Small shops, big dreams</h1>
             <h1 id = 'slogan2'>Transforming local economies together</h1>
