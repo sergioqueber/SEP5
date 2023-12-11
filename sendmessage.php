@@ -77,7 +77,6 @@ session_start();
     <div id="display">
         <br>
         <?php
-        session_start();
         $username = $_SESSION['username'];
         echo $_SESSION['username'];
         try {
