@@ -29,6 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute([$_SESSION['cart']]);
 
         echo '
+        <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <script src="js/bootstrap.bundle.min.js"> </script>
         <div class="modal" id="successModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
