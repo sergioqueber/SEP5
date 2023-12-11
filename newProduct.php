@@ -63,7 +63,7 @@
             <form action = "includes/formhandler.inc.php" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Product name</label>
-                    <input type="text" class="form-control" id="productName" name="name" placeholder="Enter your name">
+                    <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter your name">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
