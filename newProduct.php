@@ -77,9 +77,14 @@
                     <label for="storeId" class="form-label">Store id</label>
                     <input type="text" class="form-control" id="storeId" name="storeId" placeholder="Store ID">
                 </div>
+                
+                <div class="mb-3">
+                    <label for="description" class="form-label">Store id</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder = "Description">
+                </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Store id</label>
-                    <input type="file" class="form-control" id="image" name="imagePath">
+                    <input type="file" class="form-control" id="image" name="image">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
