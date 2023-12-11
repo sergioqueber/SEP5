@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
     <title>Document</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
-    <script src="js/jquery-3.7.1.min.js"> </script>
+    <script src="js/jquery-3.5.1.min.js"></script>
     <script>
         $(document).ready(function(){
             var messagesCount = 2;
@@ -115,7 +119,7 @@
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
-            $.ajax({url: "http://localhost/MyWebsite/includes/sendmessage.inc.php", type: 'POST', data: formData})
+            $.ajax({url: "http://localhost/SEP5/includes/sendmessage.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
         };
     </script>
