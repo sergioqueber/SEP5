@@ -182,10 +182,10 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid" alt="Image 1">
+      <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid d-flex align-items-center justify-content-center" alt="Image 1">
     </div>
     <div class="carousel-item">
-      <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
+      <img src="Images/Logo.png" class="d-block w-50 img-fluid d-flex align-items-center justify-content-center" alt="Image 2">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
