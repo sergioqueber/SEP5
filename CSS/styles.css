@@ -1,4 +1,8 @@
 .carousel-control-prev, .carousel-control-next {
     background-color: rgba(0, 0, 0, 0.5); 
     color: #0d0d0d; /* Text color */
-}
+};
+
+.carousel-indicators li {
+    background-color: #fff; /* Indicator color */
+};
