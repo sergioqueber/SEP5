@@ -135,13 +135,11 @@ session_start();
                         <div class="card-body">
                             <!-- Product name and link to details page -->
                             <h5 class="card-title"><a href="product.php?id=<?php echo htmlspecialchars($row["product_id"]); ?>"><?php echo htmlspecialchars($row["product_name"]); ?></a></h5>
-                            <!-- Product description -->
-                            <p class="card-text"><?php echo htmlspecialchars($row["description"]); ?></p>
                             <!-- Product price -->
-                            <p class="card-text"><?php echo htmlspecialchars($row["price"]); ?></p>
+                            <p class="card-text"><?php echo htmlspecialchars($row["price"]); ?>dkk</p>
                             <!-- Additional product information (category, stock, etc.) -->
                             <p class="card-text"><?php echo htmlspecialchars($row["category"]); ?></p>
-                            <p class="card-text"><?php echo htmlspecialchars($row["stock"]); ?></p>
+                            <p class="card-text">Stock: <?php echo htmlspecialchars($row["stock"]); ?></p>
                         </div>
 
                         <!-- Add to cart button or other actions -->
