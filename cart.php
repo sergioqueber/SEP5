@@ -133,7 +133,6 @@
         <div class = "row"> 
         <div class = "col-md-6">
             <form action='includes/placeorderhandler.inc.php' method='post'>
-            <input type="text" value = "" name = "productId">    
             <button type='submit' class='btn btn-primary ml-auto'>Place order</button>
             </form>
         </div>    
