@@ -124,7 +124,8 @@ session_start();
                 $('#display').load("load-message.php", 
                 {messagesNewCount: messagesCount});
             })
-            
+            $('#display').load("load-message.php", 
+                {messagesNewCount: messagesCount});
         });
     </script>
     
