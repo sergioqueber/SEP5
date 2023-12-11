@@ -5,16 +5,31 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $storeName = $_POST["storeName"];
     
+    $storeName = '%';
+    $category = '%';
+    $maxPrice = 100000000;
+
+    if(isset($_POST['storeName'])){
+        $storeName = $_POST["storeName"];
+    }
+    if(isset($_POST['category'])){
+        $category = $_POST["category"];
+    }
+    if(isset($_POST['maxPrice'])){
+        $maxPrice = $_POST["maxPrice"];
+    }
 
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product Join store s ON product.store_id = s.store_id WHERE store_name = ? ;";
+        $query = "SELECT *
+        FROM product
+                 JOIN store s ON product.store_id = s.store_id
+        WHERE store_name ILIKE ? and category ILIKE ? AND price < ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$storeName]);
+        $stmt->execute([$storeName, $category, $maxPrice]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

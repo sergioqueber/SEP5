@@ -11,7 +11,7 @@ if(isset($_POST['message'])){
 
         $query = "INSERT INTO message (message, direction, username, store_id) VALUES (?, ?, ?, ?);";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$message,((int) $direction) , 'Paco', $store_id]);
+        $stmt->execute([$message,((int) $direction) , , $store_id]);
         
         die();
         
