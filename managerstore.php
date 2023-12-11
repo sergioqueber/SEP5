@@ -103,6 +103,10 @@ $username = $_SESSION['username'];
     <form action="storeemployees.php" method="post">
         <button>Employees</button>
     </form>
+    <form action="registeremployee.php" method="post">
+        <button>Add employee</button>
+    </form>
+
 
 </body>
 
