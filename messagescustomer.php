@@ -84,7 +84,7 @@ $username = $_SESSION['username'];
 <br>
 <br>
 
-    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
 
     <section>
     <h3>Messages</h3>

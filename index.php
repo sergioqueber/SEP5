@@ -59,6 +59,8 @@
                         <a class="dropdown-item" href="login.php">Log-in personal</a>
                         <a class="dropdown-item" href="#">Log-in business</a>
                         <a class="dropdown-item" href="messagescustomer.php">Messages</a>
+                        <a class="dropdown-item" href="loginmanager.php">Log-in business manager</a>
+                        <a class="dropdown-item" href='loginemployee.php'>Log-in business employee</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
