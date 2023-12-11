@@ -43,12 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
         </div>
-        </div>
-        <script>
-        $(document).ready(function(){
-            $("#successModal").modal("show");
-        });
-        </script>';
+        </div>';
 
         $pdo = null;
         $stmt = null;
