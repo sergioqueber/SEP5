@@ -9,15 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $storeName = '%';
     $category = '%';
     $maxPrice = 100000000;
-    
+    echo isset($_POST['storeName']);
 
-    if(isset(!$_POST['storeName'])){
+    if(isset($_POST['storeName'])){
         $storeName = $_POST["storeName"];  
     }
-    if(isset(!$_POST['category'])){
+    if(isset($_POST['category'])){
         $category = $_POST["category"];
     }
-    if(isset(!$_POST['maxPrice'])){
+    if(isset($_POST['maxPrice'])){
         $maxPrice = $_POST["maxPrice"];
     }
     echo $storeName;
