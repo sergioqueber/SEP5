@@ -99,19 +99,16 @@ session_start();
             echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
 
             // Add to Cart Button (You can customize the button and its functionality)
-            echo "<button type='button' class='btn btn-primary'>Add to Cart</button>";
+            echo "<form action='includes/additemhandler.inc.php' method='post'>";
+            echo "<input type='hidden' name='productId' value='" . htmlspecialchars($row["product_id"]) . "'>";
+            echo "<button type='submit' class='btn btn-primary'>Add to Cart</button>";
+            echo "</form>";
             echo "</div>";
         }
         ?>
     </div>
 </div>
 
-
-
-    <form action="includes/additemhandler.inc.php" method='post'>
-        <input type="hidden" name="productId" value= "<?php echo $productId; ?>">
-        <button>Add to cart</button>
-    </form>
     <script src="js/jquery-3.5.1.min.js"></script>
 </body>
 </html>
