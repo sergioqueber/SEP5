@@ -99,6 +99,7 @@
         <input id="edit" type="text" name="editinfo" placeholder="Store Id"><br>
         <button id>Edit</button>
     </form>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <div class="modal" id="successModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -119,7 +120,7 @@
             $("#successModal").modal("show");
         });
         </script>
-    <script src="js/jquery-3.7.1.min.js"></script>
+    
     <script src="js/script.js"></script>
 
 </body>
