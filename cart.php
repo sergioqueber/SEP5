@@ -97,7 +97,7 @@
         foreach ($results as $row) {
             echo "<li class='list-group-item'>";
             echo "<a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>"; // Use img-fluid for responsive images
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid w-50'  alt='Product Image'>"; // Use img-fluid for responsive images
             echo "<p class='mb-0'>" . htmlspecialchars($row["price"]) . "</p>";
             echo "</li>";
         }
