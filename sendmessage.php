@@ -107,6 +107,7 @@ session_start();
         <input type="button" onclick="submitForm();" name="send_message" value="send"/>
     </form>
     <script>
+        var messagesCount = 2;
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
@@ -118,7 +119,6 @@ session_start();
         };
         
         $(document).ready(function(){
-            var messagesCount = 2;
             $("#show").click(function(){
                 messagesCount = messagesCount + 2;
                 $('#display').load("load-message.php", 
