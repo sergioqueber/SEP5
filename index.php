@@ -170,7 +170,7 @@
         <div class = 'column-md text-center'>
             <h1 id = 'slogan'>Small shops, big dreams</h1>
             <h1 id = 'slogan2'>Transforming local economies together</h1>
-            <a class="btn" href="mainpagecustomer.php">Find your product</a>
+            <a class="btn orange" href="mainpagecustomer.php">Find your product</a>
         </div>
     </div>
 </div>
