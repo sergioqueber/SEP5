@@ -92,7 +92,7 @@
         foreach ($results as $row){
             echo "<div>";
             echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
+            echo "<img src='".htmlspecialchars($row["image_path"]) ." width =  50 px'>";
             echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
             echo "</div>";
         }
