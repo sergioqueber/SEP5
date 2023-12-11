@@ -173,7 +173,7 @@
     </div>
 </div>
 
-<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="imageCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <!-- Slide 1 -->
         <div class="carousel-item active">
