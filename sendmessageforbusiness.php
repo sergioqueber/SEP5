@@ -5,17 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="js/jquery-3.7.1.min.js"> </script>
-    <script>
-        $(document).ready(function(){
-            var messagesCount = 2;
-            $("#show").click(function(){
-                messagesCount = messagesCount + 2;
-                $('#display').load("loadmessageforbusiness.php", 
-                {messagesNewCount: messagesCount});
-            })
-            
-        });
-    </script>
 </head>
 <body>
     <div id="display">
@@ -72,12 +61,24 @@
         <input type="button" onclick="submitForm();" name="send_message" value="send"/>
     </form>
     <script>
+        var messagesCount = 2;
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
             $.ajax({url: "http://localhost/MyWebsite/includes/sendmessageforbusiness.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
+            messagesCount = messagesCount + 1;
+            $('#display').load("loadmessageforbusiness.php", 
+            {messagesNewCount: messagesCount});
         };
+        $(document).ready(function(){
+            $("#show").click(function(){
+                messagesCount = messagesCount + 2;
+                $('#display').load("loadmessageforbusiness.php", 
+                {messagesNewCount: messagesCount});
+            })
+            
+        });
     </script>
       
     

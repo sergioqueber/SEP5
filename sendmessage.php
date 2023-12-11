@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+$username = $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +12,7 @@
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
     <script src="js/jquery-3.7.1.min.js"> </script>
-    <script>
-        $(document).ready(function(){
-            var messagesCount = 2;
-            $("#show").click(function(){
-                messagesCount = messagesCount + 2;
-                $('#display').load("load-message.php", 
-                {messagesNewCount: messagesCount});
-            })
-            
-        });
-    </script>
+    
 </head>
 <body>
 <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
@@ -55,7 +50,7 @@
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="customerprofile.php">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -73,8 +68,6 @@
     <div id="display">
         <br>
         <?php
-        session_start();
-        $username = $_SESSION['username'];
         echo $_SESSION['username'];
         try {
             require_once "includes/dbh.inc.php";
@@ -112,14 +105,22 @@
         <input type="button" onclick="submitForm();" name="send_message" value="send"/>
     </form>
     <script>
+        var messagesCount = 2;
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
             $.ajax({url: "http://localhost/MyWebsite/includes/sendmessage.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
+            messagesCount = messagesCount + 1;
+            $('#display').load("load-message.php", 
+            {messagesNewCount: messagesCount});
         };
+        $(document).ready(function(){
+            $("#show").click(function(){
+                messagesCount = messagesCount + 2;
+                $('#display').load("load-message.php", 
+                {messagesNewCount: messagesCount});
+            })
+            
+        });
     </script>
-      
-    
-</body>
-</html>
