@@ -1,17 +1,27 @@
 <?php
+
 session_start();
-        $username = $_SESSION['username'];
-        try {
-            require_once "includes/dbh.inc.php";
-        $query = "SELECT * FROM store_management WHERE username = :username;";
+$storeId = $_SESSION['store_id'];
+
+    
+
+    try {
+        require_once "includes/dbh.inc.php";
+
+        $query = "SELECT * FROM product WHERE store_id = ?;";
+
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':username', $username);
-        $stmt->execute();
+        $stmt->execute([$storeId]);
+
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $pdo = null;
+        $stmt = null;
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +34,7 @@ session_start();
 </head>
 
 <body>
-    
+
 <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -71,27 +81,34 @@ session_start();
 <br>
 <br>
 <br>
-<?Php
-    
-        foreach ($results as $row){
-            $query1 = 'SELECT store_name FROM store WHERE store_id = ?;';
-            $stmt1 = $pdo->prepare($query1);
-            $stmt1->execute([$row['store_id']]);
-
-            $storename = $stmt1->fetchColumn();
-
-            echo "<div>";
-            echo "<a href = 'managerstore.php?id=" .htmlspecialchars($row["store_id"]) ."' >" . htmlspecialchars($storename) . "</a><br>";
-            echo "</div>";
-        }
-    
-
-   
-    ?>
-
 
     <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="js/script.js"></script>
+
+    <section>
+    <h3>Products</h3>
+
+    <?php
+    if(empty($results)){
+        echo "<div>";
+        echo "<p>No results:(</p>";
+        echo "</div>";
+    }
+    else{
+        foreach ($results as $row){
+            echo "<div>";
+            echo "<a href = 'employeeproduct.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
+            echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
+            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
+            echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
+            echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
+            echo "</div>";
+        }
+    }
+    ?>
+</section>
+
+
 
 </body>
 
