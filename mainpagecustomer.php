@@ -118,7 +118,7 @@ session_start();
 <div class="container-fluid">
     <div class="row">
         <!-- Sidebar with filters -->
-        <div class="col-lg-3">
+        <div class="col-lg-3 position-fixed">
             <div class="card">
                 <div class="card-body">
                     <!-- Filter options (example) -->
