@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo $psw;
         if ($results == $psw) {
             echo 'Log in successful';
-            header("Location: ../index.php");
+            header("Location: ../mainpageemployee.php");
         } else {
             echo 'log in failed';
         }

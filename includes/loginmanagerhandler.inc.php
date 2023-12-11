@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             header("Location: ../registerstore.php");
         }else if($results == $psw){
-            header("Location: ../index.php");
+            header("Location: ../mainpagemanager.php");
         }
          else {
             echo 'log in failed';
