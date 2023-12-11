@@ -124,9 +124,10 @@
             
         </tbody>
     </table>
-        <div class = row> 
-            <form action='includes/placeorderhandler.inc.php' method='post'>
-                <button type='submit' class='btn btn-primary ml-auto'>Place order</button>
+        <div class = "row"> 
+        <div class = "col-md-11"></div>    
+        <form action='includes/placeorderhandler.inc.php' method='post'>
+                <button type='submit' class='btn btn-primary'>Place order</button>
             </form>
         </div>                           
     </div> 
