@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="CSS/styles.css" type="text/css">
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
 </head>
@@ -60,7 +61,7 @@
                         <a class="dropdown-item" href="#">Log-in business</a>
                         <a class="dropdown-item" href="messagescustomer.php">Messages</a>
                         <a class="dropdown-item" href="loginmanager.php">Log-in business manager</a>
-                        <a class="dropdown-item" href='loginemployee.php'>Log-in business employee</a>
+                        <a class="dropdown-item" href='loginemployee.php'>Log-in business employee</a>vscode-vfs://github%2B7b2276223a312c22726566223a7b2274797065223a342c226964223a224d617263696e227d7d/sergioqueber/SEP5/loginmanager.php vscode-vfs://github%2B7b2276223a312c22726566223a7b2274797065223a342c226964223a224d617263696e227d7d/sergioqueber/SEP5/loginemployee.php vscode-vfs://github%2B7b2276223a312c22726566223a7b2274797065223a342c226964223a224d617263696e227d7d/sergioqueber/SEP5/includes/loginmanagerhandler.inc.php vscode-vfs://github%2B7b2276223a312c22726566223a7b2274797065223a342c226964223a224d617263696e227d7d/sergioqueber/SEP5/includes/loginemployee.inc.php
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>

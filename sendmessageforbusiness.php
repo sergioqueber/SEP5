@@ -31,7 +31,7 @@
             $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT 2;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute(['Paco', $store_id]);
+            $stmt->execute([$username, $store_id]);
 
             $query1 = "SELECT store_name FROM store WHERE store_id = ?;";
 
