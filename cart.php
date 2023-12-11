@@ -30,6 +30,7 @@
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
 </head>
+
 <body>
     
     <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
@@ -103,5 +104,8 @@
     <form action="includes/placeorderhandler.inc.php" method="post">
         <button>Place Order</button>
     </form>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+
 </body>
 </html>
