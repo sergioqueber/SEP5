@@ -12,6 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $emai = $_POST["email"];
     $cpr = $_POST["cpr"];
     $phoneNo = $_POST["phoneNo"];
+    $psw = $_POST["password"];
    
 
     try {
@@ -36,9 +37,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo 'address added';
         $address_id = $stmt->fetchColumn();
 
-        $query = "INSERT INTO owner(username, f_name, l_name, email, cpr, phone_no, address_id) VALUES (?,?,?,?,?,?,?);";
+        $query = "INSERT INTO owner(username, password, f_name, l_name, email, cpr, phone_no, address_id) VALUES (?,?,?,?,?,?,?,?);";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$username,$fName,$lName,$emai,$cpr,$phoneNo,$address_id]);
+        $stmt->execute([$username, $psw, $fName,$lName,$emai,$cpr,$phoneNo,$address_id]);
 
 
     } catch (PDOException $e) {
