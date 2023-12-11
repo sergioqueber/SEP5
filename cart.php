@@ -125,10 +125,12 @@
         </tbody>
     </table>
         <div class = "row"> 
-        <div class = "col-md-11"></div>    
-        <form action='includes/placeorderhandler.inc.php' method='post'>
+        <div class = "col-md-11">
+            <form action='includes/placeorderhandler.inc.php' method='post'>
                 <button type='submit' class='btn btn-primary'>Place order</button>
             </form>
+        </div>    
+        
         </div>                           
     </div> 
     <script src="js/jquery-3.5.1.min.js"></script>
