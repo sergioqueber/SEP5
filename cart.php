@@ -113,6 +113,10 @@
                     echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
                     echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["quantity"]) . "</td>";
+                    echo "<td><form action='includes/deleteCartItem.inc.php' method='post'>
+                        <input type='text' value = ". htmlspecialchars($row["product_id"]) . " name = 'productId'>  
+                        <button type='submit' class='btn btn-primary ml-auto'>Place order</button>
+                    </form> </td>";
                     echo "</tr>";
                     $totalprice = $totalprice + ($row['price']*$row['quantity']);
                 }
@@ -127,7 +131,8 @@
         <div class = "row"> 
         <div class = "col-md-6">
             <form action='includes/placeorderhandler.inc.php' method='post'>
-                <button type='submit' class='btn btn-primary ml-auto'>Place order</button>
+            <input type="text" value = "" name = "productId">    
+            <button type='submit' class='btn btn-primary ml-auto'>Place order</button>
             </form>
         </div>    
         
