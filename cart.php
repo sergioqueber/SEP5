@@ -84,7 +84,7 @@
     
     <div></div>
    
-    <div class = "container mt-5">
+<div class = "container mt-5">
     <div class = "row">
         <h1>Your cart</h1>
     </div>
@@ -124,17 +124,13 @@
             
         </tbody>
     </table>
+        <div class = row> 
+            <form action='includes/placeorderhandler.inc.php' method='post'>";
+                <button type='submit' class='btn btn-primary'>Place order</button>";
+            </form>
+        </div>                           
     </div> 
-    <div class = row>
-        <form action='includes/placeorderhandler.inc.php' method='post'>";
-            <button type='submit' class='btn btn-primary'>Place order</button>";
-        </form>
-    </div>                           
-   
     <script src="js/jquery-3.5.1.min.js"></script>
-    <form action="includes/placeorderhandler.inc.php" method="post">
-        <button>Place Order</button>
-    </form>
 
 </body>
 </html>
