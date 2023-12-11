@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+<script src="js/jquery-3.5.1.min.js"></script>
 <div class="modal" id="successModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -24,10 +25,10 @@
             </div>
         </div>
         </div>
-        <script>
+    <script>
         $(document).ready(function(){
             $("#successModal").modal("show");
         });
-        </script>
+    </script>
 </body>
 </html>
