@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file = $_FILES['image'];
     $fileName = $_FILES['image']['name'];
     $tmpLoc = $_FILES['image']['tmp_name'];
-    $storeId = $_SESSION['store_id']
+    $storeId = $_SESSION['store_id'];
 
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
