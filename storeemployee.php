@@ -84,11 +84,11 @@ $username = $_SESSION['username'];
     }
     foreach ($results as $row) {
         echo "<div>";
-        echo "<p>" . htmlspecialchars($row["f_name"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["l_name"]) . "</p>";
-        echo "<p>Description: " . htmlspecialchars($row["email"]) . "</p>";
-        echo "<p>Price: " . htmlspecialchars($row["cpr"]) . "</p>";
-        echo "<p>Category: " . htmlspecialchars($row["date_employed"]) . "</p>";
+        echo "<p>First name: " . htmlspecialchars($row["f_name"]) . "</p>";
+        echo "<p>Last name: " . htmlspecialchars($row["l_name"]) . "</p>";
+        echo "<p>E-mail: " . htmlspecialchars($row["email"]) . "</p>";
+        echo "<p>CPR: " . htmlspecialchars($row["cpr"]) . "</p>";
+        echo "<p>Date of employment: " . htmlspecialchars($row["date_employed"]) . "</p>";
         echo "</div>";
     }
     ?>
