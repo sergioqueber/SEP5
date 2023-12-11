@@ -139,7 +139,7 @@ session_start();
                         </div>
                         <div class = "mb-3">
                             <label for="price">Max Price</label>
-                            <input type="text" class="form-control" id="price" name="maxPrice">
+                            <input type="text" class="form-control" id="maxPrice" value = '1000000' name="maxPrice">
                         </div>
 
                         <!-- Add more filter options as needed -->
