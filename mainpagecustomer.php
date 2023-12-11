@@ -122,7 +122,7 @@ session_start();
                 <div class="card-body">
                     <!-- Filter options (example) -->
                     <h5 class="card-title">Filters</h5>
-                    <form action="seach.php" method="post">
+                    <form action="search.php" method="post">
                         <!-- Add your filter options here (e.g., category, price range, etc.) -->
                         <div class="mb-3">
                             <label for="category">Category</label>
