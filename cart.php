@@ -82,15 +82,19 @@
         </div>
     </nav>
     
-    <h1>Your cart</h1>
-
+    <div></div>
+   
+    <div class = "container">
+    <div class = "row">
+        <h1>Your cart</h1>
+    </div>
+                                
     <?Php
-    if (empty($results)) {
-        echo "<div class='container'>";
-        echo "<p class='alert alert-warning'>No results found</p>";
-        echo "</div>";
-    } else {
-        echo "<div class='container'>";
+        if (empty($results)) {
+            echo "<p class='alert alert-warning'>No results found</p>";
+            
+        } else {
+        
         echo "<ul class='list-group'>";
         
         foreach ($results as $row) {
@@ -105,6 +109,8 @@
         echo "</div>";
     }
     ?>
+    </div>                            
+   
     <script src="js/jquery-3.5.1.min.js"></script>
     <form action="includes/placeorderhandler.inc.php" method="post">
         <button>Place Order</button>
