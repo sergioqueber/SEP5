@@ -6,3 +6,12 @@
 .carousel-indicators li {
     background-color: #000000; /* Indicator color */
 };
+
+.margin{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.btn{
+    background-color: #FF6E00;
+}
