@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$_SESSION['cart'], $productID ,1]);
         
-        echo 'Added to cart';
+        header("Location: ../popupCart.php");
     
         $pdo = null;
         $stmt = null;
