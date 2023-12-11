@@ -63,7 +63,7 @@
             <form action = "includes/formhandler.inc.php" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Product name</label>
-                    <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter your name">
+                    <input type="text" class="form-control" id="productName" name="productName" placeholder="Product name">
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
@@ -83,7 +83,7 @@
                     <input type="text" class="form-control" id="description" name="description" placeholder = "Description">
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Store id</label>
+                    <label for="image" class="form-label">Product image</label>
                     <input type="file" class="form-control" id="image" name="image">
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
