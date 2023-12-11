@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     $username = $_SESSION['username'] ;
     try {
-
+        require_once "dbh.inc.php";
         $query = 'INSERT INTO "order"(username) VALUES (?) RETURNING order_id;';
         $stmt = $pdo->prepare($query);
         $stmt->execute([$username]);
