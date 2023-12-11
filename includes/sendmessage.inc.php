@@ -3,6 +3,7 @@ session_start();
 if(isset($_POST['message'])){
     $username = $_SESSION['username'];
     $message = $_POST['message'];
+    $storeId = $_SESSION['storeId'];
     $direction = TRUE;
    
 
@@ -11,7 +12,7 @@ if(isset($_POST['message'])){
 
         $query = "INSERT INTO message (message, direction, username, store_id) VALUES (?, ?, ?, ?);";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$message, $direction, $username, 1]);
+        $stmt->execute([$message, $direction, $username, $storeId]);
         
 
         die();

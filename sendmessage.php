@@ -12,15 +12,7 @@ session_start();
     <script src="js/bootstrap.bundle.min.js"> </script>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script>
-        $(document).ready(function(){
-            var messagesCount = 2;
-            $("#show").click(function(){
-                messagesCount = messagesCount + 2;
-                $('#display').load("load-message.php", 
-                {messagesNewCount: messagesCount});
-            })
-            
-        });
+        
     </script>
 </head>
 <body>
@@ -118,9 +110,22 @@ session_start();
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
-            $.ajax({url: "http://localhost/SEP5/includes/sendmessage.inc.php", type: 'POST', data: formData});
+            $.ajax({url: "http://localhost/SEP5/includes/sendmessage.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
+            messagesCount = messagesCount + 1;
+            $('#display').load("load-message.php", 
+            {messagesNewCount: messagesCount});
         };
+        
+        $(document).ready(function(){
+            var messagesCount = 2;
+            $("#show").click(function(){
+                messagesCount = messagesCount + 2;
+                $('#display').load("load-message.php", 
+                {messagesNewCount: messagesCount});
+            })
+            
+        });
     </script>
     
 </body>

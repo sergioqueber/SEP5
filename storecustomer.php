@@ -102,6 +102,10 @@ $username = $_SESSION['username'];
         <button>Our products</button>
     </form>
 
+    <form action="sendmessage.php" method = "get">
+        <button>Send message</button>
+    </form>
+
 </body>
 
 </html>
