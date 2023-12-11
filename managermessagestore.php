@@ -1,14 +1,14 @@
 <?php
 
 session_start();
-$storeId = $_SESSION['store_id'];
-
-    
+$username = $_SESSION['username'];
+$storeId = isset($_GET['id']) ? $_GET['id'] : null;
+$_SESSION['store_id'] = $storeId;
 
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product WHERE store_id = ?;";
+        $query = "SELECT username FROM message WHERE store_id = ? group by username order by max(message_id) desc;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$storeId]);
@@ -48,10 +48,10 @@ $storeId = $_SESSION['store_id'];
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpagemanager.php">Home</a></li>
-                <li><a class="nav-link" href="">About us</a></li>
-                <li><a class="nav-link" href="managermessages.php">Messages</a></li>
-                <li><a class="nav-link" href="managerorders.php">Orders</a></li>
+                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
+                <li><a class="nav-link" href="#">About us</a></li>
+                <li><a class="nav-link" href="messages.php">Messages</a></li>
+                <li><a class="nav-link" href="orders.php">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
@@ -66,7 +66,7 @@ $storeId = $_SESSION['store_id'];
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#.php">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -85,23 +85,19 @@ $storeId = $_SESSION['store_id'];
     <script src="js/jquery-3.7.1.min.js"></script>
 
     <section>
-    <h3>Products</h3>
+    <h3>Search results</h3>
 
     <?php
     if(empty($results)){
         echo "<div>";
-        echo "<p>No results:(</p>";
+        echo "<p>No messages:(</p>";
         echo "</div>";
     }
     else{
         foreach ($results as $row){
             echo "<div>";
-            echo "<a href = 'managerproduct.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-            echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
+            echo "<br><br>";
+            echo "<a href = 'managermessage.php?id=" .htmlspecialchars($row["username"]) ."' >" . htmlspecialchars($row["username"]) . "</a><br>";
             echo "</div>";
         }
     }

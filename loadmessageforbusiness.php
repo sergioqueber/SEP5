@@ -1,5 +1,7 @@
 <?php
 session_start();
+$username = $_SESSION['customer'];
+$store_id = $_SESSION['store_id'];
 try {
             require_once "includes/dbh.inc.php";
             $messagesNewCount = $_POST['messagesNewCount'];
@@ -7,12 +9,12 @@ try {
             $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT $messagesNewCount;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute(['Paco', 1]);
+            $stmt->execute([$username, $store_id]);
 
             $query1 = "SELECT store_name FROM store WHERE store_id = ?;";
 
             $stmt1 = $pdo->prepare($query1);
-            $stmt1->execute([1]);
+            $stmt1->execute([$store_id]);
 
             $storename = $stmt1->fetchColumn();
     

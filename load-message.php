@@ -1,14 +1,15 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+$storeId = $_SESSION['store_id'];
 try {
             require_once "includes/dbh.inc.php";
             $messagesNewCount = $_POST['messagesNewCount'];
 
-            $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT $messagesNewCount;";
+            $query = "SELECT * from message JOIN store s on s.store_id = message.store_id WHERE username = ? AND message.store_id = ? ORDER BY message_id DESC LIMIT $messagesNewCount;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$username, 1]);
+            $stmt->execute([$username, $storeId]);
     
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(empty($results)){
@@ -18,7 +19,11 @@ try {
             else{
                 foreach($results as $row){
                     echo "<p>";
-                    echo $username;
+                    if($row['direction'] == TRUE){   
+                        echo $row['username'];
+                    }else{
+                        echo $row['store_name'];
+                    }
                     echo "<br>";
                     echo $row['message'];
                     echo "<p>";

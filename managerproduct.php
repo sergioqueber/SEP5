@@ -1,25 +1,6 @@
 <?php
-
 session_start();
-$storeId = $_SESSION['store_id'];
-
-    
-
-    try {
-        require_once "includes/dbh.inc.php";
-
-        $query = "SELECT * FROM product WHERE store_id = ?;";
-
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$storeId]);
-
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $pdo = null;
-        $stmt = null;
-    } catch (PDOException $e) {
-        die("Query failed: " . $e->getMessage());
-    }
+$username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +12,7 @@ $storeId = $_SESSION['store_id'];
     <title>Document</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 
 <body>
@@ -82,32 +64,42 @@ $storeId = $_SESSION['store_id'];
 <br>
 <br>
 
-    <script src="js/jquery-3.7.1.min.js"></script>
-
-    <section>
-    <h3>Products</h3>
-
     <?php
-    if(empty($results)){
+    $productId = isset($_GET['id']) ? $_GET['id'] : null;
+    $_SESSION['product_id'] = $productId;
+    
+    try {
+        require_once "includes/dbh.inc.php";
+
+        $query = "SELECT * FROM product WHERE product_id = ?;";
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$productId]);
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+
+    foreach ($results as $row) {
         echo "<div>";
-        echo "<p>No results:(</p>";
+        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
+        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
+        echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
         echo "</div>";
     }
-    else{
-        foreach ($results as $row){
-            echo "<div>";
-            echo "<a href = 'managerproduct.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-            echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
-            echo "</div>";
-        }
-    }
     ?>
-</section>
-
+    <br>
+    <form action="managerreview.php" method="post">
+        <button>See reviews</button>
+    </form>
+    
+    <script src="js/jquery-3.7.1.min.js"> </script>
+    
 
 
 </body>
