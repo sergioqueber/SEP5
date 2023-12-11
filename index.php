@@ -175,32 +175,27 @@
 </div>
 
 
-<div id="imageCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>    
-    <div class="carousel-inner">
-        <!-- Slide 1 -->
-        <div class="carousel-item active d-flex align-items-center justify-content-center" data-bs-interval="10000">
-            <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid" alt="Image 1">
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item d-flex align-items-center justify-content-center" data-bs-interval="10000">
-            <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
-        </div>
+<div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="Images/rubiostus logo.png" class="d-block w-100" alt="Image 1">
     </div>
-
-    <!-- Previous and Next buttons -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+    <div class="carousel-item">
+      <img src="Images/Logo.png" class="d-block w-100" alt="Image 2">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 </body>
 </html>
