@@ -114,7 +114,7 @@
                     echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["quantity"]) . "</td>";
                     echo "</tr>";
-                    $totalprice = $totalprice + ($cartItem['price']*$cartItem['quantity']);
+                    $totalprice = $totalprice + ($row['price']*$row['quantity']);
                 }
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($totalprice) . "</td>";
