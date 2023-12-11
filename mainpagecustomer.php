@@ -115,10 +115,9 @@ session_start();
     
     ?>
 
-<div class="container-fluid">
+    <div class="container mt-5">
     <div class="row">
-        <!-- Sidebar with filters -->
-        <div class="col-lg-3 position-fixed">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <!-- Filter options (example) -->
@@ -147,50 +146,44 @@ session_start();
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        
+        <?php
+        if (empty($results)) {
+            echo "<div class='col-12'>";
+            echo "<p>No results:(</p>";
+            echo "</div>";
+        } else {
+            foreach ($results as $row) {
+                ?>
+                <!-- Product card with Bootstrap grid classes -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <!-- Product image -->
+                        <img src="<?php echo htmlspecialchars($row["image_path"]); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row["product_name"]); ?>">
 
-        <!-- Product grid -->
-        <div class="col-lg-9">
-            <div class="container mt-5">
-                <div class="row">
+                        <div class="card-body">
+                            <!-- Product name and link to details page -->
+                            <h5 class="card-title"><a href="product.php?id=<?php echo htmlspecialchars($row["product_id"]); ?>"><?php echo htmlspecialchars($row["product_name"]); ?></a></h5>
+                            <!-- Product price -->
+                            <p class="card-text"><?php echo htmlspecialchars($row["price"]); ?>dkk</p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text"><?php echo htmlspecialchars($row["category"]); ?></p>
+                            <p class="card-text">Stock: <?php echo htmlspecialchars($row["stock"]); ?></p>
+                        </div>
 
-                    <?php
-                    if (empty($results)) {
-                    echo "<div class='col-12'>";
-                    echo "<p>No results:(</p>";
-                    echo "</div>";
-                     } else {
-                    foreach ($results as $row) {
-                    ?>
-                    <!-- Product card with Bootstrap grid classes -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card h-100">
-                            <!-- Product image -->
-                            <img src="<?php echo htmlspecialchars($row["image_path"]); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row["product_name"]); ?>">
-
-                            <div class="card-body">
-                                <!-- Product name and link to details page -->
-                                <h5 class="card-title"><a href="product.php?id=<?php echo htmlspecialchars($row["product_id"]); ?>"><?php echo htmlspecialchars($row["product_name"]); ?></a></h5>
-                                <!-- Product price -->
-                                <p class="card-text"><?php echo htmlspecialchars($row["price"]); ?>dkk</p>
-                                <!-- Additional product information (category, stock, etc.) -->
-                                <p class="card-text"><?php echo htmlspecialchars($row["category"]); ?></p>
-                                <p class="card-text">Stock: <?php echo htmlspecialchars($row["stock"]); ?></p>
-                            </div>
-
-                            <!-- Add to cart button or other actions -->
-                            <div class="card-footer">
-                                <button class="btn btn-primary">Add to Cart</button>
-                            </div>
+                        <!-- Add to cart button or other actions -->
+                        <div class="card-footer">
+                            <button class="btn btn-primary">Add to Cart</button>
                         </div>
                     </div>
-                            <?php
-                                }           
-                                }
-                            ?>
-
                 </div>
-            </div>
-        </div>
+                <?php
+            }
+        }
+        ?>
+
     </div>
 </div>
 
