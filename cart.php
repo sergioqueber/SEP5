@@ -89,26 +89,33 @@
         <h1>Your cart</h1>
     </div>
 
-    <?Php
-        if (empty($results)) {
-            echo "<p class='alert alert-warning'>No results found</p>";
-            
-        } else {
-        
-        echo "<ul class='list-group'>";
-        
-        foreach ($results as $row) {
-            echo "<li class='list-group-item'>";
-            echo "<a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' width='50' alt='Product Image'>";
-            echo "<p class='mb-0'>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "</li>";
-        }
-    
-        echo "</ul>";
-        echo "</div>";
-    }
-    ?>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if(empty($results)){
+                echo "<tr>";
+                echo "<td colspan='3'>No results:(</td>";
+                echo "</tr>";
+            }
+            else{
+                foreach ($results as $row){
+                    echo "<tr>";
+                    echo "<td><a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
+                    echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
+                    echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </tbody>
+    </table>
     </div>                            
    
     <script src="js/jquery-3.5.1.min.js"></script>
