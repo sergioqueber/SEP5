@@ -1,14 +1,14 @@
 <?php
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $productName = $_POST["productName"];
     $price = $_POST["price"];
     $stock = $_POST["stock"];
-    $storeId = $_POST["storeId"];
     $description = $_POST["description"];
     $file = $_FILES['image'];
     $fileName = $_FILES['image']['name'];
     $tmpLoc = $_FILES['image']['tmp_name'];
+    $storeId = $_SESSION['store_id']
 
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
