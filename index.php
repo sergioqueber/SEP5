@@ -181,10 +181,10 @@
     <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active d-flex align-items-center justify-content-center">
+    <div class="carousel-item active align-items-center justify-content-center">
       <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid" alt="Image 1">
     </div>
-    <div class="carousel-item d-flex align-items-center justify-content-center">
+    <div class="carousel-item align-items-center justify-content-center">
       <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
     </div>
   </div>
