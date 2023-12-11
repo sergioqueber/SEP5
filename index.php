@@ -181,12 +181,18 @@
     <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active d-flex justify-content-center">
-      <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid" alt="Image 1">
+    <div class="carousel-item active ">
+        <div class = 'd-flex justify-content-center'>
+            <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid" alt="Image 1">
+        </div>  
+    
     </div>
     <div class="carousel-item d-flex justify-content-center">
-      <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
-    </div>
+        <div class = 'd-flex justify-content-center'>
+            <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
+        </div>
+    </div>  
+      
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
