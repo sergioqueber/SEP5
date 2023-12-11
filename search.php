@@ -9,11 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $storeName = '%';
     $category = '%';
     $maxPrice = 100000000;
-    echo $storeName;
+    
 
     if(isset($_POST['storeName'])){
         $storeName = $_POST["storeName"];
-        echo $storeName;
+       
     }
     if(isset($_POST['category'])){
         $category = $_POST["category"];
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['maxPrice'])){
         $maxPrice = $_POST["maxPrice"];
     }
-
+    echo $storeName;
     try {
         require_once "includes/dbh.inc.php";
 
