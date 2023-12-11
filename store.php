@@ -1,6 +1,7 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+$storeId = $_SESSION['store_id']
 ?>
 
 <!DOCTYPE html>
@@ -30,14 +31,10 @@ $username = $_SESSION['username'];
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpagecustomer.php">Home</a></li>
-                <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
+                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
-                <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
-                <li><a class="nav-link" href="customerorders.php">Orders</a></li>
-                <li><a class = "nav-link" href="cart.php">
-                    <img src="Images/cartbl 1.png" alt="Cart">
-                </a></li>
+                <li><a class="nav-link" href="messages.php">Messages</a></li>
+                <li><a class="nav-link" href="orders.php">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
@@ -52,7 +49,7 @@ $username = $_SESSION['username'];
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="customerprofile.php">Profile</a>
+                        <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -69,8 +66,6 @@ $username = $_SESSION['username'];
 <br>
 
     <?php
-    $storeId = isset($_GET['id']) ? $_GET['id'] : null;
-    $_SESSION['store_Id'] = $storeId;
     
     
     try {
@@ -86,7 +81,6 @@ $username = $_SESSION['username'];
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-    $totalprice = 0;
     foreach ($results as $row) {
         echo "<div>";
         echo "<h2>" . htmlspecialchars($row["store_name"]) . "'</h2>";
@@ -98,8 +92,8 @@ $username = $_SESSION['username'];
     }
     ?>
 
-    <form action="search.php" method="get">
-        <button>Our products</button>
+    <form action="employeesearch.php" method="get">
+        <button>Products</button>
     </form>
 
 </body>

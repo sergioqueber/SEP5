@@ -30,14 +30,10 @@ $username = $_SESSION['username'];
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpagecustomer.php">Home</a></li>
-                <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
+                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
-                <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
-                <li><a class="nav-link" href="customerorders.php">Orders</a></li>
-                <li><a class = "nav-link" href="cart.php">
-                    <img src="Images/cartbl 1.png" alt="Cart">
-                </a></li>
+                <li><a class="nav-link" href="messages.php">Messages</a></li>
+                <li><a class="nav-link" href="orders.php">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
@@ -52,7 +48,7 @@ $username = $_SESSION['username'];
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="customerprofile.php">Profile</a>
+                        <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -69,38 +65,43 @@ $username = $_SESSION['username'];
 <br>
 
     <?php
-    $storeId = isset($_GET['id']) ? $_GET['id'] : null;
-    $_SESSION['store_Id'] = $storeId;
+    $productId = isset($_GET['id']) ? $_GET['id'] : null;
+    $_SESSION['product_id'] = $productId;
     
-    
+    echo $_SESSION['cart'];
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = 'SELECT * from store JOIN address a on a.address_id = store.address_id JOIN city c on c.postcode = a.postcode WHERE store_id = ?;';
+        $query = "SELECT * FROM product WHERE product_id = ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$storeId]);
+        $stmt->execute([$productId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-    $totalprice = 0;
+
     foreach ($results as $row) {
         echo "<div>";
-        echo "<h2>" . htmlspecialchars($row["store_name"]) . "'</h2>";
-        echo "<p>Phone number: " . htmlspecialchars($row["phone_no"]) . "</p>";
-        echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
-        echo "<p>CVR: " . htmlspecialchars($row["cvr"]) . "</p>";
-        echo "<p>Address: " . htmlspecialchars($row["street"]) ." ". htmlspecialchars($row["house_no"]) .", ". htmlspecialchars($row["postcode"])." ". htmlspecialchars($row["name"]) ."</p>";
+        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
+        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
+        echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
         echo "</div>";
     }
     ?>
-
-    <form action="search.php" method="get">
-        <button>Our products</button>
+    <br>
+    <form action="employeereview.php" method="post">
+        <button>See reviews</button>
     </form>
+    
+    <script src="js/jquery-3.7.1.min.js"> </script>
+    
+
 
 </body>
 
