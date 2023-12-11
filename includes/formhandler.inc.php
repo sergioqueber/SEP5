@@ -5,14 +5,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $price = $_POST["price"];
     $stock = $_POST["stock"];
     $storeId = $_POST["storeId"];
+    $imagePath =  $_POST["imagePath"];
 
     try {
         require_once "dbh.inc.php";
 
-        $query = "INSERT INTO product (product_name, price, stock, store_id) VALUES (?, ?, ?, ?);";
+        $query = "INSERT INTO product (product_name, price, stock, store_id, image_path) VALUES (?, ?, ?, ?,?);";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$productname, $price, $stock, $storeId]);
+        $stmt->execute([$productname, $price, $stock, $storeId, $imagePath]);
 
         $pdo = null;
         $stmt = null;
