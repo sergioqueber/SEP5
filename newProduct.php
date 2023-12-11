@@ -74,7 +74,7 @@
                     <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock">
                 </div>
                 <div class="mb-3">
-                    <label for="description" class="form-label">Store id</label>
+                    <label for="description" class="form-label">Description</label>
                     <input type="text" class="form-control" id="description" name="description" placeholder = "Description">
                 </div>
                 <div class="mb-3">
