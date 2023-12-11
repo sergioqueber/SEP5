@@ -33,7 +33,7 @@
             $("#successModal").modal("show");
         });
         $("#back").onclick(function(){
-            window.history.back()
+            window.history.back();
         })
     </script>
 </body>
