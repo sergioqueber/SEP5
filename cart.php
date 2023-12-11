@@ -96,6 +96,8 @@
                 <th scope="col">Image</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
+                <th scope="col">Action</th>
+
             </tr>
         </thead>
         <tbody>
@@ -114,8 +116,8 @@
                     echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["quantity"]) . "</td>";
                     echo "<td><form action='includes/deleteCartItem.inc.php' method='post'>
-                        <input type='text' value = ". htmlspecialchars($row["product_id"]) . " name = 'productId'>  
-                        <button type='submit' class='btn btn-primary ml-auto'>Place order</button>
+                        <input type='text' class = 'd-none' value = ". htmlspecialchars($row["product_id"]) . " name = 'productId'>  
+                        <button type='submit' class='btn btn-primary ml-auto'>Delete Product</button>
                     </form> </td>";
                     echo "</tr>";
                     $totalprice = $totalprice + ($row['price']*$row['quantity']);
