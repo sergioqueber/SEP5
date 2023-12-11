@@ -106,6 +106,12 @@ session_start();
                     echo "</div>";
                 }
             } */
+        } catch (PDOException $e) {
+            die("Query failed: " . $e->getMessage());
+        }
+
+        
+    
     ?>
 
     <div class="container mt-5">
@@ -151,13 +157,7 @@ session_start();
     </div>
 </div>
 
-        } catch (PDOException $e) {
-            die("Query failed: " . $e->getMessage());
-        }
 
-        
-    
-    ?>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
