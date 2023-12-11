@@ -60,7 +60,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form action = "includes/formhandler.inc.php" method="post">
+            <form action = "includes/formhandler.inc.php" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Product name</label>
                     <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter your name">
@@ -92,15 +92,6 @@
     </div>
 </div>
 
-
-
-    <form action="includes/formhandler.inc.php" method="post">
-        <input type="text" name="productName" placeholder="Product Name"><br>
-        <input type="text" name="price" placeholder="Price"><br>
-        <input type="text" name="stock" placeholder="Stock"><br>
-        <input type="text" name="storeId" placeholder="Store Id"><br>
-        <button>Register product</button>
-    </form>
     <br>
     <form action="includes/deleteproduct.inc.php" method="post">
         <input type="text" name="productId" placeholder="Product id"><br>
