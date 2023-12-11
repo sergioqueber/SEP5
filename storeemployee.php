@@ -31,7 +31,7 @@ $username = $_SESSION['username'];
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li><a class="nav-link active" href="mainpagemanager.php">Home</a></li>
-                <li><a class="nav-link" href="">About us</a></li>
+                <li><a class="nav-link" href="#">About us</a></li>
                 <li><a class="nav-link" href="managermessages.php">Messages</a></li>
                 <li><a class="nav-link" href="managerorders.php">Orders</a></li>
                 <li class="nav-item dropdown">
@@ -48,7 +48,7 @@ $username = $_SESSION['username'];
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#.php">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -65,18 +65,17 @@ $username = $_SESSION['username'];
 <br>
 
     <?php
-     $storeId = isset($_GET['id']) ? $_GET['id'] : null;
-     $_SESSION['store_id'] = $storeId;
-     
+    $employee = isset($_GET['id']) ? $_GET['id'] : null;
+    $_SESSION['employee'] = $employee;
     
     
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = 'SELECT * from store JOIN address a on a.address_id = store.address_id JOIN city c on c.postcode = a.postcode WHERE store_id = ?;';
+        $query = 'SELECT * FROM employee WHERE username = ?;';
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$storeId]);
+        $stmt->execute([$employee]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -85,23 +84,17 @@ $username = $_SESSION['username'];
     }
     foreach ($results as $row) {
         echo "<div>";
-        echo "<h2>" . htmlspecialchars($row["store_name"]) . "</h2>";
-        echo "<p>Phone number: " . htmlspecialchars($row["phone_no"]) . "</p>";
-        echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
-        echo "<p>CVR: " . htmlspecialchars($row["cvr"]) . "</p>";
-        echo "<p>Address: " . htmlspecialchars($row["street"]) ." ". htmlspecialchars($row["house_no"]) .", ". htmlspecialchars($row["postcode"])." ". htmlspecialchars($row["name"]) ."</p>";
+        echo "<p>" . htmlspecialchars($row["f_name"]) . "</p>";
+        echo "<p>" . htmlspecialchars($row["l_name"]) . "</p>";
+        echo "<p>Description: " . htmlspecialchars($row["email"]) . "</p>";
+        echo "<p>Price: " . htmlspecialchars($row["cpr"]) . "</p>";
+        echo "<p>Category: " . htmlspecialchars($row["date_employed"]) . "</p>";
         echo "</div>";
     }
     ?>
 
-    <form action="employeesearch.php" method="get">
-        <button>Products</button>
-    </form>
-    <form action="newProduct.php" method="post">
-        <button>New product</button>
-    </form>
-    <form action="storeemployees.php" method="post">
-        <button>Employees</button>
+    <form action="include/deleteemployee.inc.php" method="post">
+        <button type="submit" name="submit">Delete</button>
     </form>
 
 </body>
