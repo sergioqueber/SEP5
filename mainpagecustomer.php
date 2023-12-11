@@ -127,8 +127,8 @@ session_start();
                         <div class="mb-3">
                             <label for="category">Category</label>
                             <select class="form-select" id="category" name="category">
-                                <option value="Clothes">Clothes</option>
-                                <option value="">Shoes</option>
+                                <option value="Clothes" >Clothes</option>
+                                <option value="" disabled selected>None</option>
                                 <!-- Add more options as needed -->
                             </select>
                         </div>
