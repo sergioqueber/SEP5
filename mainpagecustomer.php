@@ -179,6 +179,10 @@ session_start();
 
                         <!-- Add to cart button or other actions -->
                         <div class="card-footer">
+                       <form action='includes/additemhandler.inc.php' method='post'>
+                            <input type='hidden' name='productId' value='<?php echo htmlspecialchars($row["product_id"]); ?>'>;
+                            <button type='submit' class='btn btn-primary'>Add to Cart</button>";
+                        </form>;
                             <button class="btn btn-primary">Add to Cart</button>
                         </div>
                     </div>
