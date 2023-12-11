@@ -87,7 +87,7 @@ else{
 
     <script src="js/jquery-3.5.1.min.js"></script>
 
-    <div class = "container-fluid">
+    <div class = "container mt-5">
     <div class="row">
         
         <?php
