@@ -122,7 +122,7 @@ session_start();
                 <div class="card-body">
                     <!-- Filter options (example) -->
                     <h5 class="card-title">Filters</h5>
-                    <form action="your_search_page.php" method="post">
+                    <form action="seach.php" method="post">
                         <!-- Add your filter options here (e.g., category, price range, etc.) -->
                         <div class="mb-3">
                             <label for="category">Category</label>
@@ -135,7 +135,7 @@ session_start();
 
                         <div class="mb-3">
                             <label for="searchStore">Search for products in store:</label>
-                            <input id="searchStore" type="text" name="storeName" placeholder="Store Name"><br>
+                            <input id="searchStore" type="text" class = "form-control" name="storeName" placeholder="Store Name"><br>
                         </div>
                         <div class = "mb-3">
                             <label for="price">Price Range</label>
