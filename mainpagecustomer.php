@@ -128,7 +128,7 @@ session_start();
                             <label for="category">Category</label>
                             <select class="form-select" id="category" name="category">
                                 <option value="Clothes">Clothes</option>
-                                <option value="option2">Shoes</option>
+                                <option value="">Shoes</option>
                                 <!-- Add more options as needed -->
                             </select>
                         </div>
