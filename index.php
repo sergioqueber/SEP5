@@ -37,6 +37,7 @@
                 <li><a class="nav-link active" href="">Home</a></li>
                 <li><a class="nav-link" href="">Products</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
+                <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
                 <li><a class = "nav-link" href="cart.php">
                     <img src="Images/cartbl 1.png" alt="Cart">
                 </a></li>
