@@ -124,7 +124,12 @@
             
         </tbody>
     </table>
-    </div>                            
+    </div> 
+    <div class = row>
+        <form action='includes/placeorderhandler.inc.php' method='post'>";
+            <button type='submit' class='btn btn-primary'>Place order</button>";
+        </form>
+    </div>                           
    
     <script src="js/jquery-3.5.1.min.js"></script>
     <form action="includes/placeorderhandler.inc.php" method="post">
