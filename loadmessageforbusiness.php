@@ -9,6 +9,9 @@ try {
             $stmt = $pdo->prepare($query);
             $stmt->execute(['Paco', 1]);
 
+            
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             $query1 = "SELECT store_name FROM store WHERE store_id = ?;";
 
             $stmt1 = $pdo->prepare($query1);
@@ -16,7 +19,6 @@ try {
 
             $storename = $stmt1->fetchColumn();
     
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(empty($results)){
                 echo "<br>";
                 echo "No messages yet :(";
