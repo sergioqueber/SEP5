@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(isset($_POST['storeName'])){
         $storeName = $_POST["storeName"];
+        echo $storeName;
     }
     if(isset($_POST['category'])){
         $category = $_POST["category"];
