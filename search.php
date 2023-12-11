@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product WHERE store_name = ?;";
+        $query = "SELECT * FROM product Join store s ON product.store_id = s.store_id WHERE store_name = '?';";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$storeName]);
