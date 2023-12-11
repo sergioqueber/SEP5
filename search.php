@@ -5,16 +5,16 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $productsearch = $_POST["productsearch"];
+    $storeName = $_POST["storeName"];
     
 
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product WHERE store_id = ?;";
+        $query = "SELECT * FROM product WHERE store_name = ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$productsearch]);
+        $stmt->execute([$storeName]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 else{
-    header("Location: ../README.php");
+    header("Location: ../mainpagecustomer.php");
 }
 ?>
 
@@ -87,30 +87,47 @@ else{
 
     <script src="js/jquery-3.5.1.min.js"></script>
 
-    <section>
-    <h3>Search results</h3>
-
-    <?php
-    if(empty($results)){
-        echo "<div>";
-        echo "<p>No results:(</p>";
-        echo "</div>";
-    }
-    else{
-        foreach ($results as $row){
-            echo "<div>";
-            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-            echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
+    <div class = "container-fluid">
+    <div class="row">
+        
+        <?php
+        if (empty($results)) {
+            echo "<div class='col-12'>";
+            echo "<p>No results:(</p>";
             echo "</div>";
-        }
-    }
-    ?>
-</section>
+        } else {
+            foreach ($results as $row) {
+                ?>
+                <!-- Product card with Bootstrap grid classes -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <!-- Product image -->
+                        <img src="<?php echo htmlspecialchars($row["image_path"]); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row["product_name"]); ?>">
 
+                        <div class="card-body">
+                            <!-- Product name and link to details page -->
+                            <h5 class="card-title"><a href="product.php?id=<?php echo htmlspecialchars($row["product_id"]); ?>"><?php echo htmlspecialchars($row["product_name"]); ?></a></h5>
+                            <!-- Product price -->
+                            <p class="card-text"><?php echo htmlspecialchars($row["price"]); ?>dkk</p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text"><?php echo htmlspecialchars($row["category"]); ?></p>
+                            <p class="card-text">Stock: <?php echo htmlspecialchars($row["stock"]); ?></p>
+                        </div>
+
+                        <!-- Add to cart button or other actions -->
+                        <div class="card-footer">
+                            <button class="btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        }
+        ?>
+
+    </div>
+</div>
+    </div>
 
 
 </body>
