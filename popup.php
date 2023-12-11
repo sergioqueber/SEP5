@@ -20,10 +20,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Your operation was successful!
-                    <p>
-                        <a href="index.php" class="btn btn-primary">Go Back to Home Page</a>
-                    </p>
+                    Check it out in your orders!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
