@@ -84,11 +84,11 @@
     
     <div></div>
    
-    <div class = "container">
+    <div class = "container mt-5">
     <div class = "row">
         <h1>Your cart</h1>
     </div>
-                                
+
     <?Php
         if (empty($results)) {
             echo "<p class='alert alert-warning'>No results found</p>";
