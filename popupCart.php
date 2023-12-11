@@ -23,7 +23,7 @@
                     Check it out in your orders!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id= "back">Back</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id= "back" onclick = 'history.back()'>Back</button>
                 </div>
             </div>
         </div>
