@@ -116,7 +116,7 @@ session_start();
     ?>
 
     <div class="container mt-5">
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
