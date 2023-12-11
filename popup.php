@@ -14,13 +14,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Success!</h5>
+                    <h5 class="modal-title">Your order has been placed, yay!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     Your operation was successful!
+                    <p>
+                        <a href="index.php" class="btn btn-primary">Go Back to Home Page</a>
+                    </p>
                 </div>
             </div>
         </div>
