@@ -176,18 +176,18 @@
 
 
 <div id="imageCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <!-- <div class="carousel-indicators">
+    <div class="carousel-indicators">
         <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    </div>  -->   
+    </div>    
     <div class="carousel-inner">
         <!-- Slide 1 -->
-        <div class="carousel-item active d-flex align-items-center justify-content-center">
+        <div class="carousel-item active d-flex align-items-center justify-content-center" data-bs-interval="10000">
             <img src="Images/rubiostus logo.png" class="d-block w-50 img-fluid" alt="Image 1">
         </div>
 
         <!-- Slide 2 -->
-        <div class="carousel-item d-flex align-items-center justify-content-center">
+        <div class="carousel-item d-flex align-items-center justify-content-center" data-bs-interval="10000">
             <img src="Images/Logo.png" class="d-block w-50 img-fluid" alt="Image 2">
         </div>
     </div>
