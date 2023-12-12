@@ -83,8 +83,12 @@
 <br>
 <br>
 <br>
-    
-    <h1>Your wishlist</h1>
+<div class = "container mt-5">    
+    <div class = "row">
+        <h1>Your wishlist</h1>
+    </div>
+   
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -120,7 +124,7 @@
             
         </tbody>
     </table>
-
+</div>
     
     
 </body>
