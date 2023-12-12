@@ -86,7 +86,7 @@ $_SESSION['orderId'] = $orderId;
 <br>
 <div class = "container mt-5">
     <div class = "row">
-        <h1>Order: <?php htmlspecialchars($row["order_id"]) . "From: " .  echo htmlspecialchars($storename); ?></h1>
+        <h1>Order: <?php echo htmlspecialchars($row["order_id"]) . "From: " .   htmlspecialchars($storename);?></h1>
     </div>
     <table class="table table-bordered">
         <thead>
