@@ -112,7 +112,7 @@
 
                         <div class="card-body orderCard">
                             <!-- Product name and link to details page -->
-                            <h5 class="card-title"><a href="customerorder.php?id=<?php echo htmlspecialchars($row["order_id"]); ?>"><?php echo htmlspecialchars($storename) . ":" . htmlspecialchars($row["order_id"]) ?></a></h5>
+                            <h5 class="card-title"><a href="customerorder.php?id=<?php echo htmlspecialchars($row["order_id"]); ?>"><?php echo htmlspecialchars($storename) . " : " . htmlspecialchars($row["order_id"]) ?></a></h5>
                             <!-- Product price -->
                             <?php
                             foreach($results1 as $row1) : ?>
