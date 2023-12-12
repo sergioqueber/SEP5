@@ -78,9 +78,13 @@
 <br>
 <br>
 <br>
+<div class = "container mt-5">    
     
-    <h1>Your orders</h1>
-
+    <div class = "row">
+        <h1>Your orders</h1>
+    </div>
+    
+    
     <?Php
     
     if(empty($results)){
@@ -134,9 +138,8 @@
                 <?php
         }
     }
-
-   
     ?>
+    </div>
     <script>
         $(document).ready(function () {
         // Loop through each element with class "status"
