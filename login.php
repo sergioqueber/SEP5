@@ -10,42 +10,53 @@
 </head>
 <body style="margin: 0; background: #ffffff;">
 
-  
-    <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
-    <div class="container-fluid">  
-    <a class="navbar-brand" href="#">
-        <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="mainpagecustomer.php">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="wishlist.php">Wishlist</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
-          <li class="nav-item"><a class="nav-link" href="messagescustomer.php">Messages</a></li>
-          <li class="nav-item"><a class="nav-link" href="customerorders.php">Orders</a></li>
-          <li class="nav-item"><a class="nav-link" href="cart.php"><img src="Images/cartbl 1.png" alt="Cart"></a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img src="Images/profileorange 1.png" alt="Profile pic">
-              <?php
-              if (session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['username'])) {
-                echo 'Hi ' . $_SESSION['username'];
-              } else {
-                echo 'Anonymous user';
-              }
-              ?>
+  <div class="container-fluid">
+  <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
             </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li><a class="nav-link active" href="">Home</a></li>
+                <li><a class="nav-link" href="">Products</a></li>
+                <li><a class="nav-link" href="">About us</a></li>
+                <li><a class = "nav-link" href="cart.php">
+                    <img src="Images/cartbl 1.png" alt="Cart">
+                </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="Images/profileorange 1.png" alt="Profile pic">
+                        <?php
+                            
+                            if(session_status() == PHP_SESSION_ACTIVE && isset($_SESSION['username'])){
+                                
+                                echo 'Hi ' . $_SESSION['username'];
+                            } else {
+                                echo 'Anonymus user';
+                            } 
+                        ?>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="login.php">Log-in personal</a>
+                        <a class="dropdown-item" href="loginmanager.php">Log-in business manager</a>
+                        <a class="dropdown-item" href='loginemployee.php'>Log-in business employee</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
+                    </div>
+                </li>          
+                
+            </ul>
+        </div>
+    </div>
+</nav>
 
     <div class="container">
       <div class="row justify-content-center">
