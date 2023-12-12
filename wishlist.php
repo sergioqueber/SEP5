@@ -91,6 +91,7 @@
                 <th scope="col">Product Name</th>
                 <th scope="col">Image</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
 
             </tr>
         </thead>
@@ -108,6 +109,10 @@
                     echo "<td><a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
                     echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
                     echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
+                    echo "<td><form action='includes/deleteFromWishlist.inc.php' method='post'>
+                        <input type='text' class = 'd-none' value = ". htmlspecialchars($row["product_id"]) . " name = 'productId'>  
+                        <button type='submit' class='btn btn-primary ml-auto'>Delete from wishlist</button>
+                    </form> </td>";
                     echo "</tr>";
                 }
             }

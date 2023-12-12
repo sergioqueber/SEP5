@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         header("Location: ../popupCart.php");
     
-        $pdo = null;
+        // $pdo = null;
         $stmt = null;
     } catch (\Throwable $th) {
         echo $productID;
