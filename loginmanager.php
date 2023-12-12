@@ -11,7 +11,7 @@
 </head>
 <body style="margin: 0; background: #ffffff;">
 
-<nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
+<nav class="navbar navbar-custom navbar-expand-sm navbar-light">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
