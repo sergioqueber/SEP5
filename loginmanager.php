@@ -11,7 +11,6 @@
 </head>
 <body style="margin: 0; background: #ffffff;">
 
-  <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
         <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
