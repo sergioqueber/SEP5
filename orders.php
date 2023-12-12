@@ -74,9 +74,10 @@
 <br>
 <br>
 <br>
-    
-    <h1>Orders</h1>
-    
+<div class = "container mt-5">
+    <div class = "row">
+        <h1>Orders</h1>
+    </div>
 
     <?Php
     if(empty($results)){
@@ -121,8 +122,7 @@
             <?php
         }
     }
-
-   
     ?>
+    </div>
 </body>
 </html>
