@@ -51,7 +51,7 @@
         <div class="col-md-6">
           <div class="text-center mt-5">
             <h1 class="title-5xOTHh valign-text-middle" data-id="67:790">Welcome</h1>
-            <p class="nice-to-see-you-again-5xOTHh valign-text-middle" data-id="67:791">Nice to see you again.</p>
+            <p class="nice-to-see-you-again-5xOTHh valign-text-middle" data-id="67:791">Let's get you started.</p>
           </div>
           <form action="includes/registercustomerhandler.inc.php" method="post" class="mt-4">
             <div class="form-group">
