@@ -64,31 +64,91 @@ session_start();
 <br>
 <br>
 <br>
-    <div id="display">
+    <div class="container" id="display">
         <br>
         <?php
         $username = $_SESSION['username'];
         echo $_SESSION['username'];
+        $storename = isset($_GET['id']) ? $_GET['id'] : null;
         try {
             require_once "includes/dbh.inc.php";
 
-            $query = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT 2;";
+            $query = "SELECT store_id FROM store WHERE store_name = ?;";
 
             $stmt = $pdo->prepare($query);
-            $stmt->execute([$username, 1]);
+            $stmt->execute([$storename]);
+
+            $store_id = $stmt->fetchColumn();
+            $_SESSION['store_id'] = $store_id;
+
+            $query1 = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT 2;";
+
+            $stmt1 = $pdo->prepare($query1);
+            $stmt1->execute([$username, $store_id]);
     
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $results = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+            
             if(empty($results)){
                 echo "<br>";
                 echo "No messages yet :(";
             }
             else{
                 foreach($results as $row){
-                    echo "<p>";
-                    echo $username;
-                    echo "<br>";
-                    echo $row['message'];
-                    echo "<p>";
+                    ?>
+                     
+                    <?php 
+                    if($row['direction'] === TRUE){
+                     ?> <div class="alert alert-success d-flex justify-content-end" role="alert">
+                     <h4 class="alert-heading"><?php if($row['direction'] === TRUE){   
+                                             echo $row['username']. ": ";
+                                             }else{
+                                             echo $storename . ": ";
+                                             }
+                                             ?>
+                                             </h4>
+                     <hr>
+                                 <p class="mb-0">
+                                      <?php
+                                  echo htmlspecialchars($row['message']); ?></p>
+                     </div>
+                    <?php }else{
+                     ?> <div class="alert alert-success d-flex justify-content-start" role="alert">
+                     <h4 class="alert-heading"><?php if($row['direction'] === TRUE){   
+                                             echo $row['username']. ": ";
+                                             }else{
+                                             echo $storename . ": ";
+                                             }
+                                             ?>
+                                             </h4>
+                     <hr>
+                                 <p class="mb-0">
+                                      <?php
+                                  echo htmlspecialchars($row['message']); ?></p>
+                     </div> <?php
+                    } ?>
+                    <h4 class="alert-heading"> 
+                    <?php 
+                    if($row['direction'] === TRUE){
+                        echo htmlspecialchars($storename);
+                    }else{
+                        echo htmlspecialchars($row['username']);
+                    } ?></h4>
+                        <hr>
+                            <p class="mb-0">
+                            <?php
+                             echo htmlspecialchars($row['message']); ?></p>
+                             
+                </div><?php
+                //     echo "<p>";
+                //     if($row['direction'] == TRUE){   
+                //         echo $row['username'];
+                //     }else{
+                //         echo $storename;
+                //     }
+                //     echo $username;
+                //     echo "<br>";
+                //     echo $row['message'];
+                //     echo "<p>";
                 }
             }
         } catch (PDOException $e) {

@@ -13,7 +13,7 @@ $username = $_SESSION['username'];
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $pdo = null;
+       
         $stmt = null;
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -97,12 +97,37 @@ $username = $_SESSION['username'];
     }
     else{
         foreach ($results as $row){
-            echo "<div>";
-            echo "<br><br>";
-            echo "<a href = 'sendmessage.php?id=" .htmlspecialchars($row["store_name"]) ."' >" . htmlspecialchars($row["store_name"]) . "</a><br>";
-            echo "</div>";
+            $query1 = "SELECT store_id FROM store WHERE store_name = ?;";
+
+            $stmt1 = $pdo->prepare($query1);
+            $stmt1->execute([$row['store_name']]);
+            $storeid = $stmt1->fetchColumn();
+
+            $query2 = "SELECT * FROM message WHERE store_id = ? AND username = ? ORDER BY message_id LIMIT 1;";
+
+            $stmt2 = $pdo->prepare($query2);
+            $stmt2->execute([$storeid, $username]);
+            $results1 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <div class="alert alert-success col-lg-6 col-md-6 col-sm-8" role="alert">
+                <h4 class="alert-heading"><a href="sendmessage.php?id=<?php echo htmlspecialchars($row["store_name"]); ?>"><?php echo htmlspecialchars($row['store_name']); ?></a></h4>
+                <hr>
+                <?php 
+                foreach($results1 as $row1){ ?>
+                            <p class="mb-0">
+                                 <?php if($row1['direction'] === TRUE){   
+                                        echo $row1['username']. ": ";
+                                        }else{
+                                        echo $row['store_name'] . ": ";
+                                        }
+                             echo htmlspecialchars($row1['message']); ?></p>
+                             <?php } ?>
+                </div>
+            <!-- Product card with Bootstrap grid classes -->
+                <?php
         }
     }
+    
     ?>
 </section>
 
