@@ -1,5 +1,4 @@
-<?php 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +23,8 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="mainpagecustomer.php">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
-          <li class="nav-item"><a class="nav-link" href="cart.php"><img src="Images/cartbl 1.png" alt="Cart"></a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.php">
+            <img src="Images/cartbl 1.png" alt="Cart"></a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="Images/profileorange 1.png" alt="Profile pic">
@@ -42,6 +42,7 @@
             </div>
           </li>
         </ul>
+        </div>
       </div>
     </nav>
 
