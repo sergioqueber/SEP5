@@ -22,5 +22,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 else{
-    header("Location: ../README.php");
+    header("Location: ../cart.php");
 }

@@ -71,7 +71,7 @@
       <!-- Sign-up section -->
       <div class="text-center mt-3">
             <p>Don't have an account?</p>
-            <a href="signup.php" class="btn btn-outline-secondary">Sign Up</a>
+            <a href="registercustomer.php" class="btn btn-outline-secondary">Sign Up</a>
           </div>
         </div>
       </div>
