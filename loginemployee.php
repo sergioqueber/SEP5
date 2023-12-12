@@ -26,9 +26,6 @@
                 <li><a class="nav-link active" href="">Home</a></li>
                 <li><a class="nav-link" href="">Products</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
-                <li><a class = "nav-link" href="cart.php">
-                    <img src="Images/cartbl 1.png" alt="Cart">
-                </a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">

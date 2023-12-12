@@ -67,7 +67,7 @@ $username = $_SESSION['username'];
 <br>
 <br>
 <br>
-
+<div class="container mt-5">
     <?php
     
     
@@ -85,19 +85,26 @@ $username = $_SESSION['username'];
         die("Query failed: " . $e->getMessage());
     }
     foreach ($results as $row) {
-        echo "<div>";
+        echo "<div class='row'>";
+        echo "<div class='col-md-6'>";
         echo "<h4>" . htmlspecialchars($row["username"]) . "</h4>";
         echo "<p>First name: " . htmlspecialchars($row["f_name"]) . "</p>";
         echo "<p>Last name: " . htmlspecialchars($row["l_name"]) . "</p>";
+        echo "</div>";
+
+        echo "<div class='col-md-6'>";
         echo "<p>E-mail: " . htmlspecialchars($row["email"]) . "</p>";
         echo "<p>Phone number: " . htmlspecialchars($row["phone_no"]) . "</p>";
         echo "</div>";
+        echo "</div>";
+
     }
     ?>
 
     <form action="editcustomerprofile.php" method="get">
         <button>Edit profil information</button>
     </form>
+    </div>
 
 </body>
 
