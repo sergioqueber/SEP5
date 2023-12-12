@@ -102,7 +102,7 @@ $username = $_SESSION['username'];
     ?>
 
     <form action="editcustomerprofile.php" method="get">
-        <button>Edit profil information</button>
+        <button class="btn btn-primary mt-3">Edit Profile Information</button>
     </form>
     </div>
 
