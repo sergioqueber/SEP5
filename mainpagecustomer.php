@@ -127,8 +127,8 @@ session_start();
                         <div class="mb-3">
                             <label for="category">Category</label>
                             <select class="form-select" id="category" name="category">
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
+                                <option value="Clothes" >Clothes</option>
+                                <option value="" disabled selected>None</option>
                                 <!-- Add more options as needed -->
                             </select>
                         </div>
@@ -138,8 +138,8 @@ session_start();
                             <input id="searchStore" type="text" class = "form-control" name="storeName" placeholder="Store Name"><br>
                         </div>
                         <div class = "mb-3">
-                            <label for="price">Price Range</label>
-                            <input type="text" class="form-control" id="price" name="price">
+                            <label for="price">Max Price</label>
+                            <input type="number" class="form-control" id="maxPrice" name="maxPrice">
                         </div>
 
                         <!-- Add more filter options as needed -->

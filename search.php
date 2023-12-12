@@ -5,15 +5,34 @@
 session_start();
 $storeId = $_SESSION['storeId'];
 
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
+    $storeName = '%';
+    $category = '%';
+    $maxPrice = 100000000;
+    echo empty($_POST['maxPrice']);
 
+    if(isset($_POST['storeName']) && !empty($_POST['storeName'])){
+        $storeName = $_POST["storeName"];  
+    }
+    if(isset($_POST['category']) && !empty($_POST['category'])){
+        $category = $_POST["category"];
+    }
+    if(isset($_POST['maxPrice']) && !empty($_POST['maxPrice'])){
+        $maxPrice = $_POST["maxPrice"];
+        echo $maxPrice;
+    }
+    echo $storeName;
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product Join store s ON product.store_id = s.store_id WHERE store_name = ? ;";
+        $query = "SELECT *
+        FROM product
+                 JOIN store s ON product.store_id = s.store_id
+        WHERE store_name ILIKE ? and category ILIKE ? AND price < ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$storeId]);
+        $stmt->execute([$storeName, $category, $maxPrice]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -22,6 +41,7 @@ $storeId = $_SESSION['storeId'];
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
+}
 ?>
 
 <!DOCTYPE html>
