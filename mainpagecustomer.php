@@ -178,11 +178,16 @@ session_start();
                         </div>
 
                         <!-- Add to cart button or other actions -->
-                        <div class="card-footer">
-                       <form action='includes/additemhandler.inc.php' method='post'>
+                        <div class="card-footer d-flex">
+                        <form action='includes/additemhandler.inc.php' class="m-1" method='post'>
                             <input type='hidden' name='productId' value='<?php echo htmlspecialchars($row["product_id"]); ?>'>
                             <button type='submit' class='btn btn-primary'>Add to Cart</button>
                         </form>
+                        <form action="addtowishlist.php" class="float-right m-1" method="post">
+                            <input type='hidden' name='id' value='<?php echo htmlspecialchars($row["product_id"]); ?>'>
+                            <button type="submit" class='btn btn-primary '>Add to wishlist</button>
+                        </form>
+    
                         </div>
                     </div>
                 </div>

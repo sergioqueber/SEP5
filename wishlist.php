@@ -85,25 +85,38 @@
 <br>
     
     <h1>Your wishlist</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
 
-    <?Php
-    if(empty($results)){
-        echo "<div>";
-        echo "<p>No results:(</p>";
-        echo "</div>";
-    }
-    else{
-        foreach ($results as $row){
-            echo "<div>";
-            echo "<a href = 'product.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "</div>";
-        }
-    }
-        
-   
-    ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if(empty($results)){
+                echo "<tr>";
+                echo "<td colspan='3'>No results:(</td>";
+                echo "</tr>";
+            }
+            else{
+                $totalprice = 0;
+                foreach ($results as $row){
+                    echo "<tr>";
+                    echo "<td><a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
+                    echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
+                    echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+            
+        </tbody>
+    </table>
+
+    
     
 </body>
 </html>
