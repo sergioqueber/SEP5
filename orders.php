@@ -75,7 +75,8 @@
 <br>
 <br>
     
-    <h1>Your cart</h1>
+    <h1>Orders</h1>
+    
 
     <?Php
     if(empty($results)){
@@ -91,9 +92,33 @@
 
             $username = $stmt1->fetchColumn();
 
-            echo "<div>";
-            echo "<a href = 'order.php?id=" .htmlspecialchars($row["order_id"]) ."' >" . htmlspecialchars($username) . "</a><br>";
-            echo "</div>";
+            $query2 = 'SELECT * FROM "order" WHERE order_id = ?;';
+            $stmt2 = $pdo->prepare($query2);
+            $stmt2->execute([$row['order_id']]);
+
+            $results1 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+            ?>
+            <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+
+                        <div class="card-body">
+                            <!-- Product name and link to details page -->
+                            <h5 class="card-title"><a href="order.php?id=<?php echo htmlspecialchars($row["order_id"]); ?>"><?php echo htmlspecialchars($username); ?></a></h5>
+                            <!-- Product price -->
+                            <?php
+                            foreach($results1 as $row1) : ?>
+                            <p class="card-text">Date of placing order: <?php echo htmlspecialchars($row1["date_ordered"]); ?></p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text">Total price: <?php echo htmlspecialchars($row1["total_price"]); ?></p>
+                            <span class="status" data-custom-string="<?php echo htmlspecialchars($row1["status"]); ?> "><p class="card-text">Status: <?php echo htmlspecialchars($row1['status']); ?></p></span>
+                            <?php 
+                            endforeach;  
+                            ?>
+                        </div>
+                    </div>
+            </div>
+            <?php
         }
     }
 

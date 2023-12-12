@@ -79,9 +79,10 @@
 <br>
 <br>
     
-    <h1>Your cart</h1>
+    <h1>Your orders</h1>
 
     <?Php
+    
     if(empty($results)){
         echo "<div>";
         echo "<p>No results:(</p>";
@@ -95,13 +96,77 @@
 
             $storename = $stmt1->fetchColumn();
 
-            echo "<div>";
-            echo "<a href = 'customerorder.php?id=" .htmlspecialchars($row["order_id"]) ."' >" . htmlspecialchars($storename) . "</a><br>";
-            echo "</div>";
+            $query2 = 'SELECT * FROM "order" WHERE order_id = ?;';
+            $stmt2 = $pdo->prepare($query2);
+            $stmt2->execute([$row['order_id']]);
+
+            $results1 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+                <!-- Product card with Bootstrap grid classes -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+
+                        <div class="card-body orderCard">
+                            <!-- Product name and link to details page -->
+                            <h5 class="card-title"><a href="customerorder.php?id=<?php echo htmlspecialchars($row["order_id"]); ?>"><?php echo htmlspecialchars($storename); ?></a></h5>
+                            <!-- Product price -->
+                            <?php
+                            foreach($results1 as $row1) : ?>
+                            <p class="card-text">Date of placing order: <?php echo htmlspecialchars($row1["date_ordered"]); ?></p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text">Total price: <?php echo htmlspecialchars($row1["total_price"]); ?></p>
+                            <span class="status" data-custom-string="<?php echo htmlspecialchars($row1["status"]); ?> "><p class="card-text">Status: <?php echo htmlspecialchars($row1['status']); ?></p></span>
+                            <?php 
+                            endforeach;  
+                            ?>
+                        </div>
+                        
+
+                        <!-- Add to cart button or other actions -->
+                        <div class="card-footer">
+                       <!-- <form action='includes/additemhandler.inc.php' method='post'>
+                            <input type='hidden' name='productId' value='<?php echo htmlspecialchars($row["product_id"]); ?>'>
+                            <button type='submit' class='btn btn-primary'>Add to Cart</button>
+                        </form> -->
+                        </div>
+                    </div>
+                </div>
+                <?php
         }
     }
 
    
     ?>
+    <script>
+        $(document).ready(function () {
+        // Loop through each element with class "status"
+        $(".status").each(function () {
+            // Get the status value for each element
+            var status = $(this).data('customString');
+            console.log("Status:", status);
+
+            // Set the background color based on the status for each element
+            switch (status) {
+                case "Placed":
+                    console.log('Setting background color to orange');
+                    $(this).closest('.orderCard').addClass('bg-warning');
+                    break;
+                case 'Pending':
+                    $(this).closest('.orderCard').css('background-color', 'yellow');
+                    break;
+                case 'Ready':
+                    $(this).closest('.orderCard').css('background-color', 'green');
+                    break;
+                case 'Picked-up':
+                    $(this).closest('.orderCard').css('background-color', 'red');
+                    break;
+                // Add more cases as needed
+                default:
+                    // Default color or no change
+                    break;
+            }
+        });
+    });
+    </script>
 </body>
 </html>

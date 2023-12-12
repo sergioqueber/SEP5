@@ -1,6 +1,23 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+$orderId = isset($_GET['id']) ? $_GET['id'] : null;
+$_SESSION['orderId'] = $orderId;
+    
+    
+    try {
+        require_once "includes/dbh.inc.php";
+
+        $query = 'SELECT * FROM "order" JOIN order_item oi on "order".order_id = oi.order_id JOIN product p on p.product_id = oi.product_id WHERE "order".order_id = ?;';
+
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$orderId]);
+
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,41 +85,47 @@ $username = $_SESSION['username'];
 <br>
 <br>
 
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if(empty($results)){
+                echo "<tr>";
+                echo "<td colspan='3'>No results:(</td>";
+                echo "</tr>";
+            }
+            else{
+                $totalprice = 0;
+                foreach ($results as $row){
+                    echo "<tr>";
+                    echo "<td><a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
+                    echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
+                    echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
+                    echo "<td>" . htmlspecialchars($row["quantity"]) . "</td>";
+                    echo "</tr>";
+                    $totalprice = $totalprice + ($row['price']*$row['quantity']);
+                    $orderstatus = $row['status'];
+                }
+                echo "<tr>";
+                echo "<td colspan='2'>" . "Total: " . htmlspecialchars($totalprice) . "dkk</td>";
+                echo "<td colspan='2'>" . "Status: " . htmlspecialchars($orderstatus) . "</td>";
+                echo "</tr>";
+            }
+            ?>
+            
+        </tbody>
+    </table>
     <?php
-    $orderId = isset($_GET['id']) ? $_GET['id'] : null;
-    $_SESSION['orderId'] = $orderId;
     
     
-    try {
-        require_once "includes/dbh.inc.php";
-
-        $query = 'SELECT * FROM "order" JOIN order_item oi on "order".order_id = oi.order_id JOIN product p on p.product_id = oi.product_id WHERE "order".order_id = ?;';
-
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$orderId]);
-
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    } catch (PDOException $e) {
-        die("Query failed: " . $e->getMessage());
-    }
-    $totalprice = 0;
-    foreach ($results as $row) {
-        echo "<div>";
-        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
-        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
-        echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
-        echo "<p>Price: " . htmlspecialchars($row["price"]) . "</p>";
-        echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
-        echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
-        echo "<p>Quantity : " . htmlspecialchars($row["quantity"]) . "</p>";
-        echo "</div>";
-        $totalprice = $totalprice + ($row['price']*$row['quantity']);
-        $status = $row['status'];
-    }
-    echo"Total price: ".$totalprice;
-    echo "<br>";
-    echo"Current status: ".$status;
     ?>
 
 </body>
