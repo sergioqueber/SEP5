@@ -88,13 +88,7 @@ $username = $_SESSION['username'];
     }
     ?>
     <br>
-    <form action="" method="post">
-        <label for="review">Leave your review below:</label>
-        <input id="review" type="text" name="review" placeholder="Review"><br>
-        <label for="rate">Leave your rate below (1-5):</label>
-        <input id="rate" type="text" name="rate" placeholder="Rate"><br>
-        <input type="button" onclick="addReview();" name="add" value="Add review"/>
-    </form>
+   
 
 
 
@@ -112,20 +106,7 @@ $username = $_SESSION['username'];
     <form action="review.php" method="post">
         <button>See reviews</button>
     </form>
-    <form action="" method="post">
-    <input type="button" onclick="addToWishlist();" name="add" value="Add to wishlist"/>
-    </form>
-    <script>
-        function addToWishlist(){
-            $.ajax({url: "http://localhost/SEP5/addtowishlist.php", type: 'POST'});
-        };
-    </script>
-    
     <script src="js/jquery-3.7.1.min.js"> </script>
-    
-
-
-
 
     <div class="container mt-5">
     <div class="row">
@@ -149,13 +130,21 @@ $username = $_SESSION['username'];
             echo "</form>";
         }
         ?>
-        <form action="addtowishlist.php" class="float-right m-1" method="post">
-                <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId); ?>'>
+        <form action="addtowishlist.php" method="post">
+                <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId);?>'>
                 <button type="submit" class='btn btn-primary '>Add to wishlist</button>
         </form>
-            
-        </div>
 
+        </div>
+        <div class = "row">
+        <form action="" method="post">
+            <label for="review">Leave your review below:</label>
+            <input id="review" type="text" name="review" placeholder="Review"><br>
+            <label for="rate">Leave your rate below (1-5):</label>
+            <input id="rate" type="text" name="rate" placeholder="Rate"><br>
+            <input type="button" onclick="addReview();" name="add" value="Add review"  class='btn btn-primary '/>
+        </form>
+        </div>
     </div>
 </div>
 
