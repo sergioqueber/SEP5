@@ -85,26 +85,44 @@
 <br>
 <br>
     <section>
-    <h3>Edit info</h3>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Edit Info</h3>
+                <hr>
+            </div>
+        </div>
+
 
     <?php
         foreach ($results as $row){
-            echo'<form action="customerprofile.php" method="post">';
-            echo'<label for="username">Username:</label><br>';
-            echo'<input id="username" type="text" name="username" value="'.htmlspecialchars($row["username"]).'" readonly /><br>';
-            echo'<label for="f_name">First name:</label><br>';
-            echo'<input id="f_name" type="text" name="f_name" value="'.htmlspecialchars($row["f_name"]).'" /><br>';
-            echo'<label for="l_name">Last name:</label><br>';
-            echo'<input id="l_name" type="text" name="l_name" value="'.htmlspecialchars($row["l_name"]).'" /><br>';
-            echo'<label for="email">E-mail:</label><br>';
-            echo'<input id="email" type="text" name="email" value="'.htmlspecialchars($row["email"]).'" /><br>';
-            echo'<label for="phone_no">Phone number:</label><br>';
-            echo'<input id="phone_no" type="text" name="phone_no" value="'.htmlspecialchars($row["phone_no"]).'" /><br>';
-            echo'<button onclick="editProfile();" >Edit</button>';
-            echo "</form>";
+            echo '<form action="customerprofile.php" method="post">';
+            echo '<div class="form-group">';
+            echo '<label for="username"><strong>Username:</strong></label>';
+            echo '<input id="username" type="text" name="username" value="' . htmlspecialchars($row["username"]) . '" readonly class="form-control" />';
+            echo '</div>';
+            echo '<div class="form-group">';
+            echo '<label for="f_name"><strong>First name:</strong></label>';
+            echo '<input id="f_name" type="text" name="f_name" value="' . htmlspecialchars($row["f_name"]) . '" class="form-control" />';
+            echo '</div>';
+            echo '<div class="form-group">';
+            echo '<label for="l_name"><strong>Last name:</strong></label>';
+            echo '<input id="l_name" type="text" name="l_name" value="' . htmlspecialchars($row["l_name"]) . '" class="form-control" />';
+            echo '</div>';
+            echo '<div class="form-group">';
+            echo '<label for="email"><strong>E-mail:</strong></label>';
+            echo '<input id="email" type="text" name="email" value="' . htmlspecialchars($row["email"]) . '" class="form-control" />';
+            echo '</div>';
+            echo '<div class="form-group">';
+            echo '<label for="phone_no"><strong>Phone number:</strong></label>';
+            echo '<input id="phone_no" type="text" name="phone_no" value="' . htmlspecialchars($row["phone_no"]) . '" class="form-control" />';
+            echo '</div>';
+            echo '<button type="button" onclick="editProfile();" class="btn btn-primary">Edit</button>';
+            echo '</form>';
         }
 
     ?>
+</div>
     <script>
         function editProfile(){
             var username = $('input[name=username]').val();
