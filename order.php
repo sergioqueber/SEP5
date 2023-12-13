@@ -102,7 +102,7 @@ $_SESSION['orderId'] = $orderId;
                 $totalprice = 0;
                 foreach ($results as $row){
                     echo "<tr>";
-                    echo "<td><a href='product.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
+                    echo "<td><a href='emmployeeproduct.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
                     echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
                     echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["quantity"]) . "</td>";
@@ -136,7 +136,7 @@ $_SESSION['orderId'] = $orderId;
         function changeStatus(){
             var status = $('select[name=status]').val();
             var formData = {status: status};
-            $.ajax({url: "http://localhost/MyWebsite/includes/orderstatus.inc.php", type: 'POST', data: formData});
+            $.ajax({url: "http://localhost/SEP5/includes/orderstatus.inc.php", type: 'POST', data: formData});
             $('select[name=status]').val('');
         };
     </script>
