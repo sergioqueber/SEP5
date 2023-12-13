@@ -51,11 +51,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $storeId1 = $stmt4->fetchColumn();
         $_SESSION['store_id'] = $storeId1;
 
+        header('Location: ../mainpagemanager.php');
+
         die();
 
     } catch (PDOException $e) {
         die("Query failed" . $e->getMessage());
     }
 }else{
-    header("Location: ../index.php");
+    header("Location: ../mainpagemanager.php");
 };
