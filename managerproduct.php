@@ -120,10 +120,10 @@ $username = $_SESSION['username'];
     <script>
         function stock(){
             var stock = $('input[name=stock]').val();
-            var storeId = $('input[name=productId]').val();
+            var productId = $('input[name=productId]').val();
             var formData = {
                 stock: stock,
-                storeId: storeId
+                productId: productId
             };
             $.ajax({
                 url: "http://localhost/SEP5/includes/stockUpdate.inc.php",
