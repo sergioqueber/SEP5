@@ -47,8 +47,6 @@ $_SESSION['orderId'] = $orderId;
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
-                <li><a class="nav-link" href="#">About us</a></li>
                 <li><a class="nav-link" href="messages.php">Messages</a></li>
                 <li><a class="nav-link" href="orders.php">Orders</a></li>
                 <li class="nav-item dropdown">
@@ -65,7 +63,6 @@ $_SESSION['orderId'] = $orderId;
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#.php">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
@@ -83,7 +80,7 @@ $_SESSION['orderId'] = $orderId;
     
 <div class = "container mt-5">
     <div class = "row">
-        <h1>Orders</h1>
+        <h1>Order</h1>
         <hr>
     </div>
 

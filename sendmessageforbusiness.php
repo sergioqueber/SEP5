@@ -9,7 +9,7 @@ session_start();
     <title>Document</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
-    <script src="js/jquery-3.7.1.min.js"> </script>t>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 <body>
 <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
