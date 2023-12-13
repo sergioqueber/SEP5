@@ -106,25 +106,6 @@
             </div>
         </div>
   <script src="js/jquery-3.7.1.min.js"></script>
-  <script>
-    function login() {
-            var username = $('input[name=username]').val();
-            var psw = $('input[name=password]').val();
-            var formData = {
-                username: username,
-                psw: psw
-            };
-            $.ajax({
-                url: "http://localhost/SEP5/includes/loginhandler.inc.php",
-                type: 'POST',
-                data: formData,
-                error: function () {
-                    
-                    $('#logInFailed').modal('show');
-                }
-            });
-        };
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 </body>
 </html>
