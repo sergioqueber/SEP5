@@ -1,5 +1,6 @@
 <?php
 session_start();
+echo $_SESSION['store_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"> </script>
 </head>
 <body>
 
@@ -56,20 +59,43 @@ session_start();
 <br>
 <br>
 <br>
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Register employee</h3>
+                <hr>
+            </div>
+        </div>
 
-    <h1>Register employee</h1>
 
-    <form action="includes/registeremployee.inc.php" method="post">
-        <input type="text" name="username" placeholder="Username"><br><br>
-        <input type="text" name="password" placeholder="Password"><br><br>
-        <input type="text" name="f_name" placeholder="First name"><br><br>
-        <input type="text" name="l_name" placeholder="Last name"><br><br>
-        <input type="text" name="email" placeholder="E-mail"><br><br>
-        <input type="text" name="cpr" placeholder="CPR"><br><br>
-        <label for="date">Date of employment:</label><br>
-        <input id="date" type="date" name="date_employed"><br><br>
-        <br><br>
-        <button>Register</button>
+    
+            <form action="includes/registeremployee.inc.php" method="post">
+            <div class="form-group mb-3">
+            <input type="text" name="username" placeholder="Username" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+            <input type="password" name="psw" placeholder="Password" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+            <input type="text" name="f_name" placeholder="First name" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+            <input type="text" name="l_name" placeholder="Last name" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+            <input type="text" name="email" placeholder="E-mail" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+            <input type="text" name="cpr" placeholder="CPR" class="form-control" />
+            </div>
+            <div class="form-group mb-3">
+            <label for="date"><strong>Date of employment:</strong></label>
+            <input id="date" type="date" name="date_employed" class="form-control" pattern="\d{4}-\d{2}-\d{2}" />
+            </div>
+        <button type="submit" class="btn btn-primary" >Register</button>
     </form>
+</div>
+
+    
 </body>
 </html>

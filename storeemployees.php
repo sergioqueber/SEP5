@@ -75,7 +75,7 @@
 <br>
 <br>
     
-    <h1>Your cart</h1>
+    <h1>Employees</h1>
 
     <?Php
     if(empty($results)){
@@ -85,10 +85,12 @@
     }
     else{
         foreach ($results as $row){
-
-            echo "<div>";
-            echo "<a href = 'storeemployee.php?id=" .htmlspecialchars($row["username"]) ."' >" . htmlspecialchars($row['f_name']). " " . htmlspecialchars($row['l_name']). "</a><br>";
-            echo "</div>";
+            ?>
+            <div class="alert alert-primary col-lg-3 col-md-4 col-sm-6" role="alert">
+                <a href='storeemployee.php?id=<?php echo htmlspecialchars($row["username"]); ?>' class="alert-link"><?php echo htmlspecialchars($row['f_name']). " " . htmlspecialchars($row['l_name'])?></a>
+            </div>
+            <?php
+           
         }
     }
 

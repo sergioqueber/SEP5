@@ -1,7 +1,9 @@
 <?php
+session_start();
+$employee = $_SESSION['employee'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $employee = $_SESSION['employee'];
+    
 
     try {
         require_once "dbh.inc.php";
