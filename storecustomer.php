@@ -67,36 +67,37 @@ $username = $_SESSION['username'];
 <br>
 <br>
 <br>
-
+<div class="container">
     <?php
     //$storeId = isset($_GET['id']) ? $_GET['id'] : null;
     $storeId = $_SESSION['storeId'];
     
     
+    
+
     try {
         require_once "includes/dbh.inc.php";
-
         $query = 'SELECT * from store JOIN address a on a.address_id = store.address_id JOIN city c on c.postcode = a.postcode WHERE store_id = ?;';
-
         $stmt = $pdo->prepare($query);
         $stmt->execute([$storeId]);
-
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-    $totalprice = 0;
+
     foreach ($results as $row) {
-        echo "<div>";
-        echo "<h2>" . htmlspecialchars($row["store_name"]) . "'</h2>";
+        echo "<div class='row'>";
+        echo "<div class='col-12'>";
+        echo "<h2>" . htmlspecialchars($row["store_name"]) . "</h2>";
         echo "<p>Phone number: " . htmlspecialchars($row["phone_no"]) . "</p>";
         echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
         echo "<p>CVR: " . htmlspecialchars($row["cvr"]) . "</p>";
         echo "<p>Address: " . htmlspecialchars($row["street"]) ." ". htmlspecialchars($row["house_no"]) .", ". htmlspecialchars($row["postcode"])." ". htmlspecialchars($row["name"]) ."</p>";
-        echo "</div>";
+        echo "</div>"; // Close col-12
+        echo "</div>"; // Close row
     }
     ?>
+</div>
 
     <form action="search.php" method="get">
         <button>Our products</button>
