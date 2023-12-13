@@ -118,28 +118,32 @@ $username = $_SESSION['username'];
 
         </div>
         <div class = "row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Reviews</h3>
+                <hr>
+            </div>
+        </div>
+        
+        <div class = "row">
             
-        <form action="" method="post">
-        <div class="form-group">
-            <label for="review">Leave your review below:</label>
-            <input class="form-control" id="review" type="text" name="review" placeholder="Review"><br>
-        </div>    
-        <div class="form-group">
-            <label for="rate">Leave your rate below (1-5):</label>
-            <input class="form-control" id="rate" type="text" name="rate" placeholder="Rate"><br>
-        </div>  
-        <div class="form-group">
-            <input type="button" onclick="addReview();" name="add" value="Add review"  class='btn btn-primary mb-3'/>
-        </div>  
-        </form>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="review">Leave your review below:</label>
+                    <input class="form-control" id="review" type="text" name="review" placeholder="Review"><br>
+                </div>    
+                <div class="form-group">
+                    <label for="rate">Leave your rate below (1-5):</label>
+                    <input class="form-control" id="rate" type="text" name="rate" placeholder="Rate"><br>
+                </div>  
+                <div class="form-group">
+                    <input type="button" onclick="addReview();" name="add" value="Add review"  class='btn btn-primary mb-3'/>
+                </div>  
+            </form>
         </div>
     </div>
-    <div class="col-md-12">
-            <h3 class="mb-3">Reviews</h3>
-            <hr>
-        </div>
-    <div id="reviews" class="row">
     
+    <div id="reviews" class="row">
+        
     </div>
 </div>
 
