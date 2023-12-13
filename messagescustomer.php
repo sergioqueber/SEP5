@@ -86,9 +86,12 @@ $username = $_SESSION['username'];
 
     <script src="js/jquery-3.7.1.min.js"></script>
 
-    <section>
-    <h3>Messages</h3>
-
+    
+    <div class="container mt-5">
+        <div class = "row">
+            <h3>Messages</h3>
+            <hr>
+        </div>
     <?php
     if(empty($results)){
         echo "<div>";
@@ -129,9 +132,7 @@ $username = $_SESSION['username'];
     }
     
     ?>
-</section>
-
-
+    </div>
 
 </body>
 
