@@ -35,20 +35,20 @@
 
 <body>
     
-    <nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
+<nav class="navbar navbar-custom navbar-expand-sm navbar-light fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img src="Images/Blocal logo.png" width="30" height="30" alt="logo" class="img-fluid">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpagecustomer.php">Home</a></li>
+                <li><a class="nav-link" href="">Home</a></li>
                 <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
                 <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
@@ -70,17 +70,17 @@
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="customerprofile.php">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
 
+               
                 
-                    
-                </ul>
-            </div>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     
     <div></div>
    
@@ -141,15 +141,5 @@
     </div> 
     <script src="js/jquery-3.5.1.min.js"></script>
 
-   
-    ?>
-    <form action="" method="post">
-        <input type="button" onclick="placeOrder();" name="place" value="Place order"/>
-    </form>
-    <script>
-        function placeOrder(){
-            $.ajax({url: "http://localhost/MyWebsite/includes/placeorder.inc.php", type: 'POST'});
-        };
-    </script>
 </body>
 </html>

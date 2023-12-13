@@ -46,10 +46,10 @@ $username = $_SESSION['username'];
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="">Home</a></li>
+                <li><a class="nav-link" href="">Home</a></li>
                 <li><a class="nav-link" href="wishlist.php">Wishlist</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
-                <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
+                <li><a class="nav-link active" href="messagescustomer.php">Messages</a></li>
                 <li><a class="nav-link" href="customerorders.php">Orders</a></li>
                 <li><a class = "nav-link" href="cart.php">
                     <img src="Images/cartbl 1.png" alt="Cart">
@@ -68,7 +68,7 @@ $username = $_SESSION['username'];
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="customerprofile.php">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>

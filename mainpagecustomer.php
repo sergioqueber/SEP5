@@ -68,13 +68,6 @@ session_start();
     <form action="storescustomer.php" method="get">
         <button>Stores</button>
     </form>
-
-    <form action="search.php" method="post">
-        <label for="search">Search for products in store:</label>
-        <input id="search" type="text" name="productsearch" placeholder="Store Id"><br>
-        <button>Search</button>
-    </form>
-    <br>
     
     <?php
         try {
