@@ -1,8 +1,9 @@
 <?php
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-   $stock = $_POST["stock"];
-   $productId = $_POST["productId"];
+   session_start();
+    $stock = $_POST["stock"];
+   $productId = $_SESSION["product_id"];
 
     try {
         require_once "dbh.inc.php";
