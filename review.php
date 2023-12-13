@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM review WHERE product_id = ?;";
+        $query = "SELECT * FROM review WHERE product_id = ? GROUP BY review_id ORDER BY review_id DESC; ";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productId]);
