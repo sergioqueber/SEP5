@@ -83,19 +83,30 @@ $username = $_SESSION['username'];
     }
 
     foreach ($results as $row) {
-        echo "<div>";
-        echo "<img src='" . htmlspecialchars($row["image_path"]) . "'>";
-        echo "<h4>" . htmlspecialchars($row["product_name"]) . "</h4>";
-        echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
-        echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
-        echo "</div>";
+            echo "<div class='col-md-6'>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
+            echo "</div>";
+
+            echo "<div class='col-md-6'>";
+            echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
+            echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
+            echo "<p>Price: $" . htmlspecialchars($row["price"]) . "</p>";
+            echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
+            echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
     }
     ?>
+        <form action='includes/deleteeproduct.inc.php' method='post'>
+            <input type='hidden' name='productId' value='<?php htmlspecialchars($row["product_id"]);?>'>
+            <button type='submit' class='btn btn-primary'>Delete Product</button>
+        </form>
+        <form action="managerreview.php" method="post">
+            <button type='submit' class='btn btn-primary'>See reviews</button>
+        </form>
+    </div>
     <br>
-    <form action="managerreview.php" method="post">
-        <button>See reviews</button>
+   
+    <form action="includes/deleteeproduct.inc.php" method="post">
+        <button>Delete product</button>
     </form>
     
     <script src="js/jquery-3.7.1.min.js"> </script>

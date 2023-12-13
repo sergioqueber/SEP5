@@ -137,7 +137,7 @@
                     Your profile has been updated.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick = history.back() >Close</button>
+                    <button type="button" class="btn btn-secondary" onclick = history.back() >Back</button>
                 </div>
             </div>
         </div>
