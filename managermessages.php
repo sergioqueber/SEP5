@@ -81,7 +81,7 @@ session_start();
             $storename = $stmt1->fetchColumn();
 
             echo "<div>";
-            echo "<a href = 'managermessagesstore.php?id=" .htmlspecialchars($row["store_id"]) ."' >" . htmlspecialchars($storename) . "</a><br>";
+            echo "<a href = 'managermessagestore.php?id=" .htmlspecialchars($row["store_id"]) ."' >" . htmlspecialchars($storename) . "</a><br>";
             echo "</div>";
         }
     

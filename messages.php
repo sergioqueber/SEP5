@@ -2,7 +2,7 @@
 
 session_start();
 $username = $_SESSION['username'];
-$storeId = $_SESSION['store_id'] ;
+$storeId = $_SESSION['store_id'];
 
     try {
         require_once "includes/dbh.inc.php";
@@ -14,7 +14,7 @@ $storeId = $_SESSION['store_id'] ;
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $pdo = null;
+        // $pdo = null;
         $stmt = null;
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -30,6 +30,7 @@ $storeId = $_SESSION['store_id'] ;
     <title>Document</title>
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 
 <body>
@@ -84,7 +85,7 @@ $storeId = $_SESSION['store_id'] ;
     <script src="js/jquery-3.5.1.min.js"></script>
 
     <section>
-    <h3>Search results</h3>
+    <h3>Messages</h3>
 
     <?php
     if(empty($results)){
@@ -94,10 +95,34 @@ $storeId = $_SESSION['store_id'] ;
     }
     else{
         foreach ($results as $row){
-            echo "<div>";
-            echo "<br><br>";
-            echo "<a href = 'sendmessageforbusiness.php?id=" .htmlspecialchars($row["username"]) ."' >" . htmlspecialchars($row["username"]) . "</a><br>";
-            echo "</div>";
+
+            $query1 = 'SELECT store_name FROM store Where store_id = ?;';
+
+            $stmt1 = $pdo->prepare($query1);
+            $stmt1->execute([$storeId]);
+            $storename = $stmt1->fetchColumn();
+            $_SESSION['storename'] = $storename;
+
+            $query2 = "SELECT * FROM message WHERE store_id = ? AND username = ? ORDER BY message_id DESC LIMIT 1;";
+
+            $stmt2 = $pdo->prepare($query2);
+            $stmt2->execute([$storeId, $row['username']]);
+            $results1 = $stmt2->fetchAll(PDO::FETCH_ASSOC); ?>
+            <div class="alert alert-success col-lg-6 col-md-6 col-sm-8" role="alert">
+                <h4 class="alert-heading"><a href="sendmessageforbusiness.php?id=<?php echo htmlspecialchars($row["username"]); ?>"><?php echo htmlspecialchars($row['username']); ?></a></h4>
+                <hr>
+                <?php 
+                foreach($results1 as $row1){ ?>
+                            <p class="mb-0">
+                                 <?php if($row1['direction'] == TRUE){   
+                                        echo $row1['username']. ": ";
+                                        }else{
+                                        echo $storename . ": ";
+                                        }
+                             echo htmlspecialchars($row1['message']); ?></p>
+                             <?php } ?>
+                </div>
+                <?php
         }
     }
     ?>
