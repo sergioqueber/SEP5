@@ -97,15 +97,16 @@ $username = $_SESSION['username'];
         echo "</div>"; // Close row
     }
     ?>
-</div>
 
-    <form action="search.php" method="get">
-        <button>Our products</button>
+
+    <form action="search.php" method="get" class="mb-2">
+        <button type="submit" class="btn btn-primary">Our products</button>
     </form>
 
-    <form action="sendmessage.php" method = "get">
-        <button>Send message</button>
+    <form action="sendmessage.php" method="get">
+        <button type="submit" class="btn btn-secondary">Send message</button>
     </form>
+    </div>
 
 </body>
 
