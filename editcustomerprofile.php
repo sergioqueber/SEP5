@@ -143,19 +143,29 @@
         </div>
     </div>
     <script>
-        function editProfile(){
+        function editProfile() {
             var username = $('input[name=username]').val();
             var f_name = $('input[name=f_name]').val();
             var l_name = $('input[name=l_name]').val();
             var email = $('input[name=email]').val();
             var phone_no = $('input[name=phone_no]').val();
-            var formData = {username: username,
-                            f_name: f_name,
-                            l_name: l_name,
-                            email: email,
-                            phone_no: phone_no};
-            $.ajax({url: "http://localhost/SEP5/includes/editcustomerprofile.inc.php", type: 'POST', data: formData})
-        };
+            var formData = {
+                username: username,
+                f_name: f_name,
+                l_name: l_name,
+                email: email,
+                phone_no: phone_no
+            };
+            $.ajax({
+                url: "http://localhost/SEP5/includes/editcustomerprofile.inc.php",
+                type: 'POST',
+                data: formData,
+                success: function () {
+                    
+                    $('#editSuccessModal').modal('show');
+                }
+            });
+        }
     </script>
 </section>
 </body>
