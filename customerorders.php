@@ -145,7 +145,7 @@
         // Loop through each element with class "status"
         $(".status").each(function () {
             // Get the status value for each element
-            var status = $(this).data('customString');
+            var status = $(this).data('data-custom-string="value"');
             console.log("Status:", status);
 
             // Set the background color based on the status for each element
