@@ -158,7 +158,7 @@ $username = $_SESSION['username'];
                     Your review was added successfully
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick = history.back() >Back</button>
+                    <button type="button" class="btn btn-secondary" id = 'close' >Back</button>
                 </div>
             </div>
         </div>
@@ -176,6 +176,10 @@ $username = $_SESSION['username'];
             $('input[name=rate]').val('');
             
         };
+        $("#close").click(function(){
+            $('#editSuccessModal').modal('hide');
+        });
+         
     </script>
 
     <script src="js/jquery-3.5.1.min.js"></script>
