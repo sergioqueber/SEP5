@@ -99,8 +99,8 @@ $storeName = $_SESSION['storename'];
     ?>
 
 
-    <form action="search.php" method="get" class="mb-2">
-        <input id="searchStore" type="hidden" class = "form-control" name="storeName" placeholder="Store Name" value="<?php echo $storeName;?>"><br>
+    <form action="search.php" method="post" class="mb-2">
+        <input id="searchStore" type="hidden" name="storeName" value="<?php echo $storeName;?>"><br>
         <button type="submit" class="btn btn-primary">Our products</button>
     </form>
     <a href="sendmessage.php?id=<?php echo $storeName;?>" class="btn btn-primary mb-3" role="button">Send message</a>
