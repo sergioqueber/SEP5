@@ -66,7 +66,6 @@ $storeId = $_SESSION['store_id'];
                         ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Profile</a>
                         <a class="dropdown-item" href="includes/logout.inc.php">Log-out</a>
                     </div>
                 </li>
