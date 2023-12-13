@@ -80,7 +80,7 @@ session_start();
         try {
             require_once "includes/dbh.inc.php";
     
-            $query = "SELECT * FROM product LIMIT 20; ";
+            $query = "SELECT * FROM product LIMIT 20 WHERE is_deleted = false;";
     
             $stmt = $pdo->prepare($query);
             $stmt->execute();
