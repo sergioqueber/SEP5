@@ -95,13 +95,13 @@ $username = $_SESSION['username'];
         echo "<div class='row'>";
         echo "<div class='col-md-6'>";
         echo "<h4>" . htmlspecialchars($row["username"]) . "</h4>";
-        echo "<p>First name: " . htmlspecialchars($row["f_name"]) . "</p>";
-        echo "<p>Last name: " . htmlspecialchars($row["l_name"]) . "</p>";
+        echo "<p><strong>First name:</strong> " . htmlspecialchars($row["f_name"]) . "</p>";
+        echo "<p><strong>Last name:</strong> " . htmlspecialchars($row["l_name"]) . "</p>";
         echo "</div>";
 
         echo "<div class='col-md-6'>";
-        echo "<p>E-mail: " . htmlspecialchars($row["email"]) . "</p>";
-        echo "<p>Phone number: " . htmlspecialchars($row["phone_no"]) . "</p>";
+        echo "<p><strong>E-mail:</strong> " . htmlspecialchars($row["email"]) . "</p>";
+        echo "<p><strong>Phone number:</strong> " . htmlspecialchars($row["phone_no"]) . "</p>";
         echo "</div>";
         echo "</div>";
 
