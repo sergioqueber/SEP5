@@ -135,7 +135,7 @@
                             l_name: l_name,
                             email: email,
                             phone_no: phone_no};
-            $.ajax({url: "http://localhost/MyWebsite/includes/editcustomerprofile.inc.php", type: 'POST', data: formData})
+            $.ajax({url: "http://localhost/SEP5/includes/editcustomerprofile.inc.php", type: 'POST', data: formData})
         };
     </script>
 </section>
