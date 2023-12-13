@@ -93,8 +93,8 @@ $username = $_SESSION['username'];
         echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
         echo "<p>CVR: " . htmlspecialchars($row["cvr"]) . "</p>";
         echo "<p>Address: " . htmlspecialchars($row["street"]) ." ". htmlspecialchars($row["house_no"]) .", ". htmlspecialchars($row["postcode"])." ". htmlspecialchars($row["name"]) ."</p>";
-        echo "</div>"; // Close col-12
-        echo "</div>"; // Close row
+        echo "</div>";
+        echo "</div>"; 
     }
     ?>
 
