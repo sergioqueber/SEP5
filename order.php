@@ -102,7 +102,7 @@ $_SESSION['orderId'] = $orderId;
                 $totalprice = 0;
                 foreach ($results as $row){
                     echo "<tr>";
-                    echo "<td><a href='emmployeeproduct.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
+                    echo "<td><a href='employeeproduct.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></td>";
                     echo "<td><img src='" . htmlspecialchars($row["image_path"]) . "' width='50px' alt='Product Image'></td>";
                     echo "<td>" . htmlspecialchars($row["price"]) . "</td>";
                     echo "<td>" . htmlspecialchars($row["quantity"]) . "</td>";
