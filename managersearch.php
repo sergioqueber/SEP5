@@ -88,10 +88,10 @@ $storeId = $_SESSION['store_id'];
    
 
 <div class="container mt-5">
-    <div class = "row">
-        <h3>Products</h3>
-        <hr>
-    </div>
+        <div class="col-md-12">
+            <h2 class="mb-3">Products</h2>
+            <hr>
+        </div>
     <div class = "row">
     <?php
     if (empty($results)) {
