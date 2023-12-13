@@ -135,6 +135,10 @@ $username = $_SESSION['username'];
         </form>
         </div>
     </div>
+    <div class="col-md-12">
+            <h3 class="mb-3">Reviews</h3>
+            <hr>
+        </div>
     <div id="reviews" class="row">
     
     </div>
