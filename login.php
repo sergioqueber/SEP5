@@ -70,7 +70,7 @@
               <input class="form-control" name="password" placeholder="Password" type="password" required>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block" id = "singIn">Sign In</button>
             </div>
           </form>
         </div>
@@ -89,6 +89,11 @@
   </div>
 
   <script src="js/jquery-3.7.1.min.js"></script>
+  <script>
+    $("#singIn").click(function(){
+      $('#editSuccessModal').modal('show');
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 </body>
 </html>
