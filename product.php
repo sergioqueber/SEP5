@@ -98,9 +98,10 @@ $username = $_SESSION['username'];
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
-
+            
             echo "<div class='col-md-6'>";
             echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
+            echo "<h2>" . htmlspecialchars($row["store_name"]) . "</h2>";
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
             echo "<p>Price:" . htmlspecialchars($row["price"]) . "dkk</p>";
             echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
