@@ -9,11 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$_SESSION['cart'], $productID ,1]);
         
-        header("Location: ../popupCart.php");
-        $query = " UPDATE product SET stock = stock-1 WHERE product_id = ?;";
+        
+        $query = "UPDATE product SET stock = stock-1 WHERE product_id = ?;";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productID]);
-
+        header("Location: ../popupCart.php");
         // $pdo = null;
         $stmt = null;
     } catch (\Throwable $th) {
