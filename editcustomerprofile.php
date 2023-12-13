@@ -30,7 +30,7 @@
     
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
-    
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </head>
 
 <body>
@@ -124,7 +124,7 @@
     </form>
 </div>
 
-    <div class="modal fade" id="editSuccessModal" tabindex="-1" role="dialog" aria-labelledby="editSuccessModalLabel" aria-hidden="true">
+    <div class="modal fade modal-dialog" id="editSuccessModal" tabindex="-1" role="dialog" aria-labelledby="editSuccessModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -167,7 +167,6 @@
             });
         }
     </script>
-    <script src="js/jquery-3.7.1.min.js"> </script>
 </section>
 </body>
 
