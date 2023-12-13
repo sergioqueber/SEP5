@@ -108,7 +108,7 @@ $storeId = $_SESSION['store_id'];
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='card-img-top' alt='" . htmlspecialchars($row["product_name"]) . "'>";
             echo "<div class='card-body'>";
             echo "<h5 class='card-title'><a href='managerproduct.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></h5>";
-            echo "<p class='card-text'>" . htmlspecialchars($deleted) . "</p>";
+            echo "<p class='card-text' strong>" . htmlspecialchars($deleted) . "</p>";
             echo "<p class='card-text'>" . htmlspecialchars($row["description"]) . "</p>";
             echo "<p class='card-text'>" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p class='card-text'>" . htmlspecialchars($row["category"]) . "</p>";
