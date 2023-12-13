@@ -83,7 +83,7 @@ session_start();
         <?php
         $username = $_SESSION['username'];
         $storename = isset($_GET['id']) ? $_GET['id'] : null;
-        $storeId = $_SESSION['storeId'];
+        $storeId = $_SESSION['store_id'];
         $_SESSION['storename'] = $storename;
         try {
             require_once "includes/dbh.inc.php";
