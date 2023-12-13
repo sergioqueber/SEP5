@@ -1,6 +1,7 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
+$storeName = $_SESSION['storename'];
 ?>
 
 <!DOCTYPE html>
@@ -101,10 +102,10 @@ $username = $_SESSION['username'];
     <form action="search.php" method="get" class="mb-2">
         <button type="submit" class="btn btn-primary">Our products</button>
     </form>
-
-    <form action="sendmessage.php?id= <?php echo $_SESSION['storename'];?>" method="get">
+    <a href="sendmessage.php?id= <?php echo $storeName;?>" class="btn btn-primary mb-3" role="button">Send message</a>
+   <!--  <form action="sendmessage.php?id= <?php echo $storeName;?>" method="get">
         <button type="submit" class="btn btn-secondary">Send message</button>
-    </form>
+    </form> -->
     </div>
 
 </body>
