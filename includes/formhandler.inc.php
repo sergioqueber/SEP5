@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileName = $_FILES['image']['name'];
     $tmpLoc = $_FILES['image']['tmp_name'];
     $storeId = $_SESSION['store_id'];
+    $category = $_POST["category"];
 
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $pdo = null;
                 $stmt = null;
 
-                header("Location: ../index.php");
+                header("Location: ../managerstore.php?id=" . $storeId);
                 die();
             } catch (PDOException $e) {
                 die("Query failed" . $e->getMessage());
