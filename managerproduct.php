@@ -128,7 +128,7 @@ $username = $_SESSION['username'];
                 type: 'POST',
                 data: formData
             });
-        }
+        };
     </script>
 
 </body>
