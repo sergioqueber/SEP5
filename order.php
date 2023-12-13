@@ -80,6 +80,13 @@ $_SESSION['orderId'] = $orderId;
 <br>
 <br>
 <br>
+    
+<div class = "container mt-5">
+    <div class = "row">
+        <h1>Orders</h1>
+        <hr>
+    </div>
+
 
     <table class="table table-bordered">
         <thead>
@@ -119,6 +126,7 @@ $_SESSION['orderId'] = $orderId;
             
         </tbody>
     </table>
+    </div>
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3 mx-auto">
             <form action="" class="row" method="post">
