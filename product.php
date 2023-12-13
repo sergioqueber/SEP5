@@ -87,18 +87,6 @@ $username = $_SESSION['username'];
         die("Query failed: " . $e->getMessage());
     }
     ?>
-    <form action="" method="post">
-        <input type="text" name="quantity" value="" placeholder="Quantity"/>
-        <input type="button" onclick="addToCart();" name="add" value="Add to cart"/>
-    </form>
-    <script>
-        function addToCart(){
-            var quantity = $('input[name=quantity]').val();
-            var formData = {quantity: quantity};
-            $.ajax({url: "http://localhost/MyWebsite/addproducttocart.php", type: 'POST', data: formData});
-            $('input[name=quantity]').val('');
-        };
-    </script>
     <br>
     <form action="" method="post">
         <label for="review">Leave your review below:</label>
@@ -116,7 +104,7 @@ $username = $_SESSION['username'];
             var rate = $('input[name=rate]').val();
             var formData = {review: review,
                             rate: rate};
-            $.ajax({url: "http://localhost/MyWebsite/includes/reviewhandler.inc.php", type: 'POST', data: formData});
+            $.ajax({url: "http://localhost/SEP5/includes/reviewhandler.inc.php", type: 'POST', data: formData});
             $('input[name=review]').val('');
             $('input[name=rate]').val('');
         };
@@ -125,11 +113,11 @@ $username = $_SESSION['username'];
         <button>See reviews</button>
     </form>
     <form action="" method="post">
-        <input type="button" onclick="addToWishlist();" name="add" value="Add to wishlist"/>
+    <input type="button" onclick="addToWishlist();" name="add" value="Add to wishlist"/>
     </form>
     <script>
         function addToWishlist(){
-            $.ajax({url: "http://localhost/MyWebsite/addtowishlist.php", type: 'POST'});
+            $.ajax({url: "http://localhost/SEP5/addtowishlist.php", type: 'POST'});
         };
     </script>
     
@@ -162,6 +150,10 @@ $username = $_SESSION['username'];
             echo "</div>";
         }
         ?>
+        <form action="addtowishlist.php" class="float-right m-1" method="post">
+                <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId); ?>'>
+                <button type="submit" class='btn btn-primary '>Add to wishlist</button>
+        </form>
     </div>
 </div>
 
