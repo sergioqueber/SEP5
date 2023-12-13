@@ -64,12 +64,26 @@ session_start();
 <br>
 <br>
 <br>
+
+<div class="container">
+    <div class="row">
+    <div class="col-8">
+        <form action="" method="post">
+        <input type="text" name="message" value="" class="form-contro col-9" placeholder="Write your message here"/>
+        <input type="button" class="btn btn-primary float-right col-1" onclick="submitForm();" name="send_message" value="Send"/>
+    </form>
+    </div>
+    </div>
+</div>
+    <br>
     <div class="container" id="display">
+        <div class="row">
+        
         <br>
         <?php
         $username = $_SESSION['username'];
-        echo $_SESSION['username'];
         $storename = isset($_GET['id']) ? $_GET['id'] : null;
+        $_SESSION['storename'] = $storename;
         try {
             require_once "includes/dbh.inc.php";
 
@@ -94,51 +108,41 @@ session_start();
             }
             else{
                 foreach($results as $row){
-                    ?>
+                    if($row['direction'] == TRUE){
                      
-                    <?php 
-                    if($row['direction'] === TRUE){
-                     ?> <div class="alert alert-success d-flex justify-content-end" role="alert">
-                     <h4 class="alert-heading"><?php if($row['direction'] === TRUE){   
+                     echo '<div class="alert alert-success col-7" role="alert">';
+                     echo '<h4 class="alert-heading">'; 
+                     if($row['direction'] === TRUE){   
                                              echo $row['username']. ": ";
                                              }else{
                                              echo $storename . ": ";
                                              }
-                                             ?>
-                                             </h4>
-                     <hr>
-                                 <p class="mb-0">
-                                      <?php
-                                  echo htmlspecialchars($row['message']); ?></p>
-                     </div>
-                    <?php }else{
-                     ?> <div class="alert alert-success d-flex justify-content-start" role="alert">
-                     <h4 class="alert-heading"><?php if($row['direction'] === TRUE){   
+                                             
+                                            echo '</h4>';
+                     echo '<hr>';
+                                 echo '<p class="mb-0">';
+                        
+                                  echo htmlspecialchars($row['message']); 
+                                  echo '</p>';
+                     echo '</div>';
+                     }else{
+                     echo '<div class="alert alert-primary col-7" role="alert">';
+                     echo '<h4 class="alert-heading">';
+                     if($row['direction'] == TRUE){   
                                              echo $row['username']. ": ";
                                              }else{
                                              echo $storename . ": ";
                                              }
-                                             ?>
-                                             </h4>
-                     <hr>
-                                 <p class="mb-0">
-                                      <?php
-                                  echo htmlspecialchars($row['message']); ?></p>
-                     </div> <?php
-                    } ?>
-                    <h4 class="alert-heading"> 
-                    <?php 
-                    if($row['direction'] === TRUE){
-                        echo htmlspecialchars($storename);
-                    }else{
-                        echo htmlspecialchars($row['username']);
-                    } ?></h4>
-                        <hr>
-                            <p class="mb-0">
-                            <?php
-                             echo htmlspecialchars($row['message']); ?></p>
-                             
-                </div><?php
+                                             echo '</h4>';
+                     echo '<hr>';
+                                 echo '<p class="mb-0">';
+                                      
+                                  echo htmlspecialchars($row['message']); 
+                                  echo '</p>';
+                     echo '</div>'; 
+                    }
+                    
+                
                 //     echo "<p>";
                 //     if($row['direction'] == TRUE){   
                 //         echo $row['username'];
@@ -157,13 +161,17 @@ session_start();
 
         
         ?>
+        </div>
+        
+    </div>
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-8">
+    <button class="btn btn-primary" id="show">Show more messages</button>
+    </div>
+    </div>
     </div>
     <br>
-    <button id="show">Show more messages</button>
-    <form action="" method="post">
-        <input type="text" name="message" value="" placeholder="Write your message here"/>
-        <input type="button" onclick="submitForm();" name="send_message" value="send"/>
-    </form>
     <script>
         var messagesCount = 2;
         function submitForm(){
