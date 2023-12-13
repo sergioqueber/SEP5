@@ -127,11 +127,8 @@ $username = $_SESSION['username'];
                 type: 'POST',
                 data: formData,
                 success: function(response) {
-                    console.log('Success:', response);
-                    // You can add code here to update the UI on success
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', status, error);
+                    $('input[name=stock]').val(''); // Clear the input field
+                    $('#stockDisplay').text('Stock: ' + stock); // Update the stock display
                 }
             });
         });
