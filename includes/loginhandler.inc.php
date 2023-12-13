@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     
     $username = $_POST["username"];
-    $psw = $_POST["password"];
+    $psw = $_POST["psw"];
     $_SESSION['username'] = $username;
 
     try {
@@ -33,13 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt1->execute([$username]);
         $_SESSION['wishlist'] =  $stmt1->fetchColumn();
 
-        echo $results;
-        echo $psw;
         if ($results == $psw) {
             echo 'Log in successful';
             header("Location: ../mainpagecustomer.php");
         } else {
-            echo 'log in failed';
+            throw new Exception("Error Processing Request", 1);
+            
         }
 
         die();
