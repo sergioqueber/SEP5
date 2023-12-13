@@ -41,10 +41,10 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
+                <li><a class="nav-link active" href="mainpagemanager.php">Home</a></li>
                 <li><a class="nav-link" href="#">About us</a></li>
-                <li><a class="nav-link" href="messages.php">Messages</a></li>
-                <li><a class="nav-link" href="orders.php">Orders</a></li>
+                <li><a class="nav-link" href="managermessages.php">Messages</a></li>
+                <li><a class="nav-link" href="managerorders.php">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
@@ -74,8 +74,13 @@
 <br>
 <br>
 <br>
-
-    <?Php
+<div class="container mt-5">
+<div class="row">
+<div class="col-md-12">
+                <h3 class="mb-3">Choose order</h3>
+                <hr>
+            </div>
+<?Php
     if(empty($results)){
         echo "<div>";
         echo "<p>No results:(</p>";
@@ -89,13 +94,39 @@
 
             $username = $stmt1->fetchColumn();
 
-            echo "<div>";
-            echo "<a href = 'managerorder.php?id=" .htmlspecialchars($row["order_id"]) ."' >" . htmlspecialchars($username) . "</a><br>";
-            echo "</div>";
+            $query2 = 'SELECT * FROM "order" WHERE order_id = ?;';
+            $stmt2 = $pdo->prepare($query2);
+            $stmt2->execute([$row['order_id']]);
+
+            $results1 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+            ?>
+            <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+
+                        <div class="card-body">
+                            <!-- Product name and link to details page -->
+                            <h5 class="card-title"><a href="managerorder.php?id=<?php echo htmlspecialchars($row["order_id"]); ?>"><?php echo htmlspecialchars($username); ?></a></h5>
+                            <!-- Product price -->
+                            <?php
+                            foreach($results1 as $row1) : ?>
+                            <p class="card-text">Date of placing order: <?php echo htmlspecialchars($row1["date_ordered"]); ?></p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text">Total price: <?php echo htmlspecialchars($row1["total_price"]); ?></p>
+                            <span class="status" data-custom-string="<?php echo htmlspecialchars($row1["status"]); ?> "><p class="card-text">Status: <?php echo htmlspecialchars($row1['status']); ?></p></span>
+                            <?php 
+                            endforeach;  
+                            ?>
+                        </div>
+                    </div>
+            </div>
+            <?php
         }
     }
 
    
     ?>
+</div>
+</div>
 </body>
 </html>
