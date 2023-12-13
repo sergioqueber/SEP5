@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     try {
         require_once "dbh.inc.php";
 
-        $query = "UPDATE products SET is_deleted = true WHERE product_id = ?;";
+        $query = "UPDATE product SET is_deleted = true WHERE product_id = ?;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productid]);
