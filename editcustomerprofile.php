@@ -166,7 +166,7 @@
                 }
             });
         };
-        $("#close").onclick(function(){
+        $("#close").click(function(){
             $('#editSuccessModal').modal('hide');
         });
          
