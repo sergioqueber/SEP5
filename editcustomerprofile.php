@@ -116,12 +116,12 @@
             echo '<div class="form-group mb-3">';
             echo '<label for="phone_no"><strong>Phone number:</strong></label>';
             echo '<input id="phone_no" type="text" name="phone_no" value="' . htmlspecialchars($row["phone_no"]) . '" class="form-control" />';
-            echo '</div>';
-            echo '<button type="button" onclick="editProfile();" class="btn btn-primary">Edit</button>';
-            echo '</form>';
         }
 
     ?>
+    </div>
+        <button type="button" onclick="editProfile();" class="btn btn-primary" href = "customerprofile.php">Edit</button>
+    </form>
 </div>
     <script>
         function editProfile(){
