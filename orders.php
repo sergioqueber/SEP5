@@ -41,10 +41,8 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
-                <li><a class="nav-link" href="#">About us</a></li>
                 <li><a class="nav-link" href="messages.php">Messages</a></li>
-                <li><a class="nav-link" href="orders.php">Orders</a></li>
+                <li><a class="nav-link Active" href="orders.php">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="Images/profileorange 1.png" alt="Profile pic">
@@ -77,6 +75,7 @@
 <div class = "container mt-5">
     <div class = "row">
         <h1>Orders</h1>
+        <hr>
     </div>
 
     <?Php

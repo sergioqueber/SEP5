@@ -48,9 +48,7 @@ $storeId = $_SESSION['store_id'];
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link active" href="mainpageemployee.php">Home</a></li>
-                <li><a class="nav-link" href="#">About us</a></li>
-                <li><a class="nav-link" href="messages.php">Messages</a></li>
+                <li><a class="nav-link Active" href="messages.php">Messages</a></li>
                 <li><a class="nav-link" href="orders.php">Orders</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,9 +83,15 @@ $storeId = $_SESSION['store_id'];
     <script src="js/jquery-3.5.1.min.js"></script>
 
     <section>
-    <h3>Messages</h3>
-
-    <?php
+    
+    <div class ="container mt-5">
+        <div class = "row">
+            <div class = "col-md">
+                <h3>Messages</h3>
+                <hr>
+            </div>
+        </div>
+        <?php
     if(empty($results)){
         echo "<div>";
         echo "<p>No messages:(</p>";
@@ -126,6 +130,8 @@ $storeId = $_SESSION['store_id'];
         }
     }
     ?>
+    </div>
+   
 </section>
 
 
