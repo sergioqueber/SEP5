@@ -104,14 +104,14 @@ $username = $_SESSION['username'];
             <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
             <button type='submit' class='btn btn-primary mb-3'>Activate</button>
         </form>
-        <form action="managerreview.php" method="post">
-            <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
-        </form>
         <form id="stockForm" method="post">
             <input type="text" class = "form-control mb-3" name ="stock" placeholder = "Updated Stock" Required> 
             <button type = "submit" class='btn btn-primary mb-3'>Save</button>
         </form>
     </div>
+    </div>
+    <div id="reviews" class="row">
+        
     </div>
 </div>
     <script src="js/jquery-3.7.1.min.js"> </script>
@@ -143,6 +143,19 @@ $username = $_SESSION['username'];
                 data: formData
             });
         }; */
+        $(document).ready(function() {
+        $.ajax({
+        url: 'http://localhost/SEP5/review.php', // Path to your PHP script
+        type: 'POST',
+        success: function(response) {
+            // Insert the HTML directly
+            $('#reviews').html(response);
+        },
+        error: function() {
+            alert('Error loading reviews.');
+        }
+            });
+        });
     </script>
 
 </body>
