@@ -120,7 +120,7 @@
 
     ?>
     </div>
-        <button type="button" onclick="editProfile();" class="btn btn-primary" >Edit</button>
+        <button type="button" onclick="editProfile();" class="btn btn-primary" >Save</button>
     </form>
 </div>
 

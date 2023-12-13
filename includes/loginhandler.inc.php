@@ -33,13 +33,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt1->execute([$username]);
         $_SESSION['wishlist'] =  $stmt1->fetchColumn();
 
-        echo $results;
-        echo $psw;
         if ($results == $psw) {
             echo 'Log in successful';
             header("Location: ../mainpagecustomer.php");
         } else {
-            echo 'log in failed';
+            echo  '<div class="modal fade " id="logInFailed" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editSuccessModalLabel">Usernmae or password</h5>
+                        <button type="button" class="close" id = "close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Check the fields again
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick = history.back() >Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>'
         }
 
         die();
