@@ -161,7 +161,7 @@ $username = $_SESSION['username'];
                     Your review was added successfully
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id = 'close' >Back</button>
+                    <button type="button" class="btn btn-secondary close" >Back</button>
                 </div>
             </div>
         </div>
@@ -190,7 +190,7 @@ $username = $_SESSION['username'];
                 })
                 
             };
-        $("#close").click(function(){
+        $(".close").click(function(){
             $('#addedModal').modal('hide');
         });
         function showReviews(){
