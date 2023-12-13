@@ -166,7 +166,10 @@
                 }
             });
         }
-        $('#close').modal('hide');
+        $("#close").onclick(function(){
+            $('#editSuccessModal').modal('hide');
+        })
+         
     </script>
 </section>
 </body>
