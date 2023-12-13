@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     
     $username = $_POST["username"];
-    $psw = $_POST["password"];
+    $psw = $_POST["psw"];
     $_SESSION['username'] = $username;
 
     try {
