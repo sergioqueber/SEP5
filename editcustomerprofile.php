@@ -97,23 +97,23 @@
     <?php
         foreach ($results as $row){
             echo '<form action="customerprofile.php" method="post">';
-            echo '<div class="form-group">';
-            echo '<label for="username"><strong>Username (not editable):</strong></label>';
+            echo '<div class="form-group mb-3">';
+            echo '<label for="username"><strong>Username:</strong></label>';
             echo '<input id="username" type="text" name="username" value="' . htmlspecialchars($row["username"]) . '" readonly class="form-control bg-light" />';
             echo '</div>';
-            echo '<div class="form-group">';
+            echo '<div class="form-group mb-3">';
             echo '<label for="f_name"><strong>First name:</strong></label>';
             echo '<input id="f_name" type="text" name="f_name" value="' . htmlspecialchars($row["f_name"]) . '" class="form-control" />';
             echo '</div>';
-            echo '<div class="form-group">';
+            echo '<div class="form-group mb-3">';
             echo '<label for="l_name"><strong>Last name:</strong></label>';
             echo '<input id="l_name" type="text" name="l_name" value="' . htmlspecialchars($row["l_name"]) . '" class="form-control" />';
             echo '</div>';
-            echo '<div class="form-group">';
+            echo '<div class="form-group mb-3">';
             echo '<label for="email"><strong>E-mail:</strong></label>';
             echo '<input id="email" type="text" name="email" value="' . htmlspecialchars($row["email"]) . '" class="form-control" />';
             echo '</div>';
-            echo '<div class="form-group">';
+            echo '<div class="form-group mb-3">';
             echo '<label for="phone_no"><strong>Phone number:</strong></label>';
             echo '<input id="phone_no" type="text" name="phone_no" value="' . htmlspecialchars($row["phone_no"]) . '" class="form-control" />';
             echo '</div>';
