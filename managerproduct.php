@@ -94,7 +94,7 @@ $username = $_SESSION['username'];
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
             echo "<p>Price: $" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
+            echo "<p id = 'stockDisplay'>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
     }
     ?>
         <form action='includes/deleteproduct.inc.php' method='post'>
@@ -108,16 +108,31 @@ $username = $_SESSION['username'];
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
-        <form action="" method="post" onsubmit="return stock();">
-            <input type="text" class = "form-control mb-3" name ="stock" Required> 
-            <button type='submit' class='btn btn-primary mb-3'>Save</button>
+        <form id="stockForm" method="post">
+            <input type="text" class = "form-control mb-3" name ="stock" placeholder = "Updated Stock" Required> 
+            <button type = "submit" class='btn btn-primary mb-3'>Save</button>
         </form>
     </div>
     </div>
 </div>
     <script src="js/jquery-3.7.1.min.js"> </script>
     <script>
-        function stock(){
+        $('#stockForm').on('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            var stock = $('input[name=stock]').val();
+            var formData = { stock: stock };
+
+            $.ajax({
+                url: "http://localhost/SEP5/includes/stockUpdate.inc.php",
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    $('input[name=stock]').val(''); // Clear the input field
+                    $('#stockDisplay').text('Stock: ' + stock); // Update the stock display
+                }
+            });
+        });
+        /* function stock(){
             var stock = $('input[name=stock]').val();
             var formData = {
                 stock: stock,
@@ -128,7 +143,7 @@ $username = $_SESSION['username'];
                 type: 'POST',
                 data: formData
             });
-        };
+        }; */
     </script>
 
 </body>
