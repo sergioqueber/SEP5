@@ -179,6 +179,22 @@ $username = $_SESSION['username'];
         $("#close").click(function(){
             $('#addedModal').modal('hide');
         });
+        function showReviews(){
+            
+        };
+        $(document).ready(function() {
+        $.ajax({
+        url: 'http://localhost/SEP5/review.php', // Path to your PHP script
+        type: 'POST',
+        success: function(response) {
+            // Insert the HTML directly
+            $('#reviews').html(response);
+        },
+        error: function() {
+            alert('Error loading reviews.');
+        }
+    });
+});
          
     </script>
 
