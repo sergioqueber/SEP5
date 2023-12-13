@@ -81,7 +81,6 @@ $username = $_SESSION['username'];
         $stmt->execute([$productId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $_SESSION['storeId'] = $results["store_id"];
 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -94,6 +93,7 @@ $username = $_SESSION['username'];
     <div class="row">
         <?php
         foreach ($results as $row) {
+            $_SESSION['storeId'] = $row["store_id"];
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
@@ -113,7 +113,7 @@ $username = $_SESSION['username'];
         }
         ?>
 
-        <button type="button" class='btn btn-primary' href = "storecustomer.php">Visit the store</button>
+        <button type="button" class='btn btn-primary mb-3' href = "storecustomer.php">Visit the store</button>
 
         <form action="addtowishlist.php" method="post">
                 <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId);?>'>
