@@ -65,10 +65,6 @@ session_start();
 <br>
 <br>
 <br>
-    <form action="storescustomer.php" method="get">
-        <button>Stores</button>
-    </form>
-    
     <?php
         try {
             require_once "includes/dbh.inc.php";
