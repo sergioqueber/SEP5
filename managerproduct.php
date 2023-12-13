@@ -126,7 +126,7 @@ $username = $_SESSION['username'];
             $.ajax({
                 url: "http://localhost/SEP5/includes/stockUpdate.inc.php",
                 type: 'POST',
-                data: formData,
+                data: formData
             });
         }
     </script>
