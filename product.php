@@ -75,12 +75,16 @@ $username = $_SESSION['username'];
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product WHERE product_id = ?;";
+        $query = "SELECT *
+        FROM product
+                 JOIN store s ON product.store_id = s.store_id
+        WHERE product_id = ?;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -98,10 +102,8 @@ $username = $_SESSION['username'];
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
-            
             echo "<div class='col-md-6'>";
             echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
-            echo "<h2>" . htmlspecialchars($row["store_name"]) . "</h2>";
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
             echo "<p>Price:" . htmlspecialchars($row["price"]) . "dkk</p>";
             echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
