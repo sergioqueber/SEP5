@@ -177,7 +177,7 @@ session_start();
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
-            $.ajax({url: "http://localhost/MyWebsite/includes/sendmessage.inc.php", type: 'POST', data: formData})
+            $.ajax({url: "http://localhost/SEP5/includes/sendmessage.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
             messagesCount = messagesCount + 1;
             $('#display').load("load-message.php", 
