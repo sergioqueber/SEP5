@@ -1,15 +1,23 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $productid = $_POST["productId"];
-
+    $productId = $_POST["productId"];
+    $cartId = $_SESSION["cart"];
     try {
         require_once "dbh.inc.php";
+        $query = "SELECT quantity FROM cart_item WHERE product_id = ? and cart_id = ?;";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$productId, $cartId]);
+        $quantity = $stmt->fetchColumn();
+
 
         $query = "DELETE FROM cart_item WHERE product_id = ?;";
-
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$productid]);
+        $stmt->execute([$productId]);
+
+        $query = "UPDATE product SET stock = stock - ? WHERE product_id = ?;";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$quantity,$productId]);
 
         $pdo = null;
         $stmt = null;
