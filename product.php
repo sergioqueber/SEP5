@@ -75,12 +75,16 @@ $username = $_SESSION['username'];
     try {
         require_once "includes/dbh.inc.php";
 
-        $query = "SELECT * FROM product WHERE product_id = ?;";
+        $query = "SELECT *
+        FROM product
+                 JOIN store s ON product.store_id = s.store_id
+        WHERE product_id = ?;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -93,10 +97,11 @@ $username = $_SESSION['username'];
     <div class="row">
         <?php
         foreach ($results as $row) {
+            $_SESSION['store_id'] = $row["store_id"];
+            $_SESSION['storename'] = $row["store_name"];
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
-
             echo "<div class='col-md-6'>";
             echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
@@ -111,6 +116,8 @@ $username = $_SESSION['username'];
             echo "</form>";
         }
         ?>
+
+        <a href="storecustomer.php" class="btn btn-primary mb-3" role="button">Visit the store</a>
         <form action="addtowishlist.php" method="post">
                 <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId);?>'>
                 <button type="submit" class='btn btn-primary  '>Add to wishlist</button>

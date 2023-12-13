@@ -83,22 +83,16 @@ session_start();
         <?php
         $username = $_SESSION['username'];
         $storename = isset($_GET['id']) ? $_GET['id'] : null;
+        $storeId = $_SESSION['store_id'];
         $_SESSION['storename'] = $storename;
         try {
             require_once "includes/dbh.inc.php";
 
-            $query = "SELECT store_id FROM store WHERE store_name = ?;";
-
-            $stmt = $pdo->prepare($query);
-            $stmt->execute([$storename]);
-
-            $store_id = $stmt->fetchColumn();
-            $_SESSION['store_id'] = $store_id;
 
             $query1 = "SELECT * FROM message WHERE username = ? AND store_id = ? ORDER BY message_id DESC LIMIT 2;";
 
             $stmt1 = $pdo->prepare($query1);
-            $stmt1->execute([$username, $store_id]);
+            $stmt1->execute([$username, $storeId]);
     
             $results = $stmt1->fetchAll(PDO::FETCH_ASSOC);
             
@@ -177,7 +171,7 @@ session_start();
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
-            $.ajax({url: "http://localhost/MyWebsite/includes/sendmessage.inc.php", type: 'POST', data: formData})
+            $.ajax({url: "http://localhost/SEP5/includes/sendmessage.inc.php", type: 'POST', data: formData})
             $('input[name=message]').val('');
             messagesCount = messagesCount + 1;
             $('#display').load("load-message.php", 
