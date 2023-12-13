@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "INSERT INTO cart_item(cart_id, product_id, quantity) VALUES (?,?,?);";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$_SESSION['cart'], $productID ,1]);
-        
-        $query = " UPDATE product SET stock = stock-1 WHERE product_id = ?;";
+
+        $query = "UPDATE product SET stock = stock-1 WHERE product_id = ?;";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productID]);
         $pdo = null;
@@ -25,8 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productID, $_SESSION['cart']]);
 
-        
-        
+        $query = "UPDATE product SET stock = stock-1 WHERE product_id = ?;";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$productID]);s
+        $pdo = null;
+        $stmt = null;
         header("Location: ../popupCart.php");
        
     
