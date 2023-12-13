@@ -88,14 +88,6 @@ $username = $_SESSION['username'];
     }
     ?>
     <br>
-   
-
-
-
-    
-    <form action="review.php" method="post">
-        <button>See reviews</button>
-    </form>
     <script src="js/jquery-3.7.1.min.js"> </script>
 
     <div class="container mt-5">
@@ -116,13 +108,13 @@ $username = $_SESSION['username'];
             // Add to Cart Button (You can customize the button and its functionality)
             echo "<form action='includes/additemhandler.inc.php' method='post'>";
             echo "<input type='hidden' name='productId' value='" . htmlspecialchars($row["product_id"]) . "'>";
-            echo "<button type='submit' class='btn btn-primary'>Add to Cart</button>";
+            echo "<button type='submit' class='btn btn-primary mb-3'>Add to Cart</button>";
             echo "</form>";
         }
         ?>
         <form action="addtowishlist.php" method="post">
                 <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId);?>'>
-                <button type="submit" class='btn btn-primary '>Add to wishlist</button>
+                <button type="submit" class='btn btn-primary  '>Add to wishlist</button>
         </form>
 
         </div>
@@ -161,7 +153,7 @@ $username = $_SESSION['username'];
                     Your review was added successfully
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close" >Back</button>
+                    <button type="button" class="btn btn-secondary close mb-3" >Back</button>
                 </div>
             </div>
         </div>
