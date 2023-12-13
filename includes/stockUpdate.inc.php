@@ -11,9 +11,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $query0 = "UPDATE product SET stock = ? WHERE product_id = ?;";
         $stmt0 = $pdo->prepare($query0);
-        $stmt0->execute([$stock,$productId]);
         
-        echo "updated"
+        if ($stmt0->execute([$stock, $productId])) {
+            echo "Stock updated successfully";
+        } else {
+            echo "Failed to update stock";
+        }
 
     } catch (PDOException $e) {
         die("Query failed" . $e->getMessage());

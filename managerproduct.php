@@ -108,16 +108,34 @@ $username = $_SESSION['username'];
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
-        <form action="" method="post">
+        <form id="stockForm" method="post">
             <input type="text" class = "form-control mb-3" name ="stock" Required> 
-            <button class='btn btn-primary mb-3' onclick = "stock();">Save</button>
+            <button type = "submit" class='btn btn-primary mb-3'>Save</button>
         </form>
     </div>
     </div>
 </div>
     <script src="js/jquery-3.7.1.min.js"> </script>
     <script>
-        function stock(){
+        $('#stockForm').on('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            var stock = $('input[name=stock]').val();
+            var formData = { stock: stock };
+
+            $.ajax({
+                url: "http://localhost/SEP5/includes/stockUpdate.inc.php",
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    console.log('Success:', response);
+                    // You can add code here to update the UI on success
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', status, error);
+                }
+            });
+        });
+        /* function stock(){
             var stock = $('input[name=stock]').val();
             var formData = {
                 stock: stock,
@@ -128,7 +146,7 @@ $username = $_SESSION['username'];
                 type: 'POST',
                 data: formData
             });
-        };
+        }; */
     </script>
 
 </body>
