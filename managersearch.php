@@ -85,9 +85,13 @@ $storeId = $_SESSION['store_id'];
     <script src="js/jquery-3.7.1.min.js"></script>
 
     <section>
-    <h3>Products</h3>
+   
 
 <div class="container mt-5">
+    <div class = "row">
+        <h3>Products</h3>
+        <hr>
+    </div>
     <div class = "row">
     <?php
     if (empty($results)) {
