@@ -165,8 +165,8 @@
                     $('#editSuccessModal').modal('show');
                 }
             });
-            $('#close').modal('hide');
         }
+        $('#close').modal('hide');
     </script>
 </section>
 </body>
