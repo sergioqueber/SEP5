@@ -30,7 +30,7 @@
     
     <link href="CSS/boostrap/bootstrap.min.css" type="text/css" rel="stylesheet">
     <script src="js/bootstrap.bundle.min.js"> </script>
-    <script src="js/jquery-3.7.1.min.js"> </script>
+    
 </head>
 
 <body>
@@ -167,6 +167,7 @@
             });
         }
     </script>
+    <script src="js/jquery-3.7.1.min.js"> </script>
 </section>
 </body>
 
