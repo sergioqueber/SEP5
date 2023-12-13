@@ -105,7 +105,7 @@ $username = $_SESSION['username'];
             $stmt1 = $pdo->prepare($query1);
             $stmt1->execute([$row['store_name']]);
             $storeid = $stmt1->fetchColumn();
-
+            $_SESSION['store_id'] = $storeid;
             $query2 = "SELECT * FROM message WHERE store_id = ? AND username = ? ORDER BY message_id DESC LIMIT 1;";
 
             $stmt2 = $pdo->prepare($query2);
