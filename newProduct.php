@@ -82,6 +82,13 @@
                     <input type="text" class="form-control" id="description" name="description" placeholder = "Description">
                 </div>
                 <div class="mb-3">
+                            <label for="category">Category</label>
+                            <select class="form-select" id="category" name="category">
+                                <option value="Clothes" >Clothes</option>
+                                <option value="" disabled selected>None</option>
+                            </select>
+                        </div>
+                <div class="mb-3">
                     <label for="image" class="form-label">Product image</label>
                     <input type="file" class="form-control" id="image" name="image">
                 </div>
