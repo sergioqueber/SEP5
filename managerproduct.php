@@ -96,12 +96,12 @@ $username = $_SESSION['username'];
             echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
     }
     ?>
-        <form action='includes/deleteeproduct.inc.php' method='post'>
+        <form action='includes/deleteproduct.inc.php' method='post'>
             <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
-            <button type='submit' class='btn btn-primary'>Delete Product</button>
+            <button type='submit' class='btn btn-primary mb-3'>Delete Product</button>
         </form>
         <form action="managerreview.php" method="post">
-            <button type='submit' class='btn btn-primary'>See reviews</button>
+            <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
     </div>
     <br>
