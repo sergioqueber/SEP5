@@ -81,6 +81,7 @@ $username = $_SESSION['username'];
         $stmt->execute([$productId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $_SESSION['storeId'] = $results["store_id"];
 
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -111,6 +112,9 @@ $username = $_SESSION['username'];
             echo "</form>";
         }
         ?>
+
+        <button type="button" class='btn btn-primary' href = "storecustomer.php">Visit the store</button>
+
         <form action="addtowishlist.php" method="post">
                 <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId);?>'>
                 <button type="submit" class='btn btn-primary  '>Add to wishlist</button>
