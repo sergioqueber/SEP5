@@ -130,7 +130,7 @@ $username = $_SESSION['username'];
             <input class="form-control" id="rate" type="text" name="rate" placeholder="Rate"><br>
         </div>  
         <div class="form-group">
-            <input type="button" onclick="addReview();" name="add" value="Add review"  class='btn btn-primary '/>
+            <input type="button" onclick="addReview();" name="add" value="Add review"  class='btn btn-primary mb-3'/>
         </div>  
         </form>
         </div>
