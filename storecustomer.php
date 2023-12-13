@@ -69,8 +69,8 @@ $username = $_SESSION['username'];
 <br>
 
     <?php
-    $storeId = isset($_GET['id']) ? $_GET['id'] : null;
-    $_SESSION['storeId'] = $storeId;
+    //$storeId = isset($_GET['id']) ? $_GET['id'] : null;
+    $storeId = $_SESSION['storeId'] 
     
     
     try {

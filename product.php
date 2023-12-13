@@ -113,7 +113,7 @@ $username = $_SESSION['username'];
         }
         ?>
 
-        <a href="storecustomer.php" class="btn btn-primary" role="button">Visit the store</a>
+        <a href="storecustomer.php" class="btn btn-primary mb-3" role="button">Visit the store</a>
         <form action="addtowishlist.php" method="post">
                 <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId);?>'>
                 <button type="submit" class='btn btn-primary  '>Add to wishlist</button>
