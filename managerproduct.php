@@ -100,6 +100,10 @@ $username = $_SESSION['username'];
             <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
             <button type='submit' class='btn btn-primary mb-3'>Delete Product</button>
         </form>
+        <form action='includes/activateProduct.inc.php' method='post'>
+            <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
+            <button type='submit' class='btn btn-primary mb-3'>Activate product</button>
+        </form>
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
