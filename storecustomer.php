@@ -70,7 +70,7 @@ $username = $_SESSION['username'];
 
     <?php
     //$storeId = isset($_GET['id']) ? $_GET['id'] : null;
-    $storeId = $_SESSION['storeId'] 
+    $storeId = $_SESSION['storeId'];
     
     
     try {
