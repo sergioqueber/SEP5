@@ -46,7 +46,7 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li><a class="nav-link" href="">Home</a></li>
+                <li><a class="nav-link" href="mainpagecustomer.php">Home</a></li>
                 <li><a class="nav-link active" href="wishlist.php">Wishlist</a></li>
                 <li><a class="nav-link" href="">About us</a></li>
                 <li><a class="nav-link" href="messagescustomer.php">Messages</a></li>
