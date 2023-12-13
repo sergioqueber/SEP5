@@ -87,32 +87,30 @@ $storeId = $_SESSION['store_id'];
     <section>
     <h3>Products</h3>
 
+    <div class="container mt-5">
     <?php
-    if(empty($results)){
-        echo "<div>";
-        echo "<p>No results:(</p>";
+    if (empty($results)) {
+        echo "<div class='alert alert-info'>";
+        echo "<p class='mb-0'>No results :(</p>";
         echo "</div>";
-    }
-    else{
-        foreach ($results as $row){
-            if($row["is_deleted"]){
-                $deleted = "Deleted Item";
-            }
-            else {
-                $deleted = "Item posted";
-            }
-            echo "<div>";
-            echo "<a href = 'managerproduct.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
-            echo "<p>" . htmlspecialchars($deleted) . "</p>";
-            echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p>" . htmlspecialchars($row["stock"]) . "</p>";
+    } else {
+        foreach ($results as $row) {
+            $deleted = ($row["is_deleted"]) ? "Deleted Item" : "Item posted";
+            echo "<div class='card mb-3'>";
+            echo "<div class='card-body'>";
+            echo "<a href='managerproduct.php?id=" . htmlspecialchars($row["product_id"]) . "' class='card-title'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
+            echo "<p class='card-text'>" . htmlspecialchars($deleted) . "</p>";
+            echo "<p class='card-text'>" . htmlspecialchars($row["description"]) . "</p>";
+            echo "<p class='card-text'>" . htmlspecialchars($row["price"]) . "</p>";
+            echo "<p class='card-text'>" . htmlspecialchars($row["category"]) . "</p>";
+            echo "<p class='card-text'>" . htmlspecialchars($row["stock"]) . "</p>";
+            echo "</div>";
             echo "</div>";
         }
     }
     ?>
+</div>
 </section>
 
 
