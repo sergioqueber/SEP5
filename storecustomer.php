@@ -102,7 +102,7 @@ $username = $_SESSION['username'];
         <button type="submit" class="btn btn-primary">Our products</button>
     </form>
 
-    <form action="sendmessage.php" method="get">
+    <form action="sendmessage.php?id= <?php echo $_SESSION['storename'];?>" method="get">
         <button type="submit" class="btn btn-secondary">Send message</button>
     </form>
     </div>
