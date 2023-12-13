@@ -94,7 +94,7 @@ $username = $_SESSION['username'];
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
             echo "<p>Price: $" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
+            echo "<p id = 'stockDisplay'>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
     }
     ?>
         <form action='includes/deleteproduct.inc.php' method='post'>
