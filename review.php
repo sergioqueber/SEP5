@@ -16,19 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $html = '';
-        foreach ($results as $review) {
-            // Build your HTML structure for each review
-            $html .= '<div class="col-md-4">';
-            $html .= '<div class="card mb-4 box-shadow">';
-            $html .= '<div class="card-body">';
-            $html .= '<p class="card-text">' . htmlspecialchars($review['review_text'], ENT_QUOTES, 'UTF-8') . '</p>';
-            // Add more fields as needed
-            $html .= '</div>';
-            $html .= '</div>';
-            $html .= '</div>';
+        if (empty($results)) {
+            echo "<div class='review-container'>";
+            echo "<p>No reviews :(</p>";
+            echo "</div>";
+        } else {
+            foreach ($results as $row) {
+                echo "<div class='review'>";
+                echo "<p><strong>Username:</strong> " . htmlspecialchars($row["username"]) . "</p>";
+                echo "<p><strong>Comment:</strong> " . htmlspecialchars($row["comment"]) . "</p>";
+                echo "<p><strong>Rating:</strong> " . htmlspecialchars($row["stars"]) . " / 5</p>";
+                echo "</div>";
+            }
         }
 
-        echo $html;
         $pdo = null;
         $stmt = null;
     } catch (PDOException $e) {

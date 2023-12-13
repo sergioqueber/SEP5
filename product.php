@@ -143,6 +143,9 @@ $username = $_SESSION['username'];
         </form>
         </div>
     </div>
+    <div id="reviews" class="row">
+    
+    </div>
 </div>
 
 <div class="modal fade " id="addedModal" tabindex="-1" role="dialog" aria-labelledby="addedModalLabel" aria-hidden="true">
