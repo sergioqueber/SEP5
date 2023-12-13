@@ -86,7 +86,13 @@ try {
 <script src="js/jquery-3.5.1.min.js"></script>
 
 <section>
-<h3>Messages</h3>
+<div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="mb-3">Messages</h3>
+                <hr>
+            </div>
+        </div>
 
 <?php
 if(empty($results)){
@@ -127,6 +133,7 @@ else{
     }
 }
 ?>
+</div>
 </section>
 
 
