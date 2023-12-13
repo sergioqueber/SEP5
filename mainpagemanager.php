@@ -106,7 +106,15 @@ session_start();
             }
         }
         ?>
+        
 
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-5 col-sm-8">
+        <form action="registerstore.php" method="post">
+                <button type="submit" class='btn btn-primary'>Register new store</button>
+        </form>
+        </div>
     </div>
 </div>
     <script src="js/jquery-3.7.1.min.js"></script>
