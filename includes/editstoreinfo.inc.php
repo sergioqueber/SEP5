@@ -47,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt2 = $pdo->prepare($query2);
         $stmt2->execute([$storename, $addressId, $phone_no, $cvr, $active, $storeId]);
         
-        header('Location: ../mainpagemanager.php?id='.$storeId);
+        header('Location: ../managerstore.php?id='.$storeId);
 
         die();
 
