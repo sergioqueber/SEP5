@@ -98,8 +98,8 @@
         foreach ($results as $row){
             echo '<form action="customerprofile.php" method="post">';
             echo '<div class="form-group">';
-            echo '<label for="username"><strong>Username:</strong></label>';
-            echo '<input id="username" type="text" name="username" value="' . htmlspecialchars($row["username"]) . '" readonly class="form-control" />';
+            echo '<label for="username"><strong>Username (not editable):</strong></label>';
+            echo '<input id="username" type="text" name="username" value="' . htmlspecialchars($row["username"]) . '" readonly class="form-control bg-light" />';
             echo '</div>';
             echo '<div class="form-group">';
             echo '<label for="f_name"><strong>First name:</strong></label>';
