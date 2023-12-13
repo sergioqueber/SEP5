@@ -83,24 +83,7 @@
     </div>
   </div>
   </div>
-  <div class="modal fade " id="logInFailed" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editSuccessModalLabel">Usernmae or password</h5>
-                        <button type="button" class="close" id = "close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Check the fields again
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick = history.back() >Back</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  
   <script src="js/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 </body>

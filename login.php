@@ -62,7 +62,7 @@
             <h1 class="title-5xOTHh valign-text-middle" data-id="67:790">Welcome</h1>
             <p class="nice-to-see-you-again-5xOTHh valign-text-middle" data-id="67:791">Nice to see you again.</p>
           </div>
-          <form action="includes/loginhandler.inc.php" method="post" class="mt-4">
+          <form action="" method="post" class="mt-4">
             <div class="form-group">
               <input class="form-control" name="username" placeholder="Username" type="text" required>
             </div>
@@ -70,7 +70,7 @@
               <input class="form-control" name="password" placeholder="Password" type="password" required>
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block" id = "singIn">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block" id = "singIn" onclick = "login();">Sign In</button>
             </div>
           </form>
         </div>
@@ -90,9 +90,23 @@
 
   <script src="js/jquery-3.7.1.min.js"></script>
   <script>
-    $("#singIn").click(function(){
-      $('#editSuccessModal').modal('show');
-    });
+    function login() {
+            var username = $('input[name=username]').val();
+            var psw = $('input[name=password]').val();
+            var formData = {
+                username: username,
+                psw: psw
+            };
+            $.ajax({
+                url: "http://localhost/SEP5/includes/loginhandler.inc.php",
+                type: 'POST',
+                data: formData,
+                success: function () {
+                    
+                    $('#logInFailed').modal('show');
+                }
+            });
+        };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 </body>
