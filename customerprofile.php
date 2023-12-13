@@ -68,6 +68,13 @@ $username = $_SESSION['username'];
 <br>
 <br>
 <div class="container mt-5">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-3">My Account</h2>
+            <hr>
+        </div>
+    </div>
     <?php
     
     
