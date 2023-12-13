@@ -92,17 +92,7 @@ $username = $_SESSION['username'];
 
 
 
-    <script>
-        function addReview(){
-            var review = $('input[name=review]').val();
-            var rate = $('input[name=rate]').val();
-            var formData = {review: review,
-                            rate: rate};
-            $.ajax({url: "http://localhost/SEP5/includes/reviewhandler.inc.php", type: 'POST', data: formData});
-            $('input[name=review]').val('');
-            $('input[name=rate]').val('');
-        };
-    </script>
+    
     <form action="review.php" method="post">
         <button>See reviews</button>
     </form>
@@ -154,6 +144,39 @@ $username = $_SESSION['username'];
         </div>
     </div>
 </div>
+
+<div class="modal fade " id="addedModal" tabindex="-1" role="dialog" aria-labelledby="addedModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addedModalLabel">Review added</h5>
+                    <button type="button" class="close" id = "close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Your review was added successfully
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick = history.back() >Back</button>
+                </div>
+            </div>
+        </div>
+</div>
+    <script>
+        function addReview(){
+            var review = $('input[name=review]').val();
+            var rate = $('input[name=rate]').val();
+            var formData = {review: review,
+                            rate: rate};
+            $.ajax({url: "http://localhost/SEP5/includes/reviewhandler.inc.php", type: 'POST', data: formData, success: function () {              
+                    $('#addedModal').modal('show');
+                }});
+            $('input[name=review]').val('');
+            $('input[name=rate]').val('');
+            
+        };
+    </script>
 
     <script src="js/jquery-3.5.1.min.js"></script>
 </body>
