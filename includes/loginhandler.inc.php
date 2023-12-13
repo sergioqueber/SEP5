@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
     
     $username = $_POST["username"];
-    $psw = $_POST["psw"];
+    $psw = $_POST["password"];
     $_SESSION['username'] = $username;
 
     try {
@@ -37,8 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo 'Log in successful';
             header("Location: ../mainpagecustomer.php");
         } else {
-            throw new Exception("Error Processing Request", 1);
-            
+            header("Location: ../popups/popupLogIn.php");
         }
 
         die();

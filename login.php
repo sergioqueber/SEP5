@@ -62,7 +62,7 @@
             <h1 class="title-5xOTHh valign-text-middle" data-id="67:790">Welcome</h1>
             <p class="nice-to-see-you-again-5xOTHh valign-text-middle" data-id="67:791">Nice to see you again.</p>
           </div>
-          <form action="" method="post" class="mt-4">
+          <form action="includes/loginhandler.inc.php" method="post" class="mt-4">
             <div class="form-group">
               <input class="form-control" name="username" placeholder="Username" type="text" required>
             </div>
@@ -87,44 +87,7 @@
     </div>
   </div>
   </div>
-  <div class="modal fade " id="logInFailed" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editSuccessModalLabel">Usernmae or password</h5>
-                        <button type="button" class="close" id = "close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        Check the fields again
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" onclick = history.back() >Back</button>
-                    </div>
-                </div>
-            </div>
-        </div>
   <script src="js/jquery-3.7.1.min.js"></script>
-  <script>
-    function login() {
-            var username = $('input[name=username]').val();
-            var psw = $('input[name=password]').val();
-            var formData = {
-                username: username,
-                psw: psw
-            };
-            $.ajax({
-                url: "http://localhost/SEP5/includes/loginhandler.inc.php",
-                type: 'POST',
-                data: formData,
-                error: function () {
-                    
-                    $('#logInFailed').modal('show');
-                }
-            });
-        };
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 </body>
 </html>

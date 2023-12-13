@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../mainpagemanager.php");
         }
          else {
-            echo 'log in failed';
+            header("Location: ../popups/popupLogIn.php");
         }
 
         die();
