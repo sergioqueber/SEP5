@@ -119,7 +119,7 @@
                             <p class="card-text">Date of placing order: <?php echo htmlspecialchars($row1["date_ordered"]); ?></p>
                             <!-- Additional product information (category, stock, etc.) -->
                             <p class="card-text">Total price: <?php echo htmlspecialchars($row1["total_price"]); ?></p>
-                            <span class="status" data-custom-string="<?php echo htmlspecialchars($row1["status"]); ?> "><p class="card-text">Status: <?php echo htmlspecialchars($row1['status']); ?></p></span>
+                            <span class="" data-custom-string="<?php echo htmlspecialchars($row1["status"]); ?> "><p class="card-text status">Status: <?php echo htmlspecialchars($row1['status']); ?></p></span>
                             <?php 
                             endforeach;  
                             ?>
@@ -145,7 +145,7 @@
         // Loop through each element with class "status"
         $(".status").each(function () {
             // Get the status value for each element
-            var status = $(this).data('customString');
+            var status = $(this).text;
             console.log("Status:", status);
 
             // Set the background color based on the status for each element
