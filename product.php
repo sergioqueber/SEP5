@@ -147,13 +147,15 @@ $username = $_SESSION['username'];
             echo "<input type='hidden' name='productId' value='" . htmlspecialchars($row["product_id"]) . "'>";
             echo "<button type='submit' class='btn btn-primary'>Add to Cart</button>";
             echo "</form>";
-            echo "</div>";
         }
         ?>
         <form action="addtowishlist.php" class="float-right m-1" method="post">
                 <input type='hidden' name='id' value='<?php echo htmlspecialchars($productId); ?>'>
                 <button type="submit" class='btn btn-primary '>Add to wishlist</button>
         </form>
+            
+        </div>
+
     </div>
 </div>
 
