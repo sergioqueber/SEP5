@@ -129,7 +129,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editSuccessModalLabel">Changes Saved</h5>
-                    <button type="button" class="close" if = "close" aria-label="Close">
+                    <button type="button" class="close" id = "close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -165,10 +165,10 @@
                     $('#editSuccessModal').modal('show');
                 }
             });
-        }
+        };
         $("#close").onclick(function(){
             $('#editSuccessModal').modal('hide');
-        })
+        });
          
     </script>
 </section>
