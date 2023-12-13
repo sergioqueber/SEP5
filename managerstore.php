@@ -63,6 +63,8 @@ $username = $_SESSION['username'];
 <br>
 <br>
 <br>
+<div class="container mt-5">
+<div class="row">
 
     <?php
      $storeId = isset($_GET['id']) ? $_GET['id'] : null;
@@ -79,34 +81,49 @@ $username = $_SESSION['username'];
         $stmt->execute([$storeId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($results as $row) {
+            ?>
+            <!-- Product card with Bootstrap grid classes -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
 
+                    <div class="card-body">
+                        <!-- Product name and link to details page -->
+                        <h5 class="card-title"><?php echo htmlspecialchars($row["store_name"]); ?></h5>
+                        <!-- Product price -->
+                        <p class="card-text">Address: <?php echo htmlspecialchars($row["street"]). " " . htmlspecialchars($row["house_no"]). ", " . htmlspecialchars($row["postcode"]). " ". htmlspecialchars($row["name"])  ?></p>
+                        <!-- Additional product information (category, stock, etc.) -->
+                        <p class="card-text">CVR: <?php echo htmlspecialchars($row["cvr"]); ?></p>
+                        <p class="card-text">Rating: <?php echo htmlspecialchars($row["rating"]); ?></p>
+                        <p class="card-text">Phone number: <?php echo htmlspecialchars($row["phone_no"]); ?></p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <form action="managersearch.php" method="get">
+        <button class='btn btn-primary mb-4'>Products</button>
+    </form>
+    <form action="newProduct.php" method="post">
+        <button class='btn btn-primary mb-4'>New product</button>
+    </form>
+    <form action="storeemployees.php" method="post">
+        <button class='btn btn-primary mb-4'>Employees</button>
+    </form>
+    <form action="registeremployee.php" method="post">
+        <button class='btn btn-primary mb-4'>Add employee</button>
+    </form>
+                
+            </div>
+            <?php
+        }
     } catch (PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
-    foreach ($results as $row) {
-        echo "<div>";
-        echo "<h2>" . htmlspecialchars($row["store_name"]) . "</h2>";
-        echo "<p>Phone number: " . htmlspecialchars($row["phone_no"]) . "</p>";
-        echo "<p>Rating: " . htmlspecialchars($row["rating"]) . "</p>";
-        echo "<p>CVR: " . htmlspecialchars($row["cvr"]) . "</p>";
-        echo "<p>Address: " . htmlspecialchars($row["street"]) ." ". htmlspecialchars($row["house_no"]) .", ". htmlspecialchars($row["postcode"])." ". htmlspecialchars($row["name"]) ."</p>";
-        echo "</div>";
-    }
     ?>
 
-    <form action="managersearch.php" method="get">
-        <button>Products</button>
-    </form>
-    <form action="newProduct.php" method="post">
-        <button>New product</button>
-    </form>
-    <form action="storeemployees.php" method="post">
-        <button>Employees</button>
-    </form>
-    <form action="registeremployee.php" method="post">
-        <button>Add employee</button>
-    </form>
-
+</div>
+</div>
 
 </body>
 
