@@ -71,24 +71,49 @@ session_start();
 <br>
 <br>
 <br>
-<?Php
-    
-        foreach ($results as $row){
-            $query1 = 'SELECT store_name FROM store WHERE store_id = ?;';
-            $stmt1 = $pdo->prepare($query1);
-            $stmt1->execute([$row['store_id']]);
-
-            $storename = $stmt1->fetchColumn();
-
-            echo "<div>";
-            echo "<a href = 'managerordersstore.php?id=" .htmlspecialchars($row["store_id"]) ."' >" . htmlspecialchars($storename) . "</a><br>";
+<div class="container mt-5">
+<div class="row">
+<div class="col-md-12">
+                <h3 class="mb-3">Choose the store to display orders from</h3>
+                <hr>
+            </div>
+        
+        <?php
+        if (empty($results)) {
+            echo "<div class='col-12'>";
+            echo "<p>No results:(</p>";
             echo "</div>";
+        } else {
+            foreach ($results as $row) {
+                $query1 = "SELECT * FROM store JOIN address a on a.address_id = store.address_id JOIN city c on c.postcode = a.postcode WHERE store_id = ?;";
+                $stmt1 = $pdo->prepare($query1);
+                $stmt1->execute([$row['store_id']]);
+                $results1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+                ?>
+                <!-- Product card with Bootstrap grid classes -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+
+                        <div class="card-body">
+                            <!-- Product name and link to details page -->
+                            <?php foreach($results1 as $row1){
+                                ?>
+                            <h5 class="card-title"><a href="managerordersstore.php?id=<?php echo htmlspecialchars($row["store_id"]); ?>"><?php echo htmlspecialchars($row1["store_name"]); ?></a></h5>
+                            <!-- Product price -->
+                            <p class="card-text">Address: <?php echo htmlspecialchars($row1["street"]). " " . htmlspecialchars($row1["house_no"]). ", " . htmlspecialchars($row1["postcode"]). " ". htmlspecialchars($row1["name"])  ?></p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text">CVR: <?php echo htmlspecialchars($row1["cvr"]); ?></p>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
         }
-    
+        ?>
 
-   
-    ?>
-
+    </div>
+</div>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/script.js"></script>
