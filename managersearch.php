@@ -95,6 +95,12 @@ $storeId = $_SESSION['store_id'];
     }
     else{
         foreach ($results as $row){
+            if($row["is_deleted"]){
+                $deleted = "Deleted Item";
+            }
+            else {
+                $deleted = "Item posted";
+            }
             echo "<div>";
             echo "<a href = 'managerproduct.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
             echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
