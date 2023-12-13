@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "</div>";
         } else {
             foreach ($results as $row) {
-                echo "<div class='col-md'>";
+                echo "<div class='col-md-12'>";
                 echo "<div class='card mb-4 box-shadow'>";
                 echo "<div class='card-body'>";
                 echo "<p class='card-text'>><strong>Username:</strong> " . htmlspecialchars($row["username"]) . "</p>";
