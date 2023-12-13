@@ -11,6 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt0 = $pdo->prepare($query0);
         $stmt0->execute([$stock,$productId]);
         
+        
         die();
 
     } catch (PDOException $e) {

@@ -108,7 +108,7 @@ $username = $_SESSION['username'];
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
-        <form action="includes/stockUpdate.inc.php" method="post">
+        <form action="" method="post">
             <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
             <input type="text" class = "form-control mb-3" name ="stock" Required> 
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
