@@ -113,6 +113,9 @@ $username = $_SESSION['username'];
     <form action="registeremployee.php" method="post">
         <button class='btn btn-primary mb-4'>Add employee</button>
     </form>
+    <form action="editstoreinfo.php" method="post">
+        <button class='btn btn-primary mb-4'>Edit info</button>
+    </form>
                 
             </div>
             <?php

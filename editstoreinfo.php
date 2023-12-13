@@ -1,6 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $editinfo = $_POST["editinfo"];
+    session_start();
+    $storeId = $_SESSION["store_id"]
     
 
     try {
@@ -10,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         WHERE store_id = ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$editinfo]);
+        $stmt->execute([$storeId]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
