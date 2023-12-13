@@ -1,6 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    session_start();
     $productId = $_POST["productId"];
     $cartId = $_SESSION["cart"];
     try {
