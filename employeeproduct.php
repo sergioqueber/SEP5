@@ -87,10 +87,11 @@ $username = $_SESSION['username'];
     <div class="row">
         <?php
         foreach ($results as $row) {
+            $deleted = ($row["is_deleted"]) ? "Deleted Item" : "Item posted";  
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
-
+            echo "<p class='card-text'><b>" . htmlspecialchars($deleted) . "</b></p>";
             echo "<div class='col-md-6'>";
             echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
