@@ -73,7 +73,6 @@ $username = $_SESSION['username'];
     $storeId = $_SESSION['storeId'];
     
     
-    
 
     try {
         require_once "includes/dbh.inc.php";

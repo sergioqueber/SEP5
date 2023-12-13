@@ -94,6 +94,7 @@ $username = $_SESSION['username'];
         <?php
         foreach ($results as $row) {
             $_SESSION['storeId'] = $row["store_id"];
+            $_SESSION['storeName'] = $row["store_name"];
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
