@@ -32,7 +32,7 @@
         $(document).ready(function(){
             $("#successModal").modal("show");
         });
-        $(".back").click(function(){
+        $(".close").click(function(){
             history.back();
         })
     </script>
