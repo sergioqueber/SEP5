@@ -109,7 +109,7 @@ $username = $_SESSION['username'];
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
         <form id="stockForm" method="post">
-            <input type="text" class = "form-control mb-3" name ="stock" Required> 
+            <input type="text" class = "form-control mb-3" name ="stock" placeholder = "Updated Stock" Required> 
             <button type = "submit" class='btn btn-primary mb-3'>Save</button>
         </form>
     </div>
