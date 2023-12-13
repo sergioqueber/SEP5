@@ -63,7 +63,8 @@ $username = $_SESSION['username'];
 <br>
 <br>
 <br>
-
+<div class="container mt-5">
+    <div class="row">
     <?php
     $productId = isset($_GET['id']) ? $_GET['id'] : null;
     $_SESSION['product_id'] = $productId;
@@ -96,7 +97,7 @@ $username = $_SESSION['username'];
     }
     ?>
         <form action='includes/deleteeproduct.inc.php' method='post'>
-            <input type='hidden' name='productId' value='<?php htmlspecialchars($row["product_id"]);?>'>
+            <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
             <button type='submit' class='btn btn-primary'>Delete Product</button>
         </form>
         <form action="managerreview.php" method="post">
@@ -108,7 +109,8 @@ $username = $_SESSION['username'];
     <form action="includes/deleteeproduct.inc.php" method="post">
         <button>Delete product</button>
     </form>
-    
+    </div>
+</div>
     <script src="js/jquery-3.7.1.min.js"> </script>
     
 
