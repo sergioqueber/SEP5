@@ -108,9 +108,9 @@ $username = $_SESSION['username'];
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
-        <form action="" method="post" onsubmit="return stock();">
+        <form action="" method="post">
             <input type="text" class = "form-control mb-3" name ="stock" Required> 
-            <button type='submit' class='btn btn-primary mb-3'>Save</button>
+            <button class='btn btn-primary mb-3' onclick = "stock();">Save</button>
         </form>
     </div>
     </div>

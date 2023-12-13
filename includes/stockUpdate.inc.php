@@ -14,7 +14,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt0->execute([$stock,$productId]);
         
         echo "updated"
-        die();
 
     } catch (PDOException $e) {
         die("Query failed" . $e->getMessage());
