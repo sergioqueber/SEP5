@@ -177,8 +177,19 @@ $username = $_SESSION['username'];
                 }});
             $('input[name=review]').val('');
             $('input[name=rate]').val('');
-            
-        };
+            $.ajax({
+            url: 'http://localhost/SEP5/review.php', // Path to your PHP script
+            type: 'POST',
+            success: function(response) {
+                // Insert the HTML directly
+                $('#reviews').html(response);
+            },
+            error: function() {
+                alert('Error loading reviews.');
+            }
+                })
+                
+            };
         $("#close").click(function(){
             $('#addedModal').modal('hide');
         });
@@ -196,8 +207,8 @@ $username = $_SESSION['username'];
         error: function() {
             alert('Error loading reviews.');
         }
-    });
-});
+            });
+        });
          
     </script>
 
