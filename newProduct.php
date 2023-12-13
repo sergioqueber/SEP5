@@ -58,6 +58,10 @@
     </div>
 </nav>
 <div class="container mt-5">
+    <div class="row">
+        <h1>Add new product</h1>
+        <hr>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action = "includes/formhandler.inc.php" method="post" enctype="multipart/form-data">
@@ -87,11 +91,5 @@
     </div>
 </div>
 
-    <br>
-    <form action="includes/deleteproduct.inc.php" method="post">
-        <input type="text" name="productId" placeholder="Product id"><br>
-        <button>Delete product</button>
-    </form>
-    <br>
 </body>
 </html>
