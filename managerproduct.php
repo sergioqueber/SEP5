@@ -108,17 +108,28 @@ $username = $_SESSION['username'];
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
         </form>
+        <form action="" method="post" onsubmit="return stock();">
+            <input type="text" class = "form-control mb-3" name ="stock" Required> 
+            <button type='submit' class='btn btn-primary mb-3'>Save</button>
+        </form>
     </div>
-    <br>
-   
-    <form action="includes/deleteeproduct.inc.php" method="post">
-        <button>Delete product</button>
-    </form>
     </div>
 </div>
     <script src="js/jquery-3.7.1.min.js"> </script>
-    
+    <script>
+        function stock(){
+            var stock = $('input[name=stock]').val();
+            var formData = {
+                stock: stock,
 
+            };
+            $.ajax({
+                url: "http://localhost/SEP5/includes/stockUpdate.inc.php",
+                type: 'POST',
+                data: formData
+            });
+        };
+    </script>
 
 </body>
 
