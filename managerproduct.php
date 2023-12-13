@@ -84,12 +84,13 @@ $username = $_SESSION['username'];
     }
 
     foreach ($results as $row) {
+            $deleted = ($row["is_deleted"]) ? "Deleted Item" : "Item posted";    
             echo "<div class='col-md-6'>";
             echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
             echo "</div>";
-
             echo "<div class='col-md-6'>";
             echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
+            echo "<p class='card-text'><b>" . htmlspecialchars($deleted) . "</b></p>";
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
             echo "<p>Price: $" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
@@ -102,7 +103,7 @@ $username = $_SESSION['username'];
         </form>
         <form action='includes/activateProduct.inc.php' method='post'>
             <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
-            <button type='submit' class='btn btn-primary mb-3'>Activate product</button>
+            <button type='submit' class='btn btn-primary mb-3'>Activate</button>
         </form>
         <form action="managerreview.php" method="post">
             <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
