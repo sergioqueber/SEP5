@@ -98,6 +98,7 @@ $storeId = $_SESSION['store_id'];
             echo "<div>";
             echo "<a href = 'managerproduct.php?id=" .htmlspecialchars($row["product_id"]) ."' >" . htmlspecialchars($row["product_name"]) . "</a><br>";
             echo "<img src='".htmlspecialchars($row["image_path"]) ."'>";
+            echo "<p> Deleted:" . htmlspecialchars($row["is_deleted"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["description"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p>" . htmlspecialchars($row["category"]) . "</p>";
