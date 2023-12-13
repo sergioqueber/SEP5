@@ -12,8 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "UPDATE product SET stock = stock-1 WHERE product_id = ?;";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productID]);
-        $pdo = null;
-        $stmt = null;
+
         header("Location: ../popupCart.php");
     
         // $pdo = null;
