@@ -1,8 +1,8 @@
 <?php
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-   $stock = $_POST["stock"]
-   $productId = $_POST["productId"]
+   $stock = $_POST["stock"];
+   $productId = $_POST["productId"];
 
     try {
         require_once "dbh.inc.php";
@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt0 = $pdo->prepare($query0);
         $stmt0->execute([$stock,$productId]);
         
-        
+
         die();
 
     } catch (PDOException $e) {
