@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productId]);
 
-        $query = "UPDATE product SET stock = stock - ? WHERE product_id = ?;";
+        $query = "UPDATE product SET stock = stock + ? WHERE product_id = ?;";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$quantity,$productId]);
 
