@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $pdo = null;
                 $stmt = null;
 
-                header("Location: ../index.php");
+                header("Location: ../managerstore.php?id=" . $storeId);
                 die();
             } catch (PDOException $e) {
                 die("Query failed" . $e->getMessage());
