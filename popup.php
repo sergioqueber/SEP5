@@ -23,7 +23,7 @@
                     Check it out in your orders!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" class = "close">Close</button>
+                    <button type="button" class="btn btn-default" class = "close" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
         });
         $(".close").click(function(){
             history.back();
-        })
+        });
     </script>
 </body>
 </html>
