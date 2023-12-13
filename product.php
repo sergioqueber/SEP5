@@ -190,9 +190,9 @@ $username = $_SESSION['username'];
                 })
                 
             };
-        $(".close").click(function(){
-            $('#addedModal').modal('hide');
-        });
+            $(".close").click(function(){
+                $('#addedModal').modal('hide');
+            });
         function showReviews(){
             
         };
