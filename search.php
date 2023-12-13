@@ -114,30 +114,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="row">
         
         <?php
-       if (empty($results)) {
-        echo "<div class='col-12'>";
-        echo "<div class='alert alert-info'>";
-        echo "<p class='mb-0'>No results :(</p>";
-        echo "</div>";
-        echo "</div>";
-    } else {
-        foreach ($results as $row) {
-            $deleted = ($row["is_deleted"]) ? "Deleted Item" : "Item posted";
-            echo "<div class='col-lg-4 col-md-6 mb-4'>";
-            echo "<div class='card h-100'>";
-            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='card-img-top' alt='" . htmlspecialchars($row["product_name"]) . "'>";
-            echo "<div class='card-body'>";
-            echo "<h5 class='card-title'><a href='managerproduct.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></h5>";
-            echo "<p class='card-text'>" . htmlspecialchars($deleted) . "</p>";
-            echo "<p class='card-text'>" . htmlspecialchars($row["description"]) . "</p>";
-            echo "<p class='card-text'>" . htmlspecialchars($row["price"]) . "</p>";
-            echo "<p class='card-text'>" . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p class='card-text'>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
+        if (empty($results)) {
+            echo "<div class='col-12'>";
+            echo "<p>No results:(</p>";
             echo "</div>";
-            echo "</div>";
-            echo "</div>";
+        } else {
+            foreach ($results as $row) {
+                ?>
+                <!-- Product card with Bootstrap grid classes -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <!-- Product image -->
+                        <img src="<?php echo htmlspecialchars($row["image_path"]); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row["product_name"]); ?>">
+
+                        <div class="card-body">
+                            <!-- Product name and link to details page -->
+                            <h5 class="card-title"><a href="product.php?id=<?php echo htmlspecialchars($row["product_id"]); ?>"><?php echo htmlspecialchars($row["product_name"]); ?></a></h5>
+                            <!-- Product price -->
+                            <p class="card-text"><?php echo htmlspecialchars($row["price"]); ?>dkk</p>
+                            <!-- Additional product information (category, stock, etc.) -->
+                            <p class="card-text"><?php echo htmlspecialchars($row["category"]); ?></p>
+                            <p class="card-text">Stock: <?php echo htmlspecialchars($row["stock"]); ?></p>
+                        </div>
+
+                        <!-- Add to cart button or other actions -->
+                        <div class="card-footer">
+                            <button class="btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
         }
-    }
         ?>
 
     </div>

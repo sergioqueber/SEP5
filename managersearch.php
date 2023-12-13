@@ -90,21 +90,25 @@ $storeId = $_SESSION['store_id'];
     <div class="container mt-5">
     <?php
     if (empty($results)) {
+        echo "<div class='col-12'>";
         echo "<div class='alert alert-info'>";
         echo "<p class='mb-0'>No results :(</p>";
+        echo "</div>";
         echo "</div>";
     } else {
         foreach ($results as $row) {
             $deleted = ($row["is_deleted"]) ? "Deleted Item" : "Item posted";
-            echo "<div class='card mb-3'>";
+            echo "<div class='col-lg-4 col-md-6 mb-4'>";
+            echo "<div class='card h-100'>";
+            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='card-img-top' alt='" . htmlspecialchars($row["product_name"]) . "'>";
             echo "<div class='card-body'>";
-            echo "<a href='managerproduct.php?id=" . htmlspecialchars($row["product_id"]) . "' class='card-title'>" . htmlspecialchars($row["product_name"]) . "</a><br>";
-            echo "<img src='" . htmlspecialchars($row["image_path"]) . "' class='img-fluid' alt='Product Image'>";
+            echo "<h5 class='card-title'><a href='managerproduct.php?id=" . htmlspecialchars($row["product_id"]) . "'>" . htmlspecialchars($row["product_name"]) . "</a></h5>";
             echo "<p class='card-text'>" . htmlspecialchars($deleted) . "</p>";
             echo "<p class='card-text'>" . htmlspecialchars($row["description"]) . "</p>";
             echo "<p class='card-text'>" . htmlspecialchars($row["price"]) . "</p>";
             echo "<p class='card-text'>" . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p class='card-text'>" . htmlspecialchars($row["stock"]) . "</p>";
+            echo "<p class='card-text'>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
+            echo "</div>";
             echo "</div>";
             echo "</div>";
         }
