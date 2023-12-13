@@ -26,8 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "<div class='card mb-4 box-shadow'>";
                 echo "<div class='card-body'>";
                 echo "<p class='card-text'><strong>Username:</strong> " . htmlspecialchars($row["username"]) . "</p>";
-                echo "<p class='card-text><strong>Comment:</strong> " . htmlspecialchars($row["comment"]) . "</p>";
-                echo "<p class='card-text><strong>Rating:</strong> " . htmlspecialchars($row["stars"]) . " / 5</p>";
+                echo "<p class='card-text'><strong>Comment:</strong> " . htmlspecialchars($row["comment"]) . "</p>";
+                echo "<p class='card-text'><strong>Rating:</strong> " . htmlspecialchars($row["stars"]) . " / 5</p>";
                 echo "</div>";
                 echo "</div>";
                 echo "</div>";
