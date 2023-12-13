@@ -177,7 +177,7 @@ $username = $_SESSION['username'];
             
         };
         $("#close").click(function(){
-            $('#editSuccessModal').modal('hide');
+            $('#addedModal').modal('hide');
         });
          
     </script>
