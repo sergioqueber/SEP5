@@ -3,7 +3,6 @@
 <?php
 
 session_start();
-$storeId = $_SESSION['storeId'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
