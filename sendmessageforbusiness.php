@@ -102,7 +102,7 @@ session_start();
                 foreach($results as $row){
                     if($row['direction'] == TRUE){
                      
-                     echo '<div class="alert alert-success col-7" role="alert">';
+                     echo '<div class="alert alert-primary col-7" role="alert">';
                      echo '<h4 class="alert-heading">'; 
                      if($row['direction'] === TRUE){   
                                              echo $row['username']. ": ";
@@ -118,7 +118,7 @@ session_start();
                                   echo '</p>';
                      echo '</div>';
                      }else{
-                     echo '<div class="alert alert-primary col-7" role="alert">';
+                     echo '<div class="alert alert-success col-7" role="alert">';
                      echo '<h4 class="alert-heading">';
                      if($row['direction'] == TRUE){   
                                              echo $row['username']. ": ";
