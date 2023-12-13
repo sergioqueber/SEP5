@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $query = "SELECT *
         FROM product
                  JOIN store s ON product.store_id = s.store_id
-        WHERE store_name ILIKE ? and category ILIKE ? AND price < ?;";
+        WHERE store_name ILIKE ? and category ILIKE ? AND price < ? AND is_deleted = false;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$storeName, $category, $maxPrice]);

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     try {
         require_once "dbh.inc.php";
 
-        $query = "DELETE FROM product WHERE product_id = ? ;";
+        $query = "UPDATE products SET is_deleted = true WHERE product_id = ?;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$productid]);
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pdo = null;
         $stmt = null;
 
-        header("Location: ../index.php");
+        header("Location: ../managersearch.php");
 
         die();
     } catch (PDOException $e) {
