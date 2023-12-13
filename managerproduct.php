@@ -111,7 +111,7 @@ $username = $_SESSION['username'];
         <form action="" method="post">
             <input type='hidden' name='productId' value='<?php echo $productId; ?>'>
             <input type="text" class = "form-control mb-3" name ="stock" Required> 
-            <button type='submit' class='btn btn-primary mb-3'>See reviews</button>
+            <button type='submit' class='btn btn-primary mb-3'>Save</button>
         </form>
     </div>
     </div>
@@ -120,6 +120,7 @@ $username = $_SESSION['username'];
     <script>
         function stock(){
             var stock = $('input[name=stock]').val();
+            var storeId = $('input[name=productId]').val();
             var formData = {
                 stock: stock
             };
