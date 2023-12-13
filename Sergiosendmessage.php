@@ -135,7 +135,7 @@
         function submitForm(){
             var message = $('input[name=message]').val();
             var formData = {message: message};
-            $.ajax({url: "http://localhost/MyWebsite/includes/sendmessage.inc.php", type: 'POST', data: formData, success: function(){}})
+            $.ajax({url: "http://localhost/SEP5/includes/sendmessage.inc.php", type: 'POST', data: formData, success: function(){}})
             $('input[name=message]').val('');
         };
     </script>

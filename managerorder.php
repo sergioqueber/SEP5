@@ -138,7 +138,7 @@ $_SESSION['orderId'] = $orderId;
         function changeStatus(){
             var status = $('select[name=status]').val();
             var formData = {status: status};
-            $.ajax({url: "http://localhost/MyWebsite/includes/orderstatus.inc.php", type: 'POST', data: formData});
+            $.ajax({url: "http://localhost/SEP5/includes/orderstatus.inc.php", type: 'POST', data: formData});
             $('select[name=status]').val('');
         };
     </script>
