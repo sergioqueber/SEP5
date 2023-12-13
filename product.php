@@ -72,7 +72,6 @@ $username = $_SESSION['username'];
     $productId = isset($_GET['id']) ? $_GET['id'] : null;
     $_SESSION['product_id'] = $productId;
     
-    echo $_SESSION['cart'];
     try {
         require_once "includes/dbh.inc.php";
 
@@ -101,7 +100,7 @@ $username = $_SESSION['username'];
             echo "<div class='col-md-6'>";
             echo "<h2>" . htmlspecialchars($row["product_name"]) . "</h2>";
             echo "<p>Category: " . htmlspecialchars($row["category"]) . "</p>";
-            echo "<p>Price: $" . htmlspecialchars($row["price"]) . "</p>";
+            echo "<p>Price:" . htmlspecialchars($row["price"]) . "dkk</p>";
             echo "<p>Description: " . htmlspecialchars($row["description"]) . "</p>";
             echo "<p>Stock: " . htmlspecialchars($row["stock"]) . "</p>";
 
