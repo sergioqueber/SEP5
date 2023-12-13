@@ -87,7 +87,8 @@ $storeId = $_SESSION['store_id'];
     <section>
     <h3>Products</h3>
 
-    <div class="container mt-5">
+<div class="container mt-5">
+    <div class = "row">
     <?php
     if (empty($results)) {
         echo "<div class='col-12'>";
@@ -114,6 +115,7 @@ $storeId = $_SESSION['store_id'];
         }
     }
     ?>
+    </div>
 </div>
 </section>
 
