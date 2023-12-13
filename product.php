@@ -141,11 +141,11 @@ $username = $_SESSION['username'];
         <form action="" method="post">
         <div class="form-group">
             <label for="review">Leave your review below:</label>
-            <input id="review" type="text" name="review" placeholder="Review"><br>
+            <input class="form-control" id="review" type="text" name="review" placeholder="Review"><br>
         </div>    
         <div class="form-group">
             <label for="rate">Leave your rate below (1-5):</label>
-            <input id="rate" type="text" name="rate" placeholder="Rate"><br>
+            <input class="form-control" id="rate" type="text" name="rate" placeholder="Rate"><br>
         </div>  
         <div class="form-group">
             <input type="button" onclick="addReview();" name="add" value="Add review"  class='btn btn-primary '/>
