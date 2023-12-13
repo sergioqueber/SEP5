@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo 'Log in successful';
             header("Location: ../mainpageemployee.php");
         } else {
-            echo 'log in failed';
+            header("Location: ../popups/popupLogIn.php");
         }
 
         die();
