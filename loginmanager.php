@@ -64,10 +64,10 @@
           </div>
           <form action="includes/loginmanagerhandler.inc.php" method="post" class="mt-4">
             <div class="form-group">
-              <input class="form-control" name="username" placeholder="Username" type="text" required>
+              <input class="form-control mb-3" name="username" placeholder="Username" type="text" required>
             </div>
             <div class="form-group">
-              <input class="form-control" name="password" placeholder="Password" type="password" required>
+              <input class="form-control mb-3" name="password" placeholder="Password" type="password" required>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
