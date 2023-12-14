@@ -130,6 +130,10 @@ session_start();
                             <label for="price">Max Price</label>
                             <input type="number" class="form-control" id="maxPrice" name="maxPrice">
                         </div>
+                        <div class = "mb-3">
+                            <label for="location">Location</label>
+                            <input type="text" class="form-control" id="location" name="location">
+                        </div>
 
                         <!-- Add more filter options as needed -->
 

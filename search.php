@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $storeName = '%';
     $category = '%';
     $maxPrice = 100000000;
+    $location = '%';
     echo empty($_POST['maxPrice']);
 
     if(isset($_POST['storeName']) && !empty($_POST['storeName'])){
@@ -21,6 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $maxPrice = $_POST["maxPrice"];
         echo $maxPrice;
     }
+    if(isset($_POST['location']) && !empty($_POST['location'])){
+        $maxPrice = $_POST["location"];
+        echo $maxPrice;
+    }
     echo $storeName;
     try {
         require_once "includes/dbh.inc.php";
@@ -28,10 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $query = "SELECT *
         FROM product
                  JOIN store s ON product.store_id = s.store_id
-        WHERE store_name ILIKE ? and category ILIKE ? AND price < ? AND is_deleted = false;";
+                 JOIN address a ON a.address_id = s.address_id
+                 JOIN city c ON a.postcode = c.postcode
+        WHERE store_name ILIKE ?
+          AND category ILIKE ?
+          AND price < ?
+          AND is_deleted = FALSE
+          AND c.name = ?;";
 
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$storeName, $category, $maxPrice]);
+        $stmt->execute([$storeName, $category, $maxPrice,$location]);
 
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
