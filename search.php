@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo $maxPrice;
     }
     if(isset($_POST['location']) && !empty($_POST['location'])){
-        $maxPrice = $_POST["location"];
-        echo $maxPrice;
+        $location = $_POST["location"];
+        echo $location;
     }
     echo $storeName;
     try {
