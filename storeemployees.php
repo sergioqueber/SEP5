@@ -75,9 +75,15 @@
 <br>
 <br>
     
-    <h1>Employees</h1>
-
+    
+    <div class="container mt-5">
+    <div class="row">
+        <h1>Employees</h1>
+        <hr>
+    </div>                       
     <?Php
+
+    
     if(empty($results)){
         echo "<div>";
         echo "<p>No employees:(</p>";
@@ -93,8 +99,8 @@
            
         }
     }
-
-   
+    
     ?>
+    </div>
 </body>
 </html>
