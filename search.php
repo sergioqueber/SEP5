@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
           AND category ILIKE ?
           AND price < ?
           AND is_deleted = FALSE
-          AND c.name = ?;";
+          AND c.name ILIKE ?;";
 
         $stmt = $pdo->prepare($query);
         $stmt->execute([$storeName, $category, $maxPrice,$location]);
