@@ -121,10 +121,9 @@ session_start();
                                 <!-- Add more options as needed -->
                             </select>
                         </div>
-
                         <div class="mb-3">
                             <label for="searchStore">Search for products in store:</label>
-                            <input id="searchStore" type="text" class = "form-control" name="storeName" placeholder="Store Name"><br>
+                            <input id="searchStore" type="text" class = "form-control" name="storeName" placeholder="Store Name">
                         </div>
                         <div class = "mb-3">
                             <label for="price">Max Price</label>
