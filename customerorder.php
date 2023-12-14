@@ -97,7 +97,7 @@ $_SESSION['orderId'] = $orderId;
                 <th scope="col">Quantity</th>
 
             </tr>
-        </thead>ñ
+        </thead>
         <tbody>
             <?php
             if(empty($results)){
